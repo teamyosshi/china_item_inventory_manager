@@ -1,0 +1,77 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :item_number %>
+    <%= form.text_field :item_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item_image %>
+    <%= form.text_field :item_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_item_image %>
+    <%= form.text_field :china_item_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :part_number %>
+    <%= form.text_field :part_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jan_code %>
+    <%= form.number_field :jan_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :simulate_price %>
+    <%= form.number_field :simulate_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :yahoo %>
+    <%= form.check_box :yahoo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amazon %>
+    <%= form.check_box :amazon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mercari %>
+    <%= form.check_box :mercari %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rakuma %>
+    <%= form.check_box :rakuma %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rakuten %>
+    <%= form.check_box :rakuten %>
+  </div>
+
+  <div class="field">
+    <%= form.label :yahooshoping %>
+    <%= form.check_box :yahooshoping %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

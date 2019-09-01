@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Employee number:</strong>
+  <%= @user.employee_number %>
+</p>
+
+<p>
+  <strong>Line:</strong>
+  <%= @user.line_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @user.phone_number %>
+</p>
+
+<p>
+  <strong>Account bank name:</strong>
+  <%= @user.account_bank_name %>
+</p>
+
+<p>
+  <strong>Account number:</strong>
+  <%= @user.account_number %>
+</p>
+
+<p>
+  <strong>Business consignment expenses:</strong>
+  <%= @user.business_consignment_expenses %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <strong>Inventory manager flg:</strong>
+  <%= @user.inventory_manager_flg %>
+</p>
+
+<p>
+  <strong>Reserch user flg:</strong>
+  <%= @user.reserch_user_flg %>
+</p>
+
+<p>
+  <strong>Fired flg:</strong>
+  <%= @user.fired_flg %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @user.admin %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

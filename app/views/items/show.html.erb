@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item number:</strong>
+  <%= @item.item_number %>
+</p>
+
+<p>
+  <strong>Item image:</strong>
+  <%= @item.item_image %>
+</p>
+
+<p>
+  <strong>China item image:</strong>
+  <%= @item.china_item_image %>
+</p>
+
+<p>
+  <strong>Part number:</strong>
+  <%= @item.part_number %>
+</p>
+
+<p>
+  <strong>Jan code:</strong>
+  <%= @item.jan_code %>
+</p>
+
+<p>
+  <strong>Simulate price:</strong>
+  <%= @item.simulate_price %>
+</p>
+
+<p>
+  <strong>Yahoo:</strong>
+  <%= @item.yahoo %>
+</p>
+
+<p>
+  <strong>Amazon:</strong>
+  <%= @item.amazon %>
+</p>
+
+<p>
+  <strong>Mercari:</strong>
+  <%= @item.mercari %>
+</p>
+
+<p>
+  <strong>Rakuma:</strong>
+  <%= @item.rakuma %>
+</p>
+
+<p>
+  <strong>Rakuten:</strong>
+  <%= @item.rakuten %>
+</p>
+
+<p>
+  <strong>Yahooshoping:</strong>
+  <%= @item.yahooshoping %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

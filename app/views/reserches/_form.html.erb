@@ -1,0 +1,72 @@
+<%= form_with(model: reserch, local: true) do |form| %>
+  <% if reserch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reserch.errors.count, "error") %> prohibited this reserch from being saved:</h2>
+
+      <ul>
+      <% reserch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :japan_image_url %>
+    <%= form.text_field :japan_image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_title %>
+    <%= form.text_field :japan_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_url %>
+    <%= form.text_field :japan_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_description %>
+    <%= form.text_field :japan_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :japan_price %>
+    <%= form.number_field :japan_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_image_url %>
+    <%= form.text_field :china_image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_title %>
+    <%= form.text_field :china_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_url %>
+    <%= form.text_field :china_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :china_price %>
+    <%= form.number_field :china_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item_id %>
+    <%= form.text_field :item_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inventory_arrival_date: 2019-09-01
+  purchase_price: 1
+  trager_name: MyString
+  stock: 1
+  alert_border_line: 1
+  item_number: one
+
+two:
+  inventory_arrival_date: 2019-09-01
+  purchase_price: 1
+  trager_name: MyString
+  stock: 1
+  alert_border_line: 1
+  item_number: two

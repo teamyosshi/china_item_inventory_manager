@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_number: MyString
+  item_image: 
+  china_item_image: 
+  part_number: MyString
+  jan_code: 1
+  simulate_price: 1
+  yahoo: false
+  amazon: false
+  mercari: false
+  rakuma: false
+  rakuten: false
+  yahooshoping: false
+
+two:
+  item_number: MyString
+  item_image: 
+  china_item_image: 
+  part_number: MyString
+  jan_code: 1
+  simulate_price: 1
+  yahoo: false
+  amazon: false
+  mercari: false
+  rakuma: false
+  rakuten: false
+  yahooshoping: false
