@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_053452) do
+ActiveRecord::Schema.define(version: 2019_09_08_222759) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_number"
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 2019_09_01_053452) do
     t.boolean "yahooshoping"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "researches", force: :cascade do |t|
+    t.string "japan_image_url"
+    t.string "japan_title"
+    t.string "japan_url"
+    t.string "japan_description"
+    t.integer "japan_price"
+    t.string "china_image_url"
+    t.string "china_title"
+    t.string "china_url"
+    t.integer "china_price"
+    t.integer "item_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_researches_on_item_id"
+    t.index ["user_id"], name: "index_researches_on_user_id"
   end
 
   create_table "reserches", force: :cascade do |t|

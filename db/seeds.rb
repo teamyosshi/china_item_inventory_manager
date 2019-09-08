@@ -9,4 +9,4 @@ Item.create!(item_number: "商品A",
              item_image: "ここにURLがはいります",
              part_number: 1,
              jan_code: 1,
-             simulate_price: 1)
+             simulate_price: 100)

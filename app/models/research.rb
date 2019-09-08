@@ -1,4 +1,4 @@
-class Reserch < ApplicationRecord
+class Research < ApplicationRecord
   belongs_to :item
   belongs_to :user
 end

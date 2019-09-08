@@ -1,6 +1,6 @@
-class CreateReserches < ActiveRecord::Migration[5.2]
+class CreateResearches < ActiveRecord::Migration[5.2]
   def change
-    create_table :reserches do |t|
+    create_table :researches do |t|
       t.string :japan_image_url
       t.string :japan_title
       t.string :japan_url
