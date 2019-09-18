@@ -1,2 +1,21 @@
-<h1>StaticPages#top</h1>
-<p>Find me in app/views/static_pages/top.html.erb</p>
+<div class="jumbotron">
+  <div id="left_box">
+    <h1 id="title">在宅中国輸入<br>
+    &ensp;在庫管理システム</h1>
+  <p>Welcome to Invebtory Management System</p>
+  <p>↓初めてのご利用↓</p>
+  <%= link_to "アカウント作成", signup_path, class:"btn btn-success btn-lg"%>
+  </div>
+  <div id="right_box">
+    <h1>ログイン</h1>
+    <%#= form_for(:session, url: login_path) do |f| %>
+
+    <%# f.label :email %>
+    <%# f.email_field :email %>
+
+    <%# f.label :password %>
+    <%# f.password_field :password %>
+
+    <%# end %>
+  </div>
+</div>
