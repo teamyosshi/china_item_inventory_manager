@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 2019_09_25_213715) do
     t.integer "account_number", default: 1, null: false
     t.integer "business_consignment_expenses", default: 1, null: false
     t.string "password_digest", null: false
-    t.boolean "inventory_manager_flg", null: false
-    t.boolean "reserch_user_flg", null: false
+    t.boolean "inventory_manager_flg", default: false, null: false
+    t.boolean "reserch_user_flg", default: false, null: false
     t.string "fired_flg", default: "", null: false
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false

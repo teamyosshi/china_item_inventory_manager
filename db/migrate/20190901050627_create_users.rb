@@ -11,8 +11,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :account_number, null: false, default: "1"
       t.integer :business_consignment_expenses, null: false, default: "1"
       t.string :password_digest, null: false
-      t.boolean :inventory_manager_flg, null: false
-      t.boolean :reserch_user_flg, null: false
+      t.boolean :inventory_manager_flg, null: false, default: false
+      t.boolean :reserch_user_flg, null: false, default: false
       t.string :fired_flg, null: false, default: ""
       t.boolean :admin, null: false, default: false
       t.timestamps
