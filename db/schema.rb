@@ -47,24 +47,6 @@ ActiveRecord::Schema.define(version: 2019_09_25_213714) do
     t.index ["user_id"], name: "index_researches_on_user_id"
   end
 
-  create_table "reserches", force: :cascade do |t|
-    t.string "japan_image_url"
-    t.string "japan_title"
-    t.string "japan_url"
-    t.string "japan_description"
-    t.integer "japan_price"
-    t.string "china_image_url"
-    t.string "china_title"
-    t.string "china_url"
-    t.integer "china_price"
-    t.integer "item_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_reserches_on_item_id"
-    t.index ["user_id"], name: "index_reserches_on_user_id"
-  end
-
   create_table "stocks", force: :cascade do |t|
     t.date "inventory_arrival_date"
     t.integer "purchase_price"
@@ -88,12 +70,13 @@ ActiveRecord::Schema.define(version: 2019_09_25_213714) do
     t.integer "account_number"
     t.integer "business_consignment_expenses"
     t.string "password_digest"
-    t.integer "inventory_manager_flg"
-    t.integer "reserch_user_flg"
+    t.boolean "inventory_manager_flg"
+    t.boolean "reserch_user_flg"
     t.string "fired_flg"
     t.integer "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
