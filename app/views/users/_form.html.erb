@@ -12,7 +12,7 @@
   <% end %>
 <div class="col-md-6 col-md-offset-3">
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name%>
     <%= form.text_field :name, class:"form-control"%>
   </div>
 
@@ -57,7 +57,7 @@
   <label class="checkbox-inline"><%= form.check_box :reserch_user_flg %>リサーチ</label>
   </div>
   <div class="actions" id="action">
-    <%= form.submit class:"btn btn-primary btn-block btn-sigunup"%>
+    <%= form.submit yield(:button_text), class:"btn btn-primary btn-block btn-#{yield(:class_text)}"%>
   </div>
   <p>✳︎アカウント作成後は、プロフィール編集でプロフィール画像を設定してください</p>
 </div>
