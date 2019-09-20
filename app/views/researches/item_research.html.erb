@@ -1,0 +1,167 @@
+<div class="container">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="rate">
+          <label for="number" class="control-label col-xs-5">現在の想定レート</label>
+          <input class="form-control" type="text">
+        </div>
+        <div class="research-introduce">
+          <h1 id="research-label">商品リサーチフォーム</h1>
+          <p id="introduce">※ リサーチしたい商品を</br>日本語と中国語でそれぞれ入力してみましょう！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= form_tag(users_path, :method => 'get') do %>
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-xs-4">
+            <div class="text-search-japan">
+              <%= text_field_tag :search, '', placeholder: "日本語キーワード入力　例：バスケットボール", class:"form-control" %>
+
+              <div class="money-label">
+                <label for="number" class="control-label col-xs-3">金額</label>
+                <select name="num">
+                  <option value="下限なし">下限なし</option>
+                  <option value="1,000">1,000</option>
+                  <option value="5,000">5,000</option>
+                  <option value="10,000">10,000</option>
+                  <option value="15,000">15,000</option>
+                  <option value="1,000,000">1,000,000</option>
+                </select>
+                <select name="num">
+                  <option value="上限なし">上限なし</option>
+                  <option value="1,000">1,000</option>
+                  <option value="5,000">5,000</option>
+                  <option value="10,000">10,000</option>
+                  <option value="15,000">15,000</option>
+                  <option value="1,000,000">1,000,000</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        <div class="col-xs-4">
+          <div class="text-search-china">
+            <%= text_field_tag :search, '', placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
+
+            <div class="money-label">
+              <label for="number" class="control-label col-xs-3">金額</label>
+                <select name="num">
+                  <option value="下限なし">下限なし</option>
+                  <option value="1,000">1,000</option>
+                  <option value="5,000">5,000</option>
+                  <option value="10,000">10,000</option>
+                  <option value="15,000">15,000</option>
+                  <option value="1,000,000">1,000,000</option>
+                </select>
+                <select name="num">
+                  <option value="上限なし">上限なし</option>
+                  <option value="1,000">1,000</option>
+                  <option value="5,000">5,000</option>
+                  <option value="10,000">10,000</option>
+                  <option value="15,000">15,000</option>
+                  <option value="1,000,000">1,000,000</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div>
+            <%= button_tag 'リサーチ', :name => nil, class: "btn btn-primary btn-block" %>
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+  <div class="col-lg-12">
+    <div class="row">
+      <%= form_tag(users_path, :method => 'get') do %>
+        <div class="row">
+          <div class="col-xs-8">
+            <%= button_tag '一括登録ボタン（在庫管理ページへ）', :name => nil, class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+        <table class="table table-bordered table-striped table-position">
+          <thead>
+          <tr class="success">
+            <th></th>
+            <th>NO</th>
+            <th>商品画像</th>
+            <th>商品タイトル（日本）</th>
+            <th>リサーチURL</th>
+            <th>リサーチ額</th>
+            <th></th>
+            <th>商品画像仕入先（仕入先）</th>
+            <th>商品タイトル（中国語）</th>
+            <th>仕入URL</th>
+            <th>仕入原価（中国元）</th>
+            <th>想定仕入価格（X+Y）× 中国元表示</th>
+            <th>想定利益表示</th>
+          </tr>
+          </thead>
+          <tbody>
+
+
+          <tr>
+            <th><input type="checkbox" value=""></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+          </tr>
+
+          <tr>
+            <th><input type="checkbox" value=""></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+          </tr>
+
+          <tr>
+            <th><input type="checkbox" value=""></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th></th>
+          </tr>
+
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

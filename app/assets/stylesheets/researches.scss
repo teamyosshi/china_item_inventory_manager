@@ -1,3 +1,40 @@
 // Place all the styles related to the researches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#research-label {
+  color: darkblue;
+  float: left;
+  margin: 20px;
+  font-family: "Source Code Pro", Monaco, monospace;
+}
+
+#introduce {
+  color: #cc0000;
+  padding: 40px;
+}
+
+.bulk_registration-btn {
+  float: right;
+ }
+
+.text-search-japan {
+  margin: 10px 10px 50px 10px;
+}
+
+.text-search-china {
+  margin: 10px;
+}
+
+.money-label {
+  margin: 5px;
+}
+
+.btn-block {
+  margin: 9px 20px 10px 0px;
+}
+
+.rate {
+  float: right;
+}
+
