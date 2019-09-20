@@ -1,3 +1,12 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.table_haed_color {
+  background-color: #66CC33 !important;
+}
+.s-tbl tr:nth-child(even) {
+	background-color: #FFFFCC;
+}
+.s-tbl tr:nth-child(odd) {
+	background: #99CC99;
+}

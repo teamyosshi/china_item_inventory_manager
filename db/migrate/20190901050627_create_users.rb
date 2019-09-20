@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :line_id
       t.string :email, null: false
       t.string :address, null: false
-      t.integer :phone_number
+      t.string :phone_number
       t.string :account_bank_name, null: false, default: "1"
       t.integer :account_number, null: false, default: "1"
       t.integer :business_consignment_expenses, null: false, default: "1"

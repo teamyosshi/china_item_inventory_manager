@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2019_09_25_213715) do
     t.string "line_id"
     t.string "email", null: false
     t.string "address", null: false
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "account_bank_name", default: "1", null: false
     t.integer "account_number", default: 1, null: false
     t.integer "business_consignment_expenses", default: 1, null: false

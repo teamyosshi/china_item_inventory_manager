@@ -9,7 +9,20 @@ User.create!(name: "Sample User",
              address: "神奈川県横浜市戸塚区俣野町1403",
              phone_number: "080-1234-1234",
              admin: 1)
-
+60.times do |n|
+  name = Faker::Name.name
+  email = "test-#{n+1}@email.com"
+  password = "password"
+  address = "神奈川県横浜市戸塚区俣野町#{n+1}"
+  phone_number = "080-1234-1234#{n+1}"
+  User.create!(name: name,
+               line_id: "123456789",
+               email: email,
+               password: password,
+               password_confirmation: password,
+               address: address,
+               phone_number: phone_number)
+  end
 # 商品
 Item.create!(item_number: "Fire TV Stick 4K - Alexa対応音声認識リモコン付属",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
