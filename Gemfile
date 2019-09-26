@@ -6,6 +6,11 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 gem 'bootstrap-sass', '3.3.7'
+
+# gem 'kaminari', '~> 0.17.0'
+gem 'will_paginate',           '3.1.7'
+gem 'bootstrap-will_paginate', '1.0.0'
+
 gem 'jquery-rails', '4.3.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

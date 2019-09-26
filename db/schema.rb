@@ -47,24 +47,6 @@ ActiveRecord::Schema.define(version: 2019_09_08_222759) do
     t.index ["user_id"], name: "index_researches_on_user_id"
   end
 
-  create_table "reserches", force: :cascade do |t|
-    t.string "japan_image_url"
-    t.string "japan_title"
-    t.string "japan_url"
-    t.string "japan_description"
-    t.integer "japan_price"
-    t.string "china_image_url"
-    t.string "china_title"
-    t.string "china_url"
-    t.integer "china_price"
-    t.integer "item_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_reserches_on_item_id"
-    t.index ["user_id"], name: "index_reserches_on_user_id"
-  end
-
   create_table "stocks", force: :cascade do |t|
     t.date "inventory_arrival_date"
     t.integer "purchase_price"

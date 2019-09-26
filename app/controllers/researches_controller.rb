@@ -61,6 +61,12 @@ class ResearchesController < ApplicationController
     end
   end
 
+  def item_research
+    # @researches = Research.all
+    @researches = Research.paginate(page: params[:page])
+    # debugger
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_research

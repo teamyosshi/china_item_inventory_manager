@@ -42,11 +42,9 @@
               </div>
             </div>
           </div>
-
         <div class="col-xs-4">
           <div class="text-search-china">
             <%= text_field_tag :search, '', placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
-
             <div class="money-label">
               <label for="number" class="control-label col-xs-3">金額</label>
                 <select name="num">
@@ -68,20 +66,17 @@
             </div>
           </div>
         </div>
-
         <div class="col-xs-4">
           <div>
             <%= button_tag 'リサーチ', :name => nil, class: "btn btn-primary btn-block" %>
           </div>
-
-
-
         </div>
       </div>
 
     </div>
   <% end %>
 
+  <%= will_paginate %>
   <div class="col-lg-12">
     <div class="row">
       <%= form_tag(users_path, :method => 'get') do %>
@@ -90,77 +85,48 @@
             <%= button_tag '一括登録ボタン（在庫管理ページへ）', :name => nil, class: "btn btn-primary btn-block" %>
           </div>
         </div>
-        <table class="table table-bordered table-striped table-position">
-          <thead>
-          <tr class="success">
-            <th></th>
-            <th>NO</th>
-            <th>商品画像</th>
-            <th>商品タイトル（日本）</th>
-            <th>リサーチURL</th>
-            <th>リサーチ額</th>
-            <th></th>
-            <th>商品画像仕入先（仕入先）</th>
-            <th>商品タイトル（中国語）</th>
-            <th>仕入URL</th>
-            <th>仕入原価（中国元）</th>
-            <th>想定仕入価格（X+Y）× 中国元表示</th>
-            <th>想定利益表示</th>
-          </tr>
-          </thead>
-          <tbody>
 
+        <% @researches.each do |research| %>
 
-          <tr>
-            <th><input type="checkbox" value=""></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-          </tr>
+          <table class="table table-bordered table-striped table-position">
+            <thead>
+              <tr class="success">
+                <th></th>
+                <th>NO</th>
+                <th>商品画像</th>
+                <th>商品タイトル（日本）</th>
+                <th>リサーチURL</th>
+                <th>リサーチ額</th>
+                <th></th>
+                <th>商品画像仕入先（仕入先）</th>
+                <th>商品タイトル（中国語）</th>
+                <th>仕入URL</th>
+                <th>仕入原価（中国元）</th>
+                <th>想定仕入価格（X+Y）× 中国元表示</th>
+                <th>想定利益表示</th>
+              </tr>
+            </thead>
 
-          <tr>
-            <th><input type="checkbox" value=""></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-          </tr>
-
-          <tr>
-            <th><input type="checkbox" value=""></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th></th>
-          </tr>
-
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <th><input type="checkbox" value=""></th>
+                <td><%= research.id %></td>
+                <td><%= research.japan_image_url %></td>
+                <td><%= research.japan_title %></td>
+                <th><%= research.japan_url %></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th></th>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+        <%= will_paginate %>
       <% end %>
     </div>
   </div>
