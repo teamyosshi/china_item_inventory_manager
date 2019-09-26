@@ -10,78 +10,56 @@
       </ul>
     </div>
   <% end %>
-
+<div class="col-md-6 col-md-offset-3">
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:"form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :employee_number %>
-    <%= form.text_field :employee_number %>
+    <%= form.text_field :employee_number, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :line_id %>
-    <%= form.text_field :line_id %>
+    <%= form.text_field :line_id, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :phone_number %>
-    <%= form.number_field :phone_number %>
+    <%= form.number_field :phone_number, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :account_bank_name %>
-    <%= form.text_field :account_bank_name %>
+    <%= form.label :password %>
+    <%= form.password_field :password, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :account_number %>
-    <%= form.number_field :account_number %>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class:"form-control" %>
   </div>
+  <p>あなたの雇用形態を選択してください(複数選択可)</p>
+  <div class="field　form-inline" >
+  <label class="checkbox-inline"><%= form.check_box :inventory_manager_flg %>在庫管理</label>
 
-  <div class="field">
-    <%= form.label :business_consignment_expenses %>
-    <%= form.number_field :business_consignment_expenses %>
+  <label class="checkbox-inline"><%= form.check_box :reserch_user_flg %>リサーチ</label>
   </div>
+  <div class="actions" id="action">
+    <%= form.submit class:"btn btn-primary btn-block btn-sigunup"%>
+  </div>
+  <p>✳︎アカウント作成後は、プロフィール編集でプロフィール画像を設定してください</p>
+</div>
 
-  <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
-  </div>
-
-  <div class="field">
-    <%= form.label :inventory_manager_flg %>
-    <%= form.number_field :inventory_manager_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reserch_user_flg %>
-    <%= form.number_field :reserch_user_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fired_flg %>
-    <%= form.text_field :fired_flg %>
-  </div>
-
-  <div class="field">
-    <%= form.label :admin %>
-    <%= form.number_field :admin %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

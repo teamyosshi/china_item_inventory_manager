@@ -70,12 +70,13 @@ ActiveRecord::Schema.define(version: 2019_09_25_213714) do
     t.integer "account_number"
     t.integer "business_consignment_expenses"
     t.string "password_digest"
-    t.integer "inventory_manager_flg"
-    t.integer "reserch_user_flg"
+    t.boolean "inventory_manager_flg"
+    t.boolean "reserch_user_flg"
     t.string "fired_flg"
     t.integer "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
