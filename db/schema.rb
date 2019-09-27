@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_222759) do
+ActiveRecord::Schema.define(version: 2019_09_25_213714) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_number"
@@ -50,13 +50,13 @@ ActiveRecord::Schema.define(version: 2019_09_08_222759) do
   create_table "stocks", force: :cascade do |t|
     t.date "inventory_arrival_date"
     t.integer "purchase_price"
-    t.string "trager_name"
+    t.string "trader_name"
     t.integer "stock"
     t.integer "alert_border_line"
-    t.integer "item_number_id"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_number_id"], name: "index_stocks_on_item_number_id"
+    t.index ["item_id"], name: "index_stocks_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,12 +70,13 @@ ActiveRecord::Schema.define(version: 2019_09_08_222759) do
     t.integer "account_number"
     t.integer "business_consignment_expenses"
     t.string "password_digest"
-    t.integer "inventory_manager_flg"
-    t.integer "reserch_user_flg"
+    t.boolean "inventory_manager_flg"
+    t.boolean "reserch_user_flg"
     t.string "fired_flg"
     t.integer "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

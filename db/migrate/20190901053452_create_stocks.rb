@@ -6,7 +6,7 @@ class CreateStocks < ActiveRecord::Migration[5.2]
       t.string :trager_name
       t.integer :stock
       t.integer :alert_border_line
-      t.references :item_number, foreign_key: true
+      t.references :item, foreign_key: true
 
       t.timestamps
     end

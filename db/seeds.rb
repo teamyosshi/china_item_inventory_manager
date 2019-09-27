@@ -8,6 +8,11 @@ User.create!(name: "Sample User",
              admin: 1)
 
 # 商品
+User.create!(name: "Admin User",
+             line_id: "12341234",
+             email: "admin@email.com",
+             admin: 1)
+
 Item.create!(item_number: "Fire TV Stick 4K - Alexa対応音声認識リモコン付属",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
              part_number: "B079QRQTCR",
@@ -32,4 +37,3 @@ a = 0
                    japan_title: "黒カバン#{a += 1}",
                    japan_url: "https://kaban-shop.com/products/detail.php?product_id=14")
 end
-
