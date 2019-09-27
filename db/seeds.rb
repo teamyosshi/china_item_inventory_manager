@@ -23,6 +23,7 @@ Item.create!(item_number: "[アルファ インダストリーズ] ボディバ�
 # 外部制約キー（FK：user_id, item_id）を含んでcreate!
 Research.create!(user_id: 1, item_id: 1)
 
+# サンプルリサーチ商品
 a = 0
 60.times do
   Research.create!(user_id: 1,

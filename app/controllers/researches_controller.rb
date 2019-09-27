@@ -62,9 +62,7 @@ class ResearchesController < ApplicationController
   end
 
   def item_research
-    # @researches = Research.all
-    @researches = Research.paginate(page: params[:page])
-    # debugger
+    @researches = Research.paginate(page: params[:page], per_page: 50)
   end
 
   private
@@ -73,7 +71,6 @@ class ResearchesController < ApplicationController
       @research = Research.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def research_params
       params.require(:research).permit(:japan_image_url, :japan_title, :japan_url, :japan_description, :japan_price, :china_image_url, :china_title, :china_url, :china_price, :item_id, :user_id)
     end
