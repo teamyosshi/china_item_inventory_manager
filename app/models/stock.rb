@@ -1,3 +1,3 @@
 class Stock < ApplicationRecord
-  belongs_to :item_number
+  belongs_to :item
 end

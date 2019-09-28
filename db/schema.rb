@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 2019_09_25_213714) do
     t.integer "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
