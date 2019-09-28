@@ -105,15 +105,26 @@
             <tbody>
               <tr>
                 <th><input type="checkbox" value=""></th>
-                <td><%= research.id %></td>
-                <td><%= research.japan_image_url %></td>
-                <td><%= research.japan_title %></td>
-                <th><%= research.japan_url %></th>
+                <td class="img-url">
+                  <%= research.id %>
+                  (<%= l(research.created_at, format: :date) %>)
+                </td>
+                <td>
+                  <%= image_tag (research.japan_image_url), :size =>'80x80' %>
+                </td>
+                <td class="img-url"><%= research.japan_title %></td>
+                <td>
+                  <%= text_url_to_link(h(research.japan_url)).html_safe %>
+                </td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <th></th>
-                <td></td>
+                <td>
+                  <%= image_tag (research.china_image_url), :size =>'80x80' %>
+                </td>
+                <th class="img-url2"><%= research.china_title %></th>
+                <td>
+                  <%= text_url_to_link(h(research.china_url)).html_safe %>
+                </td>
                 <td></td>
                 <td></td>
                 <th></th>
