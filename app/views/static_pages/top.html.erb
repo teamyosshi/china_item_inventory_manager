@@ -1,30 +1,38 @@
 <div class="jumbotron">
   <div id="left_box">
-    <h1 id="title">在宅中国輸入<br>
-    &ensp;在庫管理システム</h1>
-  <p>Welcome to Invebtory Management System</p>
-  <p>↓初めてのご利用↓</p>
-  <%= link_to "アカウント作成", signup_path, class:"btn btn-success btn-lg"%>
+    <div class ="box_title">
+      <h1 id="title">在宅中国輸入<br>
+      &ensp;在庫管理システム</h1>
+      <p>Welcome to Invebtory Management System</p>
+    </div>
+    <div class ="box_siunin">
+      <p id="sigunin">↓初めてのご利用↓</p>
+      <%= link_to "アカウント作成", signup_path, class:"btn btn-success btn-lg"%>
+    </div>
   </div>
   <div id="right_box">
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
+  <div class ="box_imege">
+  <img class="box_img" src="https://warehouse-images.com/highresolution/173-images-transportation.png"alt="">
+  </div>
+  <div class ="box_login">
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <h1>ログイン</h1>
     <%= form_with(scope: :session, url: root_path, local: true) do |f| %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email, class:"form-control" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class:"form-control" %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class:"form-control" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class:"form-control" %>
 
-    <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember_me" do %>
-      <%= f.check_box :remember_me, id: "remember-me" %>
-      <span>ログイン情報を記憶する</span>
-    <% end %>
+      <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember_me" do %>
+        <%= f.check_box :remember_me, id: "remember-me" %>
+        <span>ログイン情報を記憶する</span>
+      <% end %>
 
-    <%= f.submit "ログイン", class:"btn btn-primary btn-block btn-login" %>
+      <%= f.submit "ログイン", class:"btn btn-primary btn-block btn-login" %>
     <% end %>
   </div>
 </div>
