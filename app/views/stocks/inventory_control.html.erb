@@ -11,16 +11,14 @@
     <![endif]--><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <p id="notice"><%= notice %></p>
-<% kubun=session[:kubun] %>
-<%# session.delete(:kubun) %>
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-2 maintext">僅少商品一覧</div>
     <div class="col-xs-4">
-    <% if kubun==2 %>    
-      <%= button_to "表示", {controller: 'stocks', action: 'inventory_dis'}, {method: :post, class: "btn btn-warning"} %>
+    <% if @dis=="on" %>    
+      <%= button_to "非表示", {controller: 'stocks', action: 'inventory_dis',dis:"off"}, {method: :post, class: "btn btn-warning"} %>
     <% else %>
-      <%= button_to "非表示", {controller: 'stocks', action: 'inventory_dis'}, {method: :post, class: "btn btn-warning"} %>
+      <%= button_to "表示", {controller: 'stocks', action: 'inventory_dis',dis:"on"}, {method: :post, class: "btn btn-warning"} %>
     <% end %></div>
     <div class="col-xs-2">
      <form method="POST" action="./cgi-bin/xxx.cgi">
@@ -32,10 +30,11 @@
     </div>
 </div>
 <br>
-<% if kubun==1 %>
+<% if @dis=="off" %>
+<% else %>
 <div class="kousin">
 <div id="content">
-<table table border="1" class="table-bordered">
+<table table border="1" class="table-back">
   <thead>
     <tr>
       <th class="th-text">商品タイトル</th>

@@ -1,0 +1,210 @@
+[33mcommit f8a83d4418d734ba635f2fb4d70bcab79be35965[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Your Name <your.email@example.com>
+Date:   Mon Sep 30 08:07:08 2019 +0000
+
+    china2
+
+[33mcommit e0eea5ee60e2022d288bb539e34fd291963a8cce[m[33m ([m[1;31morigin/3.1.2add_stockshort_manager[m[33m, [m[1;32m3.1.2add_stockshort_manager[m[33m)[m
+Author: Your Name <your.email@example.com>
+Date:   Sun Sep 29 01:05:38 2019 +0000
+
+    add_stock2
+
+[33mcommit 149e316525d32513b7747f718a3a0f572fa9b990[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 0e2d070 bccf4ab
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Sat Sep 28 14:34:59 2019 +0900
+
+    Merge pull request #19 from teamyosshi/17_login
+    
+    ログイン機能の実装 #17
+
+[33mcommit 0e2d0703acb66500eddba9fd61eca77887a1ed5e[m
+Merge: 41bdfa3 6bde717
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Fri Sep 27 13:48:50 2019 +0900
+
+    Merge pull request #13 from teamyosshi/8_1_add_paginate_gem
+    
+    #8_add_paginate
+
+[33mcommit 6bde7176957ba0f7fd2d1a992ccb66f4b3c7e008[m[33m ([m[1;31morigin/8_1_add_paginate_gem[m[33m)[m
+Merge: 50447ac 41bdfa3
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Fri Sep 27 13:48:35 2019 +0900
+
+    Merge branch 'master' into 8_1_add_paginate_gem
+
+[33mcommit 50447ac08140b8c72445855d2061b0b661870899[m
+Author: Hayato Saito <omimisama@gmail.com>
+Date:   Fri Sep 27 13:29:35 2019 +0900
+
+    #8_modify-paginate
+
+[33mcommit 41bdfa325ee41ec01b36f19b6ea7b52484617c7b[m
+Merge: d3224ee 026cbb6
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Fri Sep 27 00:16:09 2019 +0900
+
+    Merge pull request #15 from teamyosshi/acount_create
+    
+    #9_Acount_create
+
+[33mcommit d3224eebf2f17f63e102098016047d1beb400a36[m
+Author: Tomohiro Hagino <marspeoplehg@gmail.com>
+Date:   Thu Sep 26 23:47:27 2019 +0900
+
+    changed:stocks_table_relation_column
+
+[33mcommit cf8b48c1d3a6102eb12e369d4f3c981c13de53cd[m
+Author: Hayato Saito <omimisama@gmail.com>
+Date:   Thu Sep 26 12:51:24 2019 +0900
+
+    #8_add_paginate
+
+[33mcommit 198d4bf49313d8a689e55c6c832919d76bdc842c[m
+Author: ancofm <ancofm@localhost.localdomain>
+Date:   Thu Sep 26 06:40:12 2019 +0900
+
+    fix:rename_trager_name_of_stocks
+
+[33mcommit 1ef321e3e0c69bf06126142f4ffe6e698e677251[m
+Merge: 1b5a85c 75c826f
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Fri Sep 20 10:30:53 2019 +0900
+
+    Merge pull request #7 from teamyosshi/1_add_research_page_layout
+    
+    #1_modify_research_page_layout
+
+[33mcommit 75c826f3ab48299ad63ff8c33764ebc85e0101e3[m[33m ([m[1;31morigin/1_add_research_page_layout[m[33m)[m
+Author: Hayato Saito <omimisama@gmail.com>
+Date:   Fri Sep 20 09:36:19 2019 +0900
+
+    #1_modify_research_page_layout
+
+[33mcommit 1b5a85c536a91cd213076eb0e966afbcd6419e78[m
+Merge: 7c41900 161d367
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Fri Sep 20 06:24:49 2019 +0900
+
+    Merge pull request #6 from teamyosshi/3_add_top_view
+    
+    #4 topページview
+
+[33mcommit bccf4abf90aae2e5344003ef85a7e48b493ed41d[m[33m ([m[1;31morigin/17_login[m[33m)[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Thu Sep 19 18:04:31 2019 +0900
+
+    ログイン機能の実装 #17
+
+[33mcommit 026cbb6797055bd71defdc8ad1a6e9901bf9c801[m[33m ([m[1;31morigin/acount_create[m[33m)[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Thu Sep 19 10:20:45 2019 +0900
+
+    #9 ストロングパラメーターの修正
+
+[33mcommit 0adf94475356765ae8ceaffcafcab7130d667f34[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Thu Sep 19 10:15:23 2019 +0900
+
+    #9 アカウント作成機能の実装
+
+[33mcommit 161d3677fbc277741edeac47790cbe186d5fb83c[m[33m ([m[1;31morigin/3_add_top_view[m[33m)[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Wed Sep 18 21:43:20 2019 +0900
+
+    #4 ログインボタンが抜けていたので修正
+
+[33mcommit 6ab79473d931ba186170939a564de9621d90c621[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Wed Sep 18 21:27:06 2019 +0900
+
+    #4 topページview
+
+[33mcommit 7c419004ecd022a399a15c8da9ee84d35752e832[m
+Merge: dcd9393 ee0a566
+Author: TomohiroHagino <43706329+TomohiroHagino@users.noreply.github.com>
+Date:   Sat Sep 14 23:17:04 2019 +0900
+
+    Merge pull request #3 from teamyosshi/2_2_hader_create
+    
+    2 2 hader create
+
+[33mcommit ee0a56636d5a80f102576c0ff27c26fa0f18cc0d[m[33m ([m[1;31morigin/2_2_hader_create[m[33m)[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Sat Sep 14 23:15:27 2019 +0900
+
+    #2 ヘッダーのルート編集
+
+[33mcommit de19b65b9c0c0819341110f1b7bd899a053a118f[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Sat Sep 14 22:52:42 2019 +0900
+
+    #2 ヘッダーのルート編集 correction
+
+[33mcommit dcd9393a8964d8b2c0bb0f9e4c9d1a37476a4ce4[m
+Author: ancofm <ancofm@localhost.localdomain>
+Date:   Mon Sep 9 07:32:19 2019 +0900
+
+    create_research_scaffold
+
+[33mcommit 14c4ccb8a4eb71ac98f2be8a48b1fc5032360255[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Fri Sep 6 04:12:02 2019 +0900
+
+    #2 ヘッダーボタンの作成 add-gem
+
+[33mcommit 51dc37d38893d3b22d4803c1e18e8a68193eafdc[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Fri Sep 6 03:58:26 2019 +0900
+
+    #2 ヘッダーボタンの作成
+
+[33mcommit 78501dd89f1476f1c999c86a1d5875444f55da85[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Fri Sep 6 03:33:35 2019 +0900
+
+    #2 ヘッダーボタンの作成
+
+[33mcommit 5fe2d5e659638891bd7c33f0856f79bb6b7c2a74[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Fri Sep 6 03:24:57 2019 +0900
+
+    #2 ヘッダーボタンの作成
+
+[33mcommit abe949bf9c9700b4cbf4402fda1bfd2a9b770ec7[m
+Author: ryoji125 <nyarun115@gmail.com>
+Date:   Fri Sep 6 02:59:51 2019 +0900
+
+    #2 ヘッダーボタンの作成
+
+[33mcommit 7d194f3f3849d233f0cb8c9cfd166752d58c8fbd[m
+Author: ryoji <ryoji@localhost.localdomain>
+Date:   Fri Sep 6 02:38:14 2019 +0900
+
+    #2 ヘッダーボタンの作成
+
+[33mcommit 1e6480daad2d423a567f912831c0db18e4ca63fc[m
+Author: ryoji <ryoji@localhost.localdomain>
+Date:   Fri Sep 6 02:24:35 2019 +0900
+
+    #2 ヘッダーボタンの作成 #2
+
+[33mcommit 02fdf7feaf8f97b5730fd0aa3bc6caabe913bd44[m
+Author: ancofm <ancofm@localhost.localdomain>
+Date:   Sun Sep 1 15:04:21 2019 +0900
+
+    create_seeds
+
+[33mcommit fd761abeadbb8459f56a8d3b955c1659bdf3ccc7[m
+Author: ancofm <ancofm@localhost.localdomain>
+Date:   Sun Sep 1 14:47:05 2019 +0900
+
+    create_tables
+
+[33mcommit 66ec25f0808358fde8e19421139e9534d129571c[m
+Author: ancofm <ancofm@localhost.localdomain>
+Date:   Sun Sep 1 13:42:52 2019 +0900
+
+    first commit

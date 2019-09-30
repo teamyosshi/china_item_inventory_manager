@@ -9,16 +9,15 @@ class StocksController < ApplicationController
   def inventory_control
     @stocks = Stock.all
     @items=Item.all
+    if @dis.blank?
+        @dis="on"
+    end
   end
   def inventory_dis
-    if session[:kubun]==1
-      session[:kubun]=2
-    else
-      session[:kubun]=1
-    end
-    #inventory_control
-    @stocks = Stock.all
-    @items=Item.all
+    @dis=params[:dis]
+    inventory_control
+    #@stocks = Stock.all
+    #@items=Item.all
     render 'inventory_control'
   end
   # GET /stocks/1
