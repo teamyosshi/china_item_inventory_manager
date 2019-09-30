@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+  margin: auto;
+}
+
 #research-label {
   color: darkblue;
   float: left;
@@ -12,7 +16,7 @@
 #introduce {
   color: #cc0000;
   padding: 40px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .bulk_registration-btn {
@@ -33,10 +37,6 @@
 
 .btn-block {
   margin: 9px 20px 10px 0px;
-}
-
-.rate {
-  float: right;
 }
 
 a:visited {
@@ -60,4 +60,66 @@ a {
 .img-url2 {
   font-size: 12px;
   font-weight: inherit;
+}
+
+#th-while {
+   background-color: white;
+   border: 0;
+ }
+
+#td-while {
+  background-color: white;
+  border: 0;
+}
+
+.table-design {
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+  vertical-align: middle !important;
+}
+
+table th {
+  overflow-wrap : break-word;
+  text-align:center;
+  vertical-align: middle;
+}
+
+table td {
+  overflow-wrap : break-word;
+  text-align:center;
+  vertical-align: middle;
+}
+
+.table-row {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pagination {
+  margin: 15px;
+}
+
+.row {
+  margin: auto;
+}
+
+.url-over {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rate {
+  float: right;
+  margin-right: 30px;
+}
+
+.rate-color {
+  background-color: orange;
+  color: floralwhite;
+  font-size: 15px;
+}
+.rate-border {
+  border: solid 1.5px darkgray;
 }
