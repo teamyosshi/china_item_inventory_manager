@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
+  post 'stocks/inventory_dis'
   post '/', to:'sessions#create'
   get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control
   get '/signup',to:'users#new', as: :signup

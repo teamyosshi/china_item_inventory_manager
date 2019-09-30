@@ -10,6 +10,17 @@ class StocksController < ApplicationController
     @stocks = Stock.all
     @items=Item.all
   end
+  def inventory_dis
+    if session[:kubun]==1
+      session[:kubun]=2
+    else
+      session[:kubun]=1
+    end
+    #inventory_control
+    @stocks = Stock.all
+    @items=Item.all
+    render 'inventory_control'
+  end
   # GET /stocks/1
   # GET /stocks/1.json
   def show

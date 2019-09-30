@@ -1,5 +1,5 @@
 # coding: utf-8
-=begin
+
 # ユーザー
 User.create!(name: "Sample User",
              line_id: "12341234",
