@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_213714) do
+ActiveRecord::Schema.define(version: 2019_09_25_213715) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_number"
@@ -60,22 +60,24 @@ ActiveRecord::Schema.define(version: 2019_09_25_213714) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "employee_number"
     t.string "line_id"
-    t.string "email"
-    t.string "address"
+    t.string "email", null: false
+    t.string "address", null: false
     t.integer "phone_number"
-    t.string "account_bank_name"
-    t.integer "account_number"
-    t.integer "business_consignment_expenses"
-    t.string "password_digest"
-    t.boolean "inventory_manager_flg"
-    t.boolean "reserch_user_flg"
-    t.string "fired_flg"
-    t.integer "admin"
+    t.string "account_bank_name", default: "1", null: false
+    t.integer "account_number", default: 1, null: false
+    t.integer "business_consignment_expenses", default: 1, null: false
+    t.string "password_digest", null: false
+    t.boolean "inventory_manager_flg", default: false, null: false
+    t.boolean "reserch_user_flg", default: false, null: false
+    t.string "fired_flg", default: "", null: false
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "remember_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
