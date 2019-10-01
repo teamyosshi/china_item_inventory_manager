@@ -1,50 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Employee number</th>
-      <th>Line</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th>Phone number</th>
-      <th>Account bank name</th>
-      <th>Account number</th>
-      <th>Business consignment expenses</th>
-      <th>Password digest</th>
-      <th>Inventory manager flg</th>
-      <th>Reserch user flg</th>
-      <th>Fired flg</th>
-      <th>Admin</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<h1>ユーザー一覧</h1>
+<div class="col-md-10 col-md-offset-1 ">
+  <%= will_paginate %>
+  <table class="table table-bordered table-condensed user-table s-tbl">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.employee_number %></td>
-        <td><%= user.line_id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.address %></td>
-        <td><%= user.phone_number %></td>
-        <td><%= user.account_bank_name %></td>
-        <td><%= user.account_number %></td>
-        <td><%= user.business_consignment_expenses %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= user.inventory_manager_flg %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table_haed_color">写真</td>
+        <td class="table_haed_color">名前</td>
+        <td class="table_haed_color">社員番号</td>
+        <td class="table_haed_color">LINE_ID</td>
+        <td class="table_haed_color">電話番号</td>
+        <td class="table_haed_color">編集</td>
+        <td class="table_haed_color">削除</td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= gravatar_for user %></td>
+          <td><%= link_to user.name, user %></td>
+          <td><%= user.employee_number %></td>
+          <td><%= user.line_id %></td>
+          <td><%= user.phone_number %></td>
+          <td><%= link_to '編集', edit_user_path(user) %></td>
+          <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+  <br>
+  <%= will_paginate %>
+</div>
