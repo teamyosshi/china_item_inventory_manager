@@ -87,6 +87,7 @@ p {
 #action {
   margin-top: 20px
 }
+
 .text-button{
   font-size:0.75em;
   display:block;
@@ -145,5 +146,32 @@ text-align: center;
 .right {
     text-align: right;
 }
+.gravatar {
+  width: 100%;
+}
 
+.gravatar_edit {
+  margin-top: 15px;
+}
+#left_gravatar {
+  width: 25%;
+  float: left;
+}
+#right_form {
+  float: right;
+  width: 60%;
+}
+
+.btnsetting {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.header_gravatar {
+  width: 50px;
+}
+
+.box_imege {
+  display: block;
+  margin-left: 20px;
 
