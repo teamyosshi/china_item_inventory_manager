@@ -17,3 +17,27 @@
     font-weight: normal;
   }
 }
+.box_title {
+  padding: 30px 40px 70px 0px;
+  z-index: 1;
+}
+
+.box_img {
+  width: 380px;
+  height: 200px;
+}
+.box_siunin{
+  padding: 30px 40px 20px 80px;
+}
+#sigunin{
+  font-size: 30px;
+}
+.btn-lg, .btn-group-lg > .btn{
+  padding: 10px 16px;
+  font-size: 28px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+.box_login {
+  width: 120%
+}
