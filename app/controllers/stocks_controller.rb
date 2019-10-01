@@ -9,17 +9,8 @@ class StocksController < ApplicationController
   def inventory_control
     @stocks = Stock.all
     @items=Item.all
-    if @dis.blank?
-        @dis="on"
-    end
   end
-  def inventory_dis
-    @dis=params[:dis]
-    inventory_control
-    #@stocks = Stock.all
-    #@items=Item.all
-    render 'inventory_control'
-  end
+
   # GET /stocks/1
   # GET /stocks/1.json
   def show

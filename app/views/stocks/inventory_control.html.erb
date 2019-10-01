@@ -1,4 +1,15 @@
 <% require 'active_support/core_ext/numeric/conversions' %>
+<script>
+	$(function() {
+
+		//.accordion1の中のp要素がクリックされたら
+		$('.accordion1 p').click(function() {
+
+			//クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
+			$(this).next('ul').slideToggle();
+    });
+	});
+</script>
 <head>
 <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all',
@@ -10,16 +21,11 @@
       </script>
     <![endif]--><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<p id="notice"><%= notice %></p>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-2 maintext">僅少商品一覧</div>
-    <div class="col-xs-4">
-    <% if @dis=="on" %>    
-      <%= button_to "非表示", {controller: 'stocks', action: 'inventory_dis',dis:"off"}, {method: :post, class: "btn btn-warning"} %>
-    <% else %>
-      <%= button_to "表示", {controller: 'stocks', action: 'inventory_dis',dis:"on"}, {method: :post, class: "btn btn-warning"} %>
-    <% end %></div>
+    <div class="col-xs-2 maintext">&emsp;&emsp;僅少商品一覧</div>
+    <div class="col-xs-2"></div>
     <div class="col-xs-2">
      <form method="POST" action="./cgi-bin/xxx.cgi">
         <div style="display:inline-flex">
@@ -27,13 +33,18 @@
           <input type="text" name="名前"  class="textbox-line">
         </div>
       </form>
-    </div>
+  </div>
+    <div class="col-xs-3 maintext"></div>
 </div>
-<br>
-<% if @dis=="off" %>
-<% else %>
+<section id="acdemo1">
+      <div class="accordion1">
+	    &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style="display:inline;">
+      表示/非表示</p>
+			<ul class="inner">
+<div id="mymenu">
 <div class="kousin">
 <div id="content">
+
 <table table border="1" class="table-back">
   <thead>
     <tr>
@@ -54,8 +65,11 @@
     <% end %>
   </tbody>
 </table>
-<% end %>
 
-</div></div></div>
+
+</div></div></div></div></ul>
+			</div>
+</section>  
 <br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+

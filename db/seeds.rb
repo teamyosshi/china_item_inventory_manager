@@ -13,10 +13,7 @@ User.create!(name: "Sample User",
              inventory_manager_flg:false,
              fired_flg:"test",
              reserch_user_flg:false)
-
 # 商品
-
-=end
 Item.create!(item_number: "Fire TV Stick 4K - Alexa対応音声認識リモコン付属",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
              part_number: "B079QRQTCR",
