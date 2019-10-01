@@ -39,9 +39,8 @@ a = 0
                    japan_url: "https://kaban-shop.com/products/detail.php?product_id=14")
 end
 
-
 Stock.create!(inventory_arrival_date: 2019-04-24,
-            purchase_price:100,
-            trader_name:"龍",
-            stock:15,
-            alert_border_line:3,item_id:3)
+                purchase_price:100,
+                trader_name:"龍",
+                stock:15,
+                alert_border_line:3,item_id:3)
