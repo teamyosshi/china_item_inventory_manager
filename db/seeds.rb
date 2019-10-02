@@ -1,5 +1,4 @@
 # coding: utf-8
-
 # ユーザー
 User.create!(name: "Sample User",
              line_id: "12341234",
@@ -49,3 +48,24 @@ a = 0
                    china_title: "中国の黒カバン#{a += 1}",
                    china_url: "https://www.marimekko.jp/shop/marimekko/item/list/category_id/34")
 end
+
+#ストックサンプルデータ取込
+Stock.create!(
+            inventory_arrival_date: 2019-04-24,
+            purchase_price:100,
+            trader_name:"龍",
+            stock:15,
+            alert_border_line:3,item_id:2)
+            
+# 商品追加
+Item.create!(item_number: "携帯タブレットアンドロイド",
+             item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
+             part_number: "B079Q44444",
+             jan_code: "不明",
+             simulate_price: 15080)
+
+Item.create!(item_number: "アンドロイド搭載一眼レフカメラ",
+             item_picture: "https://images-na.ssl-images-amazon.com/images/I/7133XWL%2B9DL._UL1280_.jpg",
+             part_number: "B079S222",
+             jan_code: "不明",
+             simulate_price: 18080)

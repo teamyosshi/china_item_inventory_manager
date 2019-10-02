@@ -6,6 +6,10 @@ class StocksController < ApplicationController
   def index
     @stocks = Stock.all
   end
+  def inventory_control
+    @stocks = Stock.all
+    @items=Item.all
+  end
 
   # GET /stocks/1
   # GET /stocks/1.json

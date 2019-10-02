@@ -1,0 +1,59 @@
+<script>
+	$(function() {
+
+		//.accordion1の中のp要素がクリックされたら
+		$('.accordion1 p').click(function() {
+
+			//クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
+			$(this).next('ul').slideToggle();
+    });
+	});
+</script>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2 maintext">&emsp;僅少商品一覧</div>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-2">
+     <form method="POST" action="./cgi-bin/xxx.cgi">
+        <div style="display:inline-flex">
+          <div class="text-button">現在の想定レート</div>
+          <input type="text" name="名前"  class="textbox-line">
+        </div>
+      </form>
+  </div>
+    <div class="col-xs-3 maintext"></div>
+</div>
+<section id="acdemo1">
+      <div class="accordion1">
+	    &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style="display:inline;">
+      表示/非表示</p>
+			<ul class="inner">
+<div id="mymenu">
+<div class="kousin">
+<div id="content">
+<table table border="1" class="table-back">
+  <thead>
+    <tr>
+      <th>商品タイトル</th>
+      <th class="th-text" width="100" align="right">在庫数合計</th>
+    </tr>
+  </thead>
+</div>
+  <tbody>
+    <% @items.each do |item| %>
+    <% stockcount=item.stocks.sum(:stock)  %>
+    <% if stockcount<20 %>
+      <tr>
+        <td text-align="right"><%= item.item_number %></td>
+        <td align="right"><%= item.stocks.sum(:stock)  %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div></div></div></div></ul>
+			</div>
+</section>  
+<br>
+ 
+
