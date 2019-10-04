@@ -60,6 +60,12 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def find
+    @items_find = Item.where("item_number LIKE ?", "%#{params[:item_name]}%")
+    @keti="ケチ"
+     render  inventory_control_path 
+  
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

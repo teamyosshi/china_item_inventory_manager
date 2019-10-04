@@ -132,6 +132,11 @@ p {
     font-size:20px;
     margin-top:10px;
 }
+.maintext2 { 
+    text-align: left;
+    font-size:25px;
+    margin-top:10px;
+}
 .textbox-line{
   border: 2px solid #0a0;
 }
@@ -143,7 +148,14 @@ p {
         color:black;
         line-height:1.5em;
     }
-
+.kousin2 {
+        overflow:auto;
+        width:900px; height:100px;
+        padding:5px;
+        border:2px dotted #ffffff;
+        color:black;
+        line-height:1.5em;
+    }
 .th-text {
 text-align: center;
 }
@@ -162,6 +174,9 @@ text-align: center;
 .table-back{
     background-color: #FFEEFF;  /* 背景色指定 */
 }
+.table-back2{
+    background-color: #D5EEF2;  /* 背景色指定 */
+}
 .btn-square-shadow {
   display: inline-block;
   padding: 0.5em 1em;
@@ -173,4 +188,22 @@ text-align: center;
 }
 .right {
     text-align: right;
+}
+.kakomi-box1 {
+    width: 50%;
+    height: 120px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: solid 1px #000000;
+}
+.kakomi-box1 p {
+    margin: 0; 
+    padding: 0;
+}
+body{
+background-color: #ccc;
+}
+.main-contents{
+text-align: center;
+margin-top: 20%;
 }

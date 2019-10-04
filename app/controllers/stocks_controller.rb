@@ -9,7 +9,9 @@ class StocksController < ApplicationController
   def inventory_control
     @stocks = Stock.all
     @items=Item.all
+    @items_find=Item.search(params[:search])
   end
+  
 
   # GET /stocks/1
   # GET /stocks/1.json
