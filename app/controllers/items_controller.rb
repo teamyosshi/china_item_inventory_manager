@@ -1,79 +1,74 @@
-class StocksController < ApplicationController
-  before_action :set_stock, only: [:show, :edit, :update, :destroy]
+class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /stocks
-  # GET /stocks.json
+  # GET /items
+  # GET /items.json
   def index
-    @stocks = Stock.all
-  end
-  def inventory_control
-    @stocks = Stock.all
-    @items=Item.all
-    @items_find=Item.search(params[:search])
+    @items = Item.all
   end
 
-  # GET /stocks/1
-  # GET /stocks/1.json
+  # GET /items/1
+  # GET /items/1.json
   def show
   end
 
-  # GET /stocks/new
+  # GET /items/new
   def new
-    @stock = Stock.new
+    @item = Item.new
   end
 
-  # GET /stocks/1/edit
+  # GET /items/1/edit
   def edit
   end
 
-  # POST /stocks
-  # POST /stocks.json
+  # POST /items
+  # POST /items.json
   def create
-    @stock = Stock.new(stock_params)
+    @item = Item.new(item_params)
 
     respond_to do |format|
-      if @stock.save
-        format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
-        format.json { render :show, status: :created, location: @stock }
+      if @item.save
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /stocks/1
-  # PATCH/PUT /stocks/1.json
+  # PATCH/PUT /items/1
+  # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      if @stock.update(stock_params)
-        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
-        format.json { render :show, status: :ok, location: @stock }
+      if @item.update(item_params)
+        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /stocks/1
-  # DELETE /stocks/1.json
+  # DELETE /items/1
+  # DELETE /items/1.json
   def destroy
-    @stock.destroy
+    @item.destroy
     respond_to do |format|
-      format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
+      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_stock
-      @stock = Stock.find(params[:id])
+    def set_item
+      @item = Item.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def stock_params
-      params.require(:stock).permit(:inventory_arrival_date, :purchase_price, :trager_name, :stock, :alert_border_line, :item_number_id)
+    def item_params
+      params.require(:item).permit(:item_number, :item_image, :china_item_image, :part_number, :jan_code, :simulate_price, :yahoo, :amazon, :mercari, :rakuma, :rakuten, :yahooshoping)
     end
 end
