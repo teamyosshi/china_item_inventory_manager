@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_09_25_213715) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_number"
+    t.string "item_title"
     t.string "item_picture"
     t.string "china_item_picture"
     t.string "part_number"
