@@ -40,7 +40,6 @@ Item.create!(item_number: "[アルファ インダストリーズ] ボディバ�
 a = 0
 60.times do
   Research.create!(user_id: 1,
-                   item_id: 1,
                    japan_image_url: "https://images-na.ssl-images-amazon.com/images/I/7133XWL%2B9DL._UL1280_.jpg",
                    japan_title: "日本の黒カバン#{a += 1}",
                    japan_url: "https://kaban-shop.com/products/detail.php?product_id=14",
