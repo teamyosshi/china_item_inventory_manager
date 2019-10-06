@@ -1,59 +1,97 @@
 <script>
-	$(function() {
-
-		//.accordion1の中のp要素がクリックされたら
-		$('.accordion1 p').click(function() {
-
-			//クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
-			$(this).next('ul').slideToggle();
+  $(function() {
+    //.accordion1の中のp要素がクリックされたら
+    $('.accordion1 p').click(function() {
+      //クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
+      $(this).next('ul').slideToggle();
     });
-	});
+  });
 </script>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-2 maintext">&emsp;僅少商品一覧</div>
-    <div class="col-xs-2"></div>
-    <div class="col-xs-2">
-     <form method="POST" action="./cgi-bin/xxx.cgi">
-        <div style="display:inline-flex">
-          <div class="text-button">現在の想定レート</div>
-          <input type="text" name="名前"  class="textbox-line">
-        </div>
-      </form>
-  </div>
-    <div class="col-xs-3 maintext"></div>
+<div class="row">
+  <div class="col-xs-2 maintext">&emsp;僅少商品一覧</div>
+  <div class="col-xs-2"></div>
+  <div class="col-xs-2">
+    　<div style="display:inline-flex">
+        <div class="text-button">現在の想定レート</div>
+        <input type="text" name="名前" class="textbox-line" readonly></input>
+      </div>
+  <div class="col-xs-3 maintext"></div>
+	</div>
 </div>
 <section id="acdemo1">
-      <div class="accordion1">
-	    &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style="display:inline;">
-      表示/非表示</p>
-			<ul class="inner">
-<div id="mymenu">
-<div class="kousin">
-<div id="content">
-<table table border="1" class="table-back">
-  <thead>
-    <tr>
-      <th>商品タイトル</th>
-      <th class="th-text" width="100" align="right">在庫数合計</th>
-    </tr>
-  </thead>
+  <div class="accordion1">
+    &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style" "display:inline;">表示/非表示</p>
+    <ul class="inner">
+      <div id="mymenu">
+        <div class="kousin">
+          <table table border="1" class="table-back">
+            <thead>
+              <tr>
+                <th>商品タイトル</th>
+                <th class="th-text" width="100" align="right">在庫数合計</th>
+              </tr>
+            </thead>
+        </div>
+        <% @items.each do |item| %>
+        <% stockcount=item.stocks.sum(:stock)  %>
+        	<% if stockcount<20 %>
+        		<tr>
+          		<td><%= item.item_number %></td>
+          		<td><%= item.stocks.sum(:stock)  %></td>
+        		</tr>
+        	<% end %>
+        <% end %>
+        </table>
+    </ul>
+  </div>
+</section>
+<div class="row">
+  <div class="col-xs-"><%#= form_tag({ :controller => 'stocks', :action => 'inventory_control' },{ :method => :get,data: { disable_with: '検索中...お待ち下さい' }}) do %>
+    <%= form_with :action=>"inventory_control", :controller=>"stocks" , method: :get, local: true do |form| %>
+    <p>&emsp;&emsp;商品名及び製品番号検索：<%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "search", :name => nil, data: { disable_with: "検索中...お待ち下さい" }  %>
+    </p>
+    <% end %>
+  </div>
+  <div class="col-xs-2"></div>
+  <div class="col-xs-3 maintext"></div>
 </div>
-  <tbody>
-    <% @items.each do |item| %>
-    <% stockcount=item.stocks.sum(:stock)  %>
-    <% if stockcount<20 %>
+<section id="acdemo1">
+  <div class="accordion1">
+    &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style" "display:inline;">表示/非表示</p>
+    <% if @items_find.present? %>
+    <%= "検索件数#{@items_find.count}件です" %>
+    <ul class="inner">
+      <div class="kousin2">
+        <table table border="1" class="table-back2">
+          <thead>
+            <tr>
+              <th width="5">商品画像</th>
+              <th width="5">製品コード</th>
+              <th width="50">商品タイトル</th>
+              <th class="th-text" width="20">在庫計</th>
+              <th class="th-text" width="20">想定価格</th>
+              <th class="th-text" width="20">削除</th>
+            </tr>
+          </thead>
+      </div>
+      <% @items_find.each do |item| %>
       <tr>
-        <td text-align="right"><%= item.item_number %></td>
-        <td align="right"><%= item.stocks.sum(:stock)  %></td>
+      	<td>
+      	　<% if item.item_picture.present? %>
+	   				<%= image_tag item.item_picture, :size =>'50x25' %>
+					<% end %>
+				</td>
+        <td><%= item.part_number %></td>
+        <td><%= item.item_number%></td>
+        <td><%= item.stocks.sum(:stock)  %></td>
+        <td><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
+        <td><%= check_box_tag :ch1,1  %></td>
       </tr>
+      <% end %>
     <% end %>
-    <% end %>
-  </tbody>
-</table>
-</div></div></div></div></ul>
-			</div>
-</section>  
-<br>
- 
-
+      </table>
+</section>
+</div>
+</div>
+</div>

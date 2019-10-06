@@ -68,3 +68,15 @@ Item.create!(item_number: "アンドロイド搭載一眼レフカメラ",
              part_number: "B079S222",
              jan_code: "不明",
              simulate_price: 18080)
+             
+Stock.create!(
+            inventory_arrival_date: 2019-07-24,
+            purchase_price:120,
+            trader_name:"陽商会",
+            stock:45,
+            alert_border_line:3,item_id:4)
+Item.create!(item_number: "MAC / マック シャイニー プリティ シングス グッディ バッグ #ニュートラルアイズ",
+             item_picture: "https://item-shopping.c.yimg.jp/i/n/net-pumpkin_0773602505838",
+             part_number: "B079S3rt",
+             jan_code: "0773602505838",
+             simulate_price: 6791)
