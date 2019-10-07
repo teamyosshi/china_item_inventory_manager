@@ -1,0 +1,18 @@
+git add Gemfile Gemfile.lock app/assets/stylesheets/researches.scss app/assets/stylesheets/scaffolds.scss app/helpers/application_helper.rb app/views/researches/item_research.html.erb config/application.rb db/schema.rb db/seeds.rb
+
+git commit -m "#18_modify-research-table-imgURL"
+
+(git push --set-upstream origin #18_add-research-table-imgURL)
+
+git push origin #18_add-research-table-imgURL
+
+git config --global push.default current
+
+git pull のやり方
+$ git stash
+$ git checkout master
+$ git pull
+$ git checkout -b 次タスク用ブランチ（別名）
+$ git stash apply stash@{0}
+
+

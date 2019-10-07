@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to:'users#edit', as: :edit
   delete '/logout', to:'sessions#destroy'
   resources :researches
+
   #resources :stocks
+
+  #スクレイピング
+  get 'users/:id/item_research_scrape', to:'researches#item_research_scrape', as: :item_research_scrape
+  resources :stocks
   resources :items
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
