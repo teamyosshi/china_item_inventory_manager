@@ -9,150 +9,157 @@
       </div>
     </div>
   </div>
-  <%= form_tag(users_path, :method => 'get') do %>
+  <%= form_with url: item_research_scrape_path, method: :get, local: true do |f| %>
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-4">
-            <div class="text-search-japan">
-              <%= text_field_tag :search, '', placeholder: "日本語キーワード入力　例：バスケットボール", class:"form-control" %>
-              <div class="money-label">
-                <label for="number" class="control-label col-md-3">金額</label>
-                <select name="num">
-                  <option value="下限なし">下限なし</option>
-                  <option value="1,000">1,000</option>
-                  <option value="5,000">5,000</option>
-                  <option value="10,000">10,000</option>
-                  <option value="15,000">15,000</option>
-                  <option value="1,000,000">1,000,000</option>
-                </select>
-                <select name="num">
-                  <option value="上限なし">上限なし</option>
-                  <option value="1,000">1,000</option>
-                  <option value="5,000">5,000</option>
-                  <option value="10,000">10,000</option>
-                  <option value="15,000">15,000</option>
-                  <option value="1,000,000">1,000,000</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        <div class="col-md-4">
-          <div class="text-search-china">
-            <%= text_field_tag :search, '', placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
+          <div class="text-search-japan">
+            <%= f.text_field :search, placeholder: "日本語キーワード入力　例：バスケットボール", class:"form-control" %>
             <div class="money-label">
               <label for="number" class="control-label col-md-3">金額</label>
-                <select name="num">
-                  <option value="下限なし">下限なし</option>
-                  <option value="1,000">1,000</option>
-                  <option value="5,000">5,000</option>
-                  <option value="10,000">10,000</option>
-                  <option value="15,000">15,000</option>
-                  <option value="1,000,000">1,000,000</option>
-                </select>
-                <select name="num">
-                  <option value="上限なし">上限なし</option>
-                  <option value="1,000">1,000</option>
-                  <option value="5,000">5,000</option>
-                  <option value="10,000">10,000</option>
-                  <option value="15,000">15,000</option>
-                  <option value="1,000,000">1,000,000</option>
-                </select>
+              <select name="num">
+                <option value="下限なし">下限なし</option>
+                <option value="1,000">1,000</option>
+                <option value="5,000">5,000</option>
+                <option value="10,000">10,000</option>
+                <option value="15,000">15,000</option>
+                <option value="1,000,000">1,000,000</option>
+              </select>
+              <select name="num">
+                <option value="上限なし">上限なし</option>
+                <option value="1,000">1,000</option>
+                <option value="5,000">5,000</option>
+                <option value="10,000">10,000</option>
+                <option value="15,000">15,000</option>
+                <option value="1,000,000">1,000,000</option>
+              </select>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div>
-            <%= button_tag 'リサーチ', :name => nil, class: "btn btn-primary btn-block" %>
+          <div class="text-search-china">
+            <%= f.text_field :search, placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
+            <div class="money-label">
+              <label for="number" class="control-label col-md-3">金額</label>
+              <select name="num">
+                <option value="下限なし">下限なし</option>
+                <option value="1,000">1,000</option>
+                <option value="5,000">5,000</option>
+                <option value="10,000">10,000</option>
+                <option value="15,000">15,000</option>
+                <option value="1,000,000">1,000,000</option>
+              </select>
+              <select name="num">
+                <option value="上限なし">上限なし</option>
+                <option value="1,000">1,000</option>
+                <option value="5,000">5,000</option>
+                <option value="10,000">10,000</option>
+                <option value="15,000">15,000</option>
+                <option value="1,000,000">1,000,000</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="research-btn-color">
+            <%= f.submit "リサーチ", class: 'btn btn-primary btn-block' %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
+
   <%= will_paginate %>
+
   <div class="rate">
     <table class="table table-bordered">
       <tbody>
-        <tr class="rate-border">
-          <th class="rate-color">現在の想定レート</th>
-          <td width="205"></td>
-        </tr>
+      <tr class="rate-border">
+        <th class="rate-color">現在の想定レート</th>
+        <td width="205"></td>
+      </tr>
       </tbody>
     </table>
   </div>
   <div class="col-md-12">
     <div class="row">
-      <%= form_tag(users_path, :method => 'get') do %>
+      <%= form_with url: "#", method: :get, local: true do |f| %>
         <div class="row">
           <div class="col-md-4">
-            <%= button_tag '一括登録ボタン（在庫管理ページへ）', :name => nil, class: "btn btn-primary btn-block" %>
+            <%= f.submit '一括登録ボタン（在庫管理ページへ）', class: "btn btn-primary btn-block" %>
           </div>
         </div>
-          <div class="col-md-6">
-            <table class="table table-bordered table-striped table-design">
-              <thead>
-                <tr class="success">
-                  <th width="10"></th>
-                  <th width="34">NO</th>
-                  <th width="50">商品画像</th>
-                  <th width="50">商品タイトル（日本）</th>
-                  <th width="35">リサーチURL</th>
-                  <th width="40">リサーチ額</th>
-                </tr>
-              </thead>
-              <% @researches.each do |research| %>
-                <tbody>
-                  <tr class="table-row">
-                    <th><input type="checkbox" value=""></th>
-                    <td class="img-url">
-                      <%= research.id %>
-                      (<%= l(research.created_at, format: :date) %>)
-                    </td>
-                    <td>
-                      <%= image_tag (research.japan_image_url), :size =>'80x80' %>
-                    </td>
-                    <td><%= research.japan_title %></td>
-                    <td class="url-over" width="50">
-                      <%= text_url_to_link(h(research.japan_url)).html_safe %>
-                    </td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              <% end %>
-            </table>
-          </div>
-          <div class="col-md-6">
-            <table class="table table-bordered table-striped table-design">
-              <thead>
-              <tr class="success">
-                <th width="30"></th>
-                <th width="80">商品画像</br>(仕入先)</th>
-                <th width="80">商品タイトル（中国語）</th>
-                <th class="url" width="50">仕入URL</th>
-                <th width="60">中国元</th>
-                <th width="60">想定単価</th>
-                <th width="80">想定利益表示</th>
+        <div class="col-md-6">
+          <table class="table table-bordered table-striped table-design">
+            <thead>
+            <tr class="success">
+              <th width="10"></th>
+              <th width="34">NO</th>
+              <th width="50">商品画像</th>
+              <th width="50">商品タイトル（日本）</th>
+              <th width="35">リサーチURL</th>
+              <th width="40">リサーチ額</th>
+            </tr>
+            </thead>
+            <% @researches.each do |research| %>
+              <tbody>
+              <tr class="table-row">
+                <th><input type="checkbox" value=""></th>
+                <td class="img-url">
+                  <%= research.id %>
+                  (<%= l(research.created_at, format: :date) %>)
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+
+                <td class="url-over" width="50">
+                  <%= text_url_to_link(h(@uri)).html_safe %>
+                </td>
+                <td>
+
+                </td>
               </tr>
-              </thead>
-              <% @researches.each do |research| %>
-                <tbody>
-                <tr class="table-row">
-                  <th><input type="checkbox" value=""></th>
-                  <td>
-                    <%= image_tag (research.china_image_url), :size =>'80x80' %>
-                  </td>
-                  <th class="img-url2"><%= research.china_title %></th>
-                  <td class="url-over">
-                    <%= text_url_to_link(h(research.china_url)).html_safe %>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <th></th>
-                </tr>
-                </tbody>
-               <% end %>
-            </table>
-          </div>
-        <% end %>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-bordered table-striped table-design">
+            <thead>
+            <tr class="success">
+              <th width="30"></th>
+              <th width="80">商品画像</br>(仕入先)</th>
+              <th width="80">商品タイトル（中国語）</th>
+              <th class="url" width="50">仕入URL</th>
+              <th width="60">中国元</th>
+              <th width="60">想定単価</th>
+              <th width="80">想定利益表示</th>
+            </tr>
+            </thead>
+            <% @researches.each do |research| %>
+              <tbody>
+              <tr class="table-row">
+                <th><input type="checkbox" value=""></th>
+                <td>
+                  <%= image_tag (research.china_image_url), :size =>'80x80' %>
+                </td>
+                <th class="img-url2"><%= research.china_title %></th>
+                <td class="url-over">
+                  <%= text_url_to_link(h(research.china_url)).html_safe %>
+                </td>
+                <td></td>
+                <td></td>
+                <th></th>
+              </tr>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
       <%= will_paginate %>
     </div>
   </div>
