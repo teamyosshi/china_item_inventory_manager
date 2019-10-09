@@ -9,9 +9,20 @@ class StocksController < ApplicationController
   def inventory_control
     @stocks = Stock.all
     @items=Item.all
-    @items_find=Item.search(params[:search])
+    @search=params[:search]
+    @test=params[:test]
+    @items_find=Item.includes(:stocks).search(params[:search])
   end
-  
+
+  def download
+    find=params[:items_find]
+    if find.present?
+      @items_find2=Item.search(find)
+    else
+      @items_find2=Item.all
+    end
+  end
+
 
   # GET /stocks/1
   # GET /stocks/1.json

@@ -1,3 +1,4 @@
+<% require "stocks_helper" %>
 <script>
   $(function() {
     //.accordion1の中のp要素がクリックされたら
@@ -12,7 +13,7 @@
   <div class="col-xs-2"></div>
   <div class="col-xs-2">
     　<div style="display:inline-flex">
-        <div class="text-button">現在の想定レート</div>
+        <div class="text-button">現在の想定レート<%=@test %></div>
         <input type="text" name="名前" class="textbox-line" readonly></input>
       </div>
   <div class="col-xs-3 maintext"></div>
@@ -46,16 +47,25 @@
   </div>
 </section>
 <div class="row">
-  <div class="col-xs-"><%#= form_tag({ :controller => 'stocks', :action => 'inventory_control' },{ :method => :get,data: { disable_with: '検索中...お待ち下さい' }}) do %>
+  <div class="col-xs-">
+  </div>
+  <div class="col-xs-2 maintext"></div>
+  <div class="col-xs-3 maintext"><%= button_to "CSV出力", {controller: 'stocks', action: 'download',items_find: @search,format: :csv}, {method: :post, class: "btn btn-primary"} %></div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-">
     <%= form_with :action=>"inventory_control", :controller=>"stocks" , method: :get, local: true do |form| %>
-    <p>&emsp;&emsp;商品名及び製品番号検索：<%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "search", :name => nil, data: { disable_with: "検索中...お待ち下さい" }  %>
-    </p>
+      <p>&emsp;&emsp;商品名及び製品番号検索：<%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "search", :name => nil, data: { disable_with: "検索中...お待ち下さい" }  %>
+      </p>
     <% end %>
   </div>
   <div class="col-xs-2"></div>
   <div class="col-xs-3 maintext"></div>
 </div>
+
+
 <section id="acdemo1">
   <div class="accordion1">
     &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style" "display:inline;">表示/非表示</p>
@@ -67,27 +77,35 @@
           <thead>
             <tr>
               <th width="5">商品画像</th>
-              <th width="5">製品コード</th>
+              <th class="th-text" width="10">製品コード</th>
               <th width="50">商品タイトル</th>
               <th class="th-text" width="20">在庫計</th>
               <th class="th-text" width="20">想定価格</th>
+              <th class="th-text" width="60">出品サイト</th>
               <th class="th-text" width="20">削除</th>
             </tr>
           </thead>
       </div>
       <% @items_find.each do |item| %>
-      <tr>
-      	<td>
-      	　<% if item.item_picture.present? %>
-	   				<%= image_tag item.item_picture, :size =>'50x25' %>
-					<% end %>
-				</td>
-        <td><%= item.part_number %></td>
-        <td><%= item.item_number%></td>
-        <td><%= item.stocks.sum(:stock)  %></td>
-        <td><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
-        <td><%= check_box_tag :ch1,1  %></td>
-      </tr>
+        <% yahoo=item.yahoo %>
+			  <% amazon=item.amazon %>
+			  <% mercari=item.mercari %>
+			  <% rakuma=item.rakuma %>
+			  <% rakuten=item.rakuten %>
+			  <% yahooshoping=item.yahooshoping %>
+        <tr>
+      	  <td>
+      	　  <% if item.item_picture.present? %>
+	   				  <%= image_tag item.item_picture, :size =>'50x25' %>
+					  <% end %>
+				  </td>
+			    <td><%= item.part_number %></td>
+          <td><%= item.item_number%></td>
+          <td><%= item.stocks.sum(:stock)  %></td>
+          <td><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
+          <td><%= exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping) %></td>
+          <td><%= check_box_tag :ch1,1  %></td>
+        </tr>
       <% end %>
     <% end %>
       </table>
