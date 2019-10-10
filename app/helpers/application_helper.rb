@@ -9,4 +9,14 @@ module ApplicationHelper
     end
     return text
   end
+  def exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping)
+    ex="yahoo " if yahoo
+    ex=ex+"amazon " if amazon
+    ex=ex+"mercari " if mercari
+    ex=ex+"rakuma " if rakuma
+    ex=ex+"rakuten " if rakuten
+    ex=ex+"yahooshoping" if yahooshoping
+    ex="なし" if ex.blank?
+    ex
+  end
 end

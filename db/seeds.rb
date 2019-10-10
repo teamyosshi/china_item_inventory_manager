@@ -55,7 +55,7 @@ Stock.create!(
             trader_name:"龍",
             stock:15,
             alert_border_line:3,item_id:2)
-            
+
 # 商品追加
 Item.create!(item_number: "携帯タブレットアンドロイド",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
@@ -68,7 +68,7 @@ Item.create!(item_number: "アンドロイド搭載一眼レフカメラ",
              part_number: "B079S222",
              jan_code: "不明",
              simulate_price: 18080)
-             
+
 Stock.create!(
             inventory_arrival_date: 2019-07-24,
             purchase_price:120,
@@ -80,3 +80,22 @@ Item.create!(item_number: "MAC / マック シャイニー プリティ シン�
              part_number: "B079S3rt",
              jan_code: "0773602505838",
              simulate_price: 6791)
+Stock.create!(
+            inventory_arrival_date: 2019-07-24,
+            purchase_price:11000,
+            trader_name:"北方商会",
+            stock:25,
+            alert_border_line:3,item_id:4)
+Item.create!(item_number: "モペット版 電動機付自転車",
+             item_picture: "https://image.rakuten.co.jp/aruzan/cabinet/goods_photo/bike/eb/img57986231.jpg",
+             part_number: "B079eert",
+             jan_code: "0773602522838",
+             simulate_price: 48000,
+             yahoo:true,
+             amazon:true)
+Stock.create!(
+            inventory_arrival_date: 2019-05-24,
+            purchase_price:46300,
+            trader_name:"何法商会",
+            stock:28,
+            alert_border_line:3,item_id:6)
