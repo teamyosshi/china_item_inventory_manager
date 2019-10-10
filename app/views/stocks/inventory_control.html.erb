@@ -1,4 +1,3 @@
-<% require "stocks_helper" %>
 <script>
   $(function() {
     //.accordion1の中のp要素がクリックされたら
@@ -13,7 +12,7 @@
   <div class="col-xs-2"></div>
   <div class="col-xs-2">
     　<div style="display:inline-flex">
-        <div class="text-button">現在の想定レート<%=@test %></div>
+        <div class="text-button">現在の想定レート</div>
         <input type="text" name="名前" class="textbox-line" readonly></input>
       </div>
   <div class="col-xs-3 maintext"></div>
@@ -50,7 +49,7 @@
   <div class="col-xs-">
   </div>
   <div class="col-xs-2 maintext"></div>
-  <div class="col-xs-3 maintext"><%= button_to "CSV出力", {controller: 'stocks', action: 'download',items_find: @search,format: :csv}, {method: :post, class: "btn btn-primary"} %></div>
+  <div class="col-xs-3 maintext"><%= button_to "CSV出力", {controller: 'stocks', action: 'csv_export',items_find: @search,format: :csv}, {method: :post, class: "btn btn-primary"} %></div>
 </div>
 <br>
 <div class="row">

@@ -14,7 +14,7 @@ class StocksController < ApplicationController
     @items_find=Item.includes(:stocks).search(params[:search])
   end
 
-  def download
+  def csv_export
     find=params[:items_find]
     if find.present?
       @items_find2=Item.search(find)

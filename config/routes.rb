@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/', to:'sessions#create'
   post '/stocks/find'
   get '/signup',to:'users#new', as: :signup
-  post   '/download',    to: 'stocks#download'
+  post   '/export',    to: 'stocks#csv_export'
   post 'inventory_control_index', to:'stocks#inventory_control'
   get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control
   #get 'users/:id/inventory_control', to:'stocks#inventory_control', as: :inventory_control
