@@ -23,13 +23,13 @@ User.create!(name: "Sample User",
                phone_number: phone_number)
   end
 # 商品
-Item.create!(item_number: "Fire TV Stick 4K - Alexa対応音声認識リモコン付属",
+Item.create!(item_title: "Fire TV Stick 4K - Alexa対応音声認識リモコン付属",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
              part_number: "B079QRQTCR",
              jan_code: "不明",
              simulate_price: 6980)
 
-Item.create!(item_number: "[アルファ インダストリーズ] ボディバッグ 3ポケット 左右肩掛け対応 斜めがけ 200-BAG128 / 200-BAG129",
+Item.create!(item_title: "[アルファ インダストリーズ] ボディバッグ 3ポケット 左右肩掛け対応 斜めがけ 200-BAG128 / 200-BAG129",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/7133XWL%2B9DL._UL1280_.jpg",
              part_number: "B079SMLLFQ",
              jan_code: "不明",
@@ -48,22 +48,16 @@ a = 0
                    china_url: "https://www.marimekko.jp/shop/marimekko/item/list/category_id/34")
 end
 
-#ストックサンプルデータ取込
-Stock.create!(
-            inventory_arrival_date: 2019-04-24,
-            purchase_price:100,
-            trader_name:"龍",
-            stock:15,
-            alert_border_line:3,item_id:2)
+
 
 # 商品追加
-Item.create!(item_number: "携帯タブレットアンドロイド",
+Item.create!(item_title: "携帯タブレットアンドロイド",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
              part_number: "B079Q44444",
              jan_code: "不明",
              simulate_price: 15080)
 
-Item.create!(item_number: "アンドロイド搭載一眼レフカメラ",
+Item.create!(item_title: "アンドロイド搭載一眼レフカメラ",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/7133XWL%2B9DL._UL1280_.jpg",
              part_number: "B079S222",
              jan_code: "不明",
@@ -75,27 +69,35 @@ Stock.create!(
             trader_name:"陽商会",
             stock:45,
             alert_border_line:3,item_id:4)
-Item.create!(item_number: "MAC / マック シャイニー プリティ シングス グッディ バッグ #ニュートラルアイズ",
+Item.create!(item_title: "MAC / マック シャイニー プリティ シングス グッディ バッグ #ニュートラルアイズ",
              item_picture: "https://item-shopping.c.yimg.jp/i/n/net-pumpkin_0773602505838",
              part_number: "B079S3rt",
              jan_code: "0773602505838",
              simulate_price: 6791)
-Stock.create!(
-            inventory_arrival_date: 2019-07-24,
-            purchase_price:11000,
-            trader_name:"北方商会",
-            stock:25,
-            alert_border_line:3,item_id:4)
-Item.create!(item_number: "モペット版 電動機付自転車",
+
+Item.create!(item_title: "モペット版 電動機付自転車",
              item_picture: "https://image.rakuten.co.jp/aruzan/cabinet/goods_photo/bike/eb/img57986231.jpg",
              part_number: "B079eert",
              jan_code: "0773602522838",
              simulate_price: 48000,
              yahoo:true,
              amazon:true)
+#ストックサンプルデータ取込
+Stock.create!(
+            inventory_arrival_date: 2019-04-24,
+            purchase_price:100,
+            trader_name:"龍",
+            stock:15,
+            alert_border_line:3,item_id:2)
 Stock.create!(
             inventory_arrival_date: 2019-05-24,
             purchase_price:46300,
             trader_name:"何法商会",
             stock:28,
             alert_border_line:3,item_id:6)
+Stock.create!(
+            inventory_arrival_date: 2019-07-24,
+            purchase_price:11000,
+            trader_name:"北方商会",
+            stock:25,
+            alert_border_line:3,item_id:4)

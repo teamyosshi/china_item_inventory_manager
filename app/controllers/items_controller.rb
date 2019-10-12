@@ -12,6 +12,18 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def import
+    # fileはtmpに自動で一時保存される
+    begin
+      Item.import(params[:file])
+      flash[:success] = "インポートに成功しました"
+    rescue => e
+      # 何らかのエラーが発生した場合はログの書き込みと、
+      # エラー通知サービスへの通知を行う
+      logger.error e
+    end
+    redirect_to '/inventory_control_index'
+  end
   # GET /items/new
   def new
     @item = Item.new

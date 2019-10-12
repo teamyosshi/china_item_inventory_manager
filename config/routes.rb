@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to:'users#edit', as: :edit
   delete '/logout', to:'sessions#destroy'
   resources :researches
-  #resources :stocks
+  resources :stocks
+  resources :items do
+    collection { post :import }
+  end
   resources :items
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
