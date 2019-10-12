@@ -46,8 +46,9 @@
     </ul>
   </div>
 </section>
+<% admin=false %>
 <% admin=current_user.admin if current_user %>
-<% if admin %>
+<% if admin==true %>
   <div class="row">
     <div class="col-xs-1 "></div>
     <div class="col-xs-2">
