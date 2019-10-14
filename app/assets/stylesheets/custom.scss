@@ -150,19 +150,19 @@ p {
 }
 .kousin2 {
         overflow:auto;
-        width:900px;
+        width:100%;
         padding:5px;
         border:2px dotted #ffffff;
         color:black;
         line-height:1.5em;
+        text-align:center;
 }
-.th-text {
-text-align: center;
-}
+
 .btn-square-so-pop {
   position: relative;
   display: inline-block;
   padding: 0.25em 0.5em;
+  WIDTH: 107px;
   text-decoration: none;
   color: #FFF;
   background: #fd9535;/*色*/
@@ -210,24 +210,11 @@ text-align: center;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
 }
-.right {
-  text-align: right;
+
+.row-height {
+    display: flex;
+    flex-wrap: wrap;
 }
-.kakomi-box1 {
-  width: 50%;
-  height: 120px;
-  padding: 0.5em 1em;
-  margin: 2em 0;
-  border: solid 1px #000000;
-}
-.kakomi-box1 p {
-  margin: 0;
-  padding: 0;
-}
-body{
-background-color: #ccc;
-}
-.main-contents{
-text-align: center;
-margin-top: 20%;
+.acstyle{
+  text-align: center;
 }

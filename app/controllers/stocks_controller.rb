@@ -9,9 +9,11 @@ class StocksController < ApplicationController
   def inventory_control
     @stocks = Stock.all
     @items=Item.all
+    @items_find=Item.includes(:stocks).all
     @search=params[:search]
-    @test=params[:test]
-    @items_find=Item.includes(:stocks).search(params[:search])
+    if params[:kubun]=="1"
+      @items_find=Item.includes(:stocks).search(params[:search])
+    end
   end
 
   def csv_export
