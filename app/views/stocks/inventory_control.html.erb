@@ -13,7 +13,7 @@
     <div class="col-sm-3">
       <div style="display:inline-flex">
         <div class="btn btn-warning">現在の想定レート</div>
-        <input type="text" name="名前" class="textbox-line" readonly></input>
+        <input type="text" name="名前" class="textbox-cs" readonly></input>
       </div>
     </div>
     <div class="col-sm-1"></div>
@@ -25,11 +25,11 @@
         <ul class="inner">
           <div id="mymenu">
             <div class="kousin">
-              <table table border="1" class="table-back" align="center">
+              <table table border="1" class="table-back">
                 <thead>
                   <tr>
-                    <th width="170">商品タイトル</th>
-                    <th class="th-text" width="60" align="right">在庫数合計</th>
+                    <th width="500">商品タイトル</th>
+                    <th class="th-text" width="120" align="right">在庫数合計</th>
                   </tr>
                 </thead>
             </div>
@@ -72,7 +72,7 @@
       <%= form_with :action=>"inventory_control", :controller=>"stocks" , method: :get, local: true do |form| %>
       <p style="margin-left:50px">商品名及び製品番号検索：<%= text_field_tag :search, params[:search] %>
         <%= hidden_field_tag :kubun, "1"  %>
-        <%= submit_tag "検索", :name => nil,class: "btn-square-so-pop", data: { disable_with: "検索中...お待ち下さい" }  %>
+        <%= submit_tag "検索", :name => nil,class: "btn-square-so-pop", data: { disable_with: "検索中" }  %>
       </p>
       <% end %>
     </div>
@@ -89,13 +89,13 @@
           <table table border="1" class="table-back2">
             <thead>
               <tr>
-                <th width="5">商品画像</th>
-                <th class="th-text" width="10">製品コード</th>
-                <th width="50">商品タイトル</th>
-                <th class="th-text" width="20">在庫計</th>
-                <th class="th-text" width="20">想定価格</th>
-                <th class="th-text" width="60">出品サイト</th>
-                <th class="th-text" width="20">削除</th>
+                <th width="5" width="30">商品画像</th>
+                <th width="20">製品コード</th>
+                <th width="500">商品タイトル</th>
+                <th width="50">在庫計</th>
+                <th width="50">想定価格</th>
+                <th width="200">出品サイト</th>
+                <th width="30">削除</th>
               </tr>
             </thead>
         </div>
@@ -116,7 +116,7 @@
             <% end %>
           </td>
           <td><%= item.part_number %></td>
-          <td><%= item.item_title%></td>
+          <td width="500"><%= item.item_title%></td>
           <td><%= item.stocks.sum(:stock)  %></td>
           <td><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
           <td><%= exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping) %></td>
