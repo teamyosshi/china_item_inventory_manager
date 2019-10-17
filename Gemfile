@@ -8,12 +8,10 @@ gem 'rails', '~> 5.2.3'
 gem 'bcrypt'
 gem 'faker'
 gem 'bootstrap-sass', '3.3.7'
-
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
-
+gem 'mechanize'
 gem 'rails-i18n'
-
 gem 'jquery-rails', '4.3.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -70,3 +68,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+

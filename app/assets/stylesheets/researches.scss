@@ -123,3 +123,11 @@ table td {
 .rate-border {
   border: solid 1.5px darkgray;
 }
+
+.title-height {
+  overflow: hidden;
+  //height: 5.0em;
+  height: 140px;
+  font-size: 11px;
+  line-height: 1.0;
+}

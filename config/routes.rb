@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
   post '/', to:'sessions#create'
-  post '/stocks/find'
   get '/signup',to:'users#new', as: :signup
-  post   '/export',    to: 'stocks#csv_export'
-  post 'inventory_control_index', to:'stocks#inventory_control'
   get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control
   #get 'users/:id/inventory_control', to:'stocks#inventory_control', as: :inventory_control
   get 'users/:id/item_research', to:'researches#item_research', as: :item_research
@@ -16,7 +13,9 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to:'users#edit', as: :edit
   delete '/logout', to:'sessions#destroy'
   resources :researches
-  #resources :stocks
+  #スクレイピング
+  get 'users/:id/item_research_scrape', to:'researches#item_research_scrape', as: :item_research_scrape
+  resources :stocks
   resources :items
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
