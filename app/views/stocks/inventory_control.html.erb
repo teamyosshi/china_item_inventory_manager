@@ -6,6 +6,14 @@
       $(this).next('ul').slideToggle();
     });
   });
+
+  $(function() {
+    //ファイルが選択されたときに下記のchange()が作動
+      $('#file').change(function(){
+      //idがfoo要素のsubmitボタンを押す処理を行う。
+      $('form')[0].submit().click('submit');
+    });
+  });
 </script>
 <div class="container">
   <div class="row row-height">
@@ -52,9 +60,12 @@
     <% if admin==true %>
     <div class="row" style="margin-left:30px">
       <div class="col-xs-2">
-        <%= form_with url: import_items_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "インポート" ,class: "btn-square-so-pop" %>
+        <%= form_with url: import_items_path, multipart: true, id: "foo" do %>
+          <label>
+          <%= file_field_tag :file, class: "input-default"  %>
+          <div class="btn-square-so-pop center">インポート</div>
+          <%= submit_tag "インポート" ,class: "input-default" %>
+          </label>
         <% end %>
       </div>
       <% end %>
