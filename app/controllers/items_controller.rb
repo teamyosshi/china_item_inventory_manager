@@ -52,28 +52,26 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    
   end
-
-  # DELETE /items/1
-  # DELETE /items/1.json
+  
+  def destroy_many
+      if params[:deletes].present?
+        delete_list = params[:deletes].keys
+        ActiveRecord::Base.transaction do
+          if Item.destroy(delete_list)
+            flash[:success] ="削除に成功しました"
+          end
+        end
+      else
+        flash[:warning] = "失敗しました"
+      end
+      redirect_to '/inventory_control_index'
+  end
+  
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
   end
 
   private
