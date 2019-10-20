@@ -65,6 +65,7 @@ class ItemsController < ApplicationController
       end
     end
   end
+  
   def destroy_many
       if params[:deletes].present?
         delete_list = params[:deletes].keys
@@ -78,7 +79,6 @@ class ItemsController < ApplicationController
       end
       redirect_to '/inventory_control_index'
   end
-  
   
   def destroy
     @item.destroy
