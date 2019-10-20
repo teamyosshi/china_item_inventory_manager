@@ -25,6 +25,56 @@ class StocksController < ApplicationController
     end
   end
 
+  def product_inventory
+    #今年取得
+    @now_year = Date.today.to_s[0..3]
+    #1年前取得
+    @prev_year = Date.today.prev_year.to_s[0..3]
+    #今年のitemのstock取得
+    @items_stock = Stock.includes(:item).where("inventory_arrival_date LIKE ?", "%#{@now_year}%").order("inventory_arrival_date ASC")
+    #今年のstockをeachで回して商品の今年の購入数と原価をかけて合計に代入
+    @items_stock.each do |stock|
+      #個々の在庫の合計原価を代入(購入した合計*原価)
+      @cost_of_salse = stock.purchase_price * stock.original_stock
+      #今年度仕入原価合計を用意
+      @total_purchase_cost_this_year = @total_purchase_cost_this_year.to_i + @cost_of_salse
+      #今年度期末商品棚卸高を計算するために残り在庫合計と原価を合わせたものを用意(残っている在庫*原価)
+      @cost_salse = stock.purchase_price * stock.stock
+      #今年度期末商品棚卸高の計算
+      @period_end_product_inventory = @period_end_product_inventory.to_i + @cost_salse
+    end
+    #今年のTakeInventoryを取得
+    @now_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @now_year)
+    #1年前のTakeInventoryを取得
+    @prev_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @prev_year)
+    #もし去年のTakeInventoryがなければ今年のTakeInventoryを作成(fiscal_yearに今年を入れておく)
+    if @prev_year_beginning_product_inventory.nil? && @now_year_beginning_product_inventory.nil?
+      record = TakeInventory.new(fiscal_year: @now_year)
+      record.save
+    #もし去年のデータがあって今年のデータが無かったら今年のデータを作成し作成日に今年を代入、去年のデータの期末商品棚卸高を今年の機種商品棚卸高に代入
+    elsif @prev_year_beginning_product_inventory.present? && @now_year_beginning_product_inventory.nil?
+      record = TakeInventory.new(fiscal_year: @now_year, beginning_product_inventory: @prev_year_beginning_product_inventory.period_end_product_inventory)
+      record.save
+    end
+    #上からそのまま流すと@now_year_beginning_product_inventoryの中身がnilで始まった時にnewで流れていってしまうのでnilになることがある。
+    if @now_year_beginning_product_inventory.nil?
+    #@now_year_beginning_product_inventoryを再取得 もし上でnewになった時でも、これでnilではなくなる。
+      @now_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @now_year)
+      if @now_year_beginning_product_inventory.present?
+        if @now_year_beginning_product_inventory.beginning_product_inventory.present?
+          @total_cost_of_sales = @now_year_beginning_product_inventory.beginning_product_inventory + @total_purchase_cost_this_year - @period_end_product_inventory
+        end
+        #@now_year_beginning_product_inventoryのカラムを更新
+        @now_year_beginning_product_inventory.update_attributes(cost_of_sales: @total_cost_of_sales, period_end_product_inventory: @period_end_product_inventory)
+      end
+    elsif @now_year_beginning_product_inventory.present?
+      #@now_year_beginning_product_inventoryのカラムを更新
+      if @now_year_beginning_product_inventory.beginning_product_inventory.present?
+        @total_cost_of_sales = @now_year_beginning_product_inventory.beginning_product_inventory + @total_purchase_cost_this_year - @period_end_product_inventory
+      end
+      @now_year_beginning_product_inventory.update_attributes(cost_of_sales: @total_cost_of_sales, period_end_product_inventory: @period_end_product_inventory)
+    end
+  end
 
   # GET /stocks/1
   # GET /stocks/1.json

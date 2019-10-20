@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index', as: :index
   get 'users/:id/edit', to:'users#edit', as: :edit
   delete '/logout', to:'sessions#destroy'
+  post "takeinventory/:id", to:'take_inventory#update', as: :takeinventory_update
   resources :researches
   resources :stocks
   resources :items do

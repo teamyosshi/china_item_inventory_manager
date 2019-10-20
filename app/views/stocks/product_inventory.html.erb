@@ -1,0 +1,48 @@
+<div class="inventory_table">
+  <table class="table table-bordered table-condensed s-tbl">
+    <tr>
+      <td>仕入れ日</td>
+      <td>タイトル</td>
+      <td>JANコード</td>
+      <td>業者名</td>
+      <td>金額</td>
+      <td>購入数</td>
+    </tr>
+  <% @items_stock.each do |stock| %>
+    <tr>
+      <td><%= stock.inventory_arrival_date %></td>
+      <td><%= stock.item.item_title %></td>
+      <td><%= stock.item.jan_code %></td>
+      <td><%= stock.trader_name %></td>
+      <td><%= stock.purchase_price %></td>
+      <td><%= stock.stock %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<div>
+  <table class="table table-bordered table-condensed s-tbl sale_table">
+    <tr>
+      <td>前年度期末<br>
+          商品棚卸高</td>
+      <td>今年度仕入<br>
+          原価合計額</td>
+      <td>今年度期末<br>
+          商品棚卸高</td>
+      <td>売上原価</td>
+    </tr>
+    <tr>
+      <td><% if @now_year_beginning_product_inventory.beginning_product_inventory.nil? %>
+            <%= form_with(url: takeinventory_update_path,local: true) do |ti| %>
+              <%= ti.number_field :beginning_product_inventory %>
+              <%= ti.submit "更新", class:"btn btn-primary"%>
+            <% end %>
+            <% else %>
+            <%= @now_year_beginning_product_inventory.beginning_product_inventory %>
+          <% end %></td>
+      <td><%= @total_purchase_cost_this_year %></td>
+      <td><%= @now_year_beginning_product_inventory.period_end_product_inventory %></td>
+      <td><%= @now_year_beginning_product_inventory.cost_of_sales if @now_year_beginning_product_inventory.cost_of_sales.present? %></td>
+    </tr>
+  </table>
+</div>

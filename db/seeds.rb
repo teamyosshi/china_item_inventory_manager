@@ -8,7 +8,7 @@ User.create!(name: "Sample User",
              address: "神奈川県横浜市戸塚区俣野町1403",
              phone_number: "080-1234-1234",
              admin: 1)
-60.times do |n|
+10.times do |n|
   name = Faker::Name.name
   email = "test-#{n+1}@email.com"
   password = "password"
@@ -40,6 +40,7 @@ Item.create!(item_title: "[アルファ インダストリーズ] ボディバ�
 a = 0
 b = 0
 2.times do
+10.times do
   Research.create!(user_id: 1,
                    japan_image_url: "https://images-na.ssl-images-amazon.com/images/I/7133XWL%2B9DL._UL1280_.jpg",
                    japan_title: "日本の黒カバン#{a += 1}",
@@ -50,6 +51,14 @@ b = 0
 end
 
 
+#ストックサンプルデータ取込
+Stock.create!(
+            inventory_arrival_date: '2019-04-24',
+            purchase_price:100,
+            trader_name:"龍",
+            stock:15,
+            original_stock: 100,
+            alert_border_line:3,item_id:2)
 
 # 商品追加
 Item.create!(item_title: "携帯タブレットアンドロイド",
@@ -65,18 +74,25 @@ Item.create!(item_title: "アンドロイド搭載一眼レフカメラ",
              simulate_price: 18080)
 
 Stock.create!(
-            inventory_arrival_date: 2019-07-24,
+            inventory_arrival_date: '2019-07-24',
             purchase_price:120,
             trader_name:"陽商会",
             stock:45,
+            original_stock: 100,
             alert_border_line:3,item_id:4)
 Item.create!(item_title: "MAC / マック シャイニー プリティ シングス グッディ バッグ #ニュートラルアイズ",
              item_picture: "https://item-shopping.c.yimg.jp/i/n/net-pumpkin_0773602505838",
              part_number: "B079S3rt",
              jan_code: "0773602505838",
              simulate_price: 6791)
-
-Item.create!(item_title: "モペット版 電動機付自転車",
+Stock.create!(
+            inventory_arrival_date: '2019-07-24',
+            purchase_price:11000,
+            trader_name:"北方商会",
+            original_stock: 100,
+            stock:25,
+            alert_border_line:3,item_id:4)
+Item.create!(item_number: "モペット版 電動機付自転車",
              item_picture: "https://image.rakuten.co.jp/aruzan/cabinet/goods_photo/bike/eb/img57986231.jpg",
              part_number: "B079eert",
              jan_code: "0773602522838",
@@ -91,7 +107,7 @@ Stock.create!(
             stock:15,
             alert_border_line:3,item_id:2)
 Stock.create!(
-            inventory_arrival_date: 2019-05-24,
+            inventory_arrival_date: '2019-05-24',
             purchase_price:46300,
             trader_name:"何法商会",
             stock:28,
@@ -102,3 +118,37 @@ Stock.create!(
             trader_name:"北方商会",
             stock:25,
             alert_border_line:3,item_id:4)
+            original_stock: 100,
+            alert_border_line:3,item_id:6)
+
+10.times do |n|
+  item_title = "携帯タブレットアンドロイド#{n+1}"
+  item_picture = "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg"
+  part_number = "B079S3rt#{n+1}"
+  jan_code = "0773602505838#{n+1}"
+  simulate_price = "48000#{n+1}"
+    Item.create!(item_title: item_title,
+      item_picture: item_picture,
+      part_number: part_number,
+      jan_code: jan_code,
+      simulate_price: simulate_price,)
+  end
+100.times do |d|
+  Stock.create!(
+    inventory_arrival_date: '2019-05-24',
+    purchase_price:46300,
+    trader_name:"何法商会",
+    stock:28,
+    original_stock: 100,
+    alert_border_line:3,item_id:6)
+  end
+TakeInventory.create!(
+  fiscal_year:2017,
+  beginning_product_inventory:2018,
+  cost_of_sales:2018,
+  period_end_product_inventory:2018)
+  TakeInventory.create!(
+    fiscal_year:2016,
+    beginning_product_inventory:2018,
+    cost_of_sales:2018,
+    period_end_product_inventory:2018)
