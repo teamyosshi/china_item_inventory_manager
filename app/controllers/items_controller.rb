@@ -78,8 +78,8 @@ class ItemsController < ApplicationController
       end
       redirect_to '/inventory_control_index'
   end
-  # DELETE /items/1
-  # DELETE /items/1.json
+  
+  
   def destroy
     @item.destroy
     respond_to do |format|
