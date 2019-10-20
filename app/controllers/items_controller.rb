@@ -65,7 +65,19 @@ class ItemsController < ApplicationController
       end
     end
   end
-
+  def destroy_many
+      if params[:deletes].present?
+        delete_list = params[:deletes].keys
+        ActiveRecord::Base.transaction do
+          if Item.destroy(delete_list)
+            flash[:success] ="削除に成功しました"
+          end
+        end
+      else
+        flash[:warning] = "失敗しました"
+      end
+      redirect_to '/inventory_control_index'
+  end
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy

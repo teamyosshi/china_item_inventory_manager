@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   post '/', to:'sessions#create'
   get '/signup',to:'users#new', as: :signup
+  post   '/export',    to: 'stocks#csv_export'
+  delete :items, to: 'items#destroy_many'
   get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control
   #get 'users/:id/inventory_control', to:'stocks#inventory_control', as: :inventory_control
   get 'users/:id/item_research', to:'researches#item_research', as: :item_research
