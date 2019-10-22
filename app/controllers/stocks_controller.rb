@@ -25,8 +25,6 @@ class StocksController < ApplicationController
     end
   end
 
-<<<<<<< Updated upstream
-=======
   def product_inventory
     @this_year = Date.today.year.to_i
     @prev_year = Date.today.prev_year.year.to_i
@@ -58,7 +56,6 @@ class StocksController < ApplicationController
       @this_year_beginning_product_inventory.update_attributes(cost_of_sales: @total_cost_of_sales, period_end_product_inventory: @period_end_product_inventory)
     end
   end
->>>>>>> Stashed changes
 
   # GET /stocks/1
   # GET /stocks/1.json
