@@ -24,7 +24,7 @@ class StocksController < ApplicationController
       @items_find2=Item.all
     end
   end
-
+  
   def product_inventory
     @this_year = Date.today.year.to_i
     @prev_year = Date.today.prev_year.year.to_i
