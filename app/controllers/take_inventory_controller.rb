@@ -1,7 +1,7 @@
 class TakeInventoryController < ApplicationController
   def update
-    now_year = Date.today.to_s[0..3]
-    @takeinventory = TakeInventory.find_by(fiscal_year: now_year)
+    this_year= Date.today.to_s[0..3]
+    @takeinventory = TakeInventory.find_by(fiscal_year: this_year)
     if @takeinventory.update(takeinventory_params)
       flash[:success] = "機種商品棚卸高を登録しました。"
     else

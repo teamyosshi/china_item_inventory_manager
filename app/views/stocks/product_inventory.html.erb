@@ -8,14 +8,14 @@
       <td>金額</td>
       <td>購入数</td>
     </tr>
-  <% @items_stock.each do |stock| %>
+  <% @item_stocks.each do |item_stock| %>
     <tr>
-      <td><%= stock.inventory_arrival_date %></td>
-      <td><%= stock.item.item_title %></td>
-      <td><%= stock.item.jan_code %></td>
-      <td><%= stock.trader_name %></td>
-      <td><%= stock.purchase_price %></td>
-      <td><%= stock.stock %></td>
+      <td><%= item_stock.inventory_arrival_date %></td>
+      <td><%= item_stock.item.item_title %></td>
+      <td><%= item_stock.item.jan_code %></td>
+      <td><%= item_stock.trader_name %></td>
+      <td><%= item_stock.purchase_price %></td>
+      <td><%= item_stock.stock %></td>
     </tr>
   <% end %>
   </table>
@@ -32,17 +32,17 @@
       <td>売上原価</td>
     </tr>
     <tr>
-      <td><% if @now_year_beginning_product_inventory.beginning_product_inventory.nil? %>
+      <td><% if @this_year_beginning_product_inventory.beginning_product_inventory.nil? %>
             <%= form_with(url: takeinventory_update_path,local: true) do |ti| %>
               <%= ti.number_field :beginning_product_inventory %>
               <%= ti.submit "更新", class:"btn btn-primary"%>
             <% end %>
             <% else %>
-            <%= @now_year_beginning_product_inventory.beginning_product_inventory %>
+            <%= @this_year_beginning_product_inventory.beginning_product_inventory %>
           <% end %></td>
       <td><%= @total_purchase_cost_this_year %></td>
-      <td><%= @now_year_beginning_product_inventory.period_end_product_inventory %></td>
-      <td><%= @now_year_beginning_product_inventory.cost_of_sales if @now_year_beginning_product_inventory.cost_of_sales.present? %></td>
+      <td><%= @this_year_beginning_product_inventory.period_end_product_inventory if @this_year_beginning_product_inventory.period_end_product_inventory.present? %></td>
+      <td><%= @this_year_beginning_product_inventory.cost_of_sales if @this_year_beginning_product_inventory.cost_of_sales.present? %></td>
     </tr>
   </table>
 </div>
