@@ -40,7 +40,6 @@ Item.create!(item_title: "[アルファ インダストリーズ] ボディバ�
 a = 0
 b = 0
 2.times do
-10.times do
   Research.create!(user_id: 1,
                    japan_image_url: "https://images-na.ssl-images-amazon.com/images/I/7133XWL%2B9DL._UL1280_.jpg",
                    japan_title: "日本の黒カバン#{a += 1}",
@@ -113,12 +112,11 @@ Stock.create!(
             stock:28,
             alert_border_line:3,item_id:6)
 Stock.create!(
-            inventory_arrival_date: 2019-07-24,
+            inventory_arrival_date: '2019-07-24',
             purchase_price:11000,
             trader_name:"北方商会",
             stock:25,
-            alert_border_line:3,item_id:4)
-            original_stock: 100,
+            original_stock:100,
             alert_border_line:3,item_id:6)
 
 10.times do |n|
@@ -141,14 +139,14 @@ Stock.create!(
     stock:28,
     original_stock: 100,
     alert_border_line:3,item_id:6)
-  end
+end
 TakeInventory.create!(
   fiscal_year:2017,
   beginning_product_inventory:2018,
   cost_of_sales:2018,
   period_end_product_inventory:2018)
-  TakeInventory.create!(
-    fiscal_year:2016,
-    beginning_product_inventory:2018,
-    cost_of_sales:2018,
-    period_end_product_inventory:2018)
+TakeInventory.create!(
+  fiscal_year:2016,
+  beginning_product_inventory:2018,
+  cost_of_sales:2018,
+  period_end_product_inventory:2018)

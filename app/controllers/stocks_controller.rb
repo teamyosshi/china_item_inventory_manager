@@ -35,7 +35,7 @@ class StocksController < ApplicationController
     #今年のstockをeachで回して商品の今年の購入数と原価をかけて合計に代入
     @items_stock.each do |stock|
       #個々の在庫の合計原価を代入(購入した合計*原価)
-      @cost_of_salse = stock.purchase_price * stock.original_stock
+      @cost_of_salse = stock.purchase_price.to_i * stock.original_stock.to_i
       #今年度仕入原価合計を用意
       @total_purchase_cost_this_year = @total_purchase_cost_this_year.to_i + @cost_of_salse
       #今年度期末商品棚卸高を計算するために残り在庫合計と原価を合わせたものを用意(残っている在庫*原価)
@@ -61,17 +61,19 @@ class StocksController < ApplicationController
     #@now_year_beginning_product_inventoryを再取得 もし上でnewになった時でも、これでnilではなくなる。
       @now_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @now_year)
       if @now_year_beginning_product_inventory.present?
-        if @now_year_beginning_product_inventory.beginning_product_inventory.present?
+        #@total_cost_of_salesの中身を更新
+        if @now_year_beginning_product_inventory.beginning_product_inventory.present? && @total_purchase_cost_this_year.present? && @period_end_product_inventory.present?
           @total_cost_of_sales = @now_year_beginning_product_inventory.beginning_product_inventory + @total_purchase_cost_this_year - @period_end_product_inventory
         end
-        #@now_year_beginning_product_inventoryのカラムを更新
+        #@now_year_beginning_product_inventoryのカラムを更新 
         @now_year_beginning_product_inventory.update_attributes(cost_of_sales: @total_cost_of_sales, period_end_product_inventory: @period_end_product_inventory)
       end
     elsif @now_year_beginning_product_inventory.present?
-      #@now_year_beginning_product_inventoryのカラムを更新
-      if @now_year_beginning_product_inventory.beginning_product_inventory.present?
+      #@total_cost_of_salesの中身を更新
+      if @now_year_beginning_product_inventory.beginning_product_inventory.present? && @total_purchase_cost_this_year.present? && @period_end_product_inventory.present?
         @total_cost_of_sales = @now_year_beginning_product_inventory.beginning_product_inventory + @total_purchase_cost_this_year - @period_end_product_inventory
       end
+      #@now_year_beginning_product_inventoryのカラムを更新
       @now_year_beginning_product_inventory.update_attributes(cost_of_sales: @total_cost_of_sales, period_end_product_inventory: @period_end_product_inventory)
     end
   end
