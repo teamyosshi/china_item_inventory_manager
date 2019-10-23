@@ -100,7 +100,7 @@ Item.create!(item_number: "モペット版 電動機付自転車",
              amazon:true)
 #ストックサンプルデータ取込
 Stock.create!(
-            inventory_arrival_date: 2019-04-24,
+            inventory_arrival_date: '2019-04-24',
             purchase_price:100,
             trader_name:"龍",
             stock:15,
