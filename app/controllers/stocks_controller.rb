@@ -25,6 +25,25 @@ class StocksController < ApplicationController
     end
   end
 
+  def product_inventory
+    @this_year = Date.today.year.to_s
+    @prev_year = Date.today.prev_year.year.to_s
+    #今年のitemのstock取得
+    @item_stocks = Stock.includes(:item).where("inventory_arrival_date LIKE ?", "%#{@athis_year}%").order("inventory_arrival_date ASC")
+    calculation_item_cost
+    Stock.takeinventory_find
+    Stock.takeinventory_create
+    #上からそのまま流すと@this_year_beginning_product_inventoryの中身がnilで始まった時にnewで流れていってしまうのでnilになることがある。
+    if @this_year_beginning_product_inventory.nil?
+    #@this_year_beginning_product_inventoryを再取得 もし上でnewになった時でも、これでnilではなくなる。
+      @this_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @this_year)
+      if @this_year_beginning_product_inventory.present?
+        calculation_of_total_amount
+      end
+    elsif @this_year_beginning_product_inventory.present?
+      calculation_of_total_amount
+    end
+  end
 
   # GET /stocks/1
   # GET /stocks/1.json

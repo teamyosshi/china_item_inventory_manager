@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fiscal_year: 1
+  beginning_product_inventory: 1
+  cost_of_sales: 1
+  period_end_product_inventory: MyString
+  integer: MyString
+
+two:
+  fiscal_year: 1
+  beginning_product_inventory: 1
+  cost_of_sales: 1
+  period_end_product_inventory: MyString
+  integer: MyString

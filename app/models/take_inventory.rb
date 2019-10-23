@@ -1,0 +1,2 @@
+class TakeInventory < ApplicationRecord
+end

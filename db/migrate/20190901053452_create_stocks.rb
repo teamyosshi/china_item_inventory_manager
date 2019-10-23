@@ -5,6 +5,7 @@ class CreateStocks < ActiveRecord::Migration[5.2]
       t.integer :purchase_price
       t.string :trager_name
       t.integer :stock
+      t.integer :original_stock
       t.integer :alert_border_line
       t.references :item, foreign_key: true
 

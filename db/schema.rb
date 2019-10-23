@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_213715) do
+ActiveRecord::Schema.define(version: 2019_10_15_121720) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_number"
@@ -51,11 +51,21 @@ ActiveRecord::Schema.define(version: 2019_09_25_213715) do
     t.integer "purchase_price"
     t.string "trader_name"
     t.integer "stock"
+    t.integer "original_stock"
     t.integer "alert_border_line"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_stocks_on_item_id"
+  end
+
+  create_table "take_inventories", force: :cascade do |t|
+    t.integer "fiscal_year"
+    t.integer "beginning_product_inventory"
+    t.integer "cost_of_sales"
+    t.string "period_end_product_inventory"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
