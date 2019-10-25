@@ -43,6 +43,12 @@ class StocksController < ApplicationController
     elsif @this_year_beginning_product_inventory.present?
       calculation_of_total_amount
     end
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data render_to_string, filename: "#{@this_year}年の棚卸し情報.csv", type: :csv
+      end
+    end
   end
 
   # GET /stocks/1
