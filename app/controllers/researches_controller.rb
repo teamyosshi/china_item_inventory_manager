@@ -117,7 +117,6 @@ class ResearchesController < ApplicationController
 
   def product_registration
   end
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_research
