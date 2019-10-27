@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
       logger.error e
       flash[:warning] = "ＣＳＶファイルを選択して下さい"
     end
-    redirect_to '/inventory_control_index'
+    redirect_to "/users/#{current_user.id}/inventory_control"
   end
 
   # GET /items/new
@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
       else
         flash[:warning] = "失敗しました"
       end
-      redirect_to '/inventory_control_index'
+      redirect_to "/users/#{current_user.id}/inventory_control"
   end
   
   def destroy
