@@ -128,8 +128,8 @@
         <% rakuten=item.rakuten %>
         <% yahooshoping=item.yahooshoping %>
         <% k=i%2 %>
-        <tr onclick="show_hide_row('hidden_row<%=i %>')"; class="tr-back<%= k %>">
-          <td>
+        <tr  class="tr-back<%= k %>">
+          <td onclick="show_hide_row('hidden_row<%=i %>')"; >
             <% if item.item_picture.present? %>
               <% uri=URI.parse(item.item_picture) %>
               <% if uri.scheme=="https" or uri.scheme=="http" %>
