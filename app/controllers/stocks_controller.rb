@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
-
+  before_action :unlesslogin, only: [:inventory_control,:show, :edit, :update, :destroy,:index]
   # GET /stocks
   # GET /stocks.json
   def index
@@ -78,14 +78,12 @@ class StocksController < ApplicationController
   # PATCH/PUT /stocks/1
   # PATCH/PUT /stocks/1.json
   def update
-    respond_to do |format|
-      if @stock.update(stock_params)
-        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
-        format.json { render :show, status: :ok, location: @stock }
-      else
-        format.html { render :edit }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
-      end
+    if @stock.update(stock_params)
+       flash[:success] = "在庫データを変更しました"
+       redirect_to "/users/#{current_user.id}/inventory_control"
+    else
+        flash[:warning] = "更新に失敗しました"
+        render 'edit'
     end
   end
 
@@ -108,5 +106,10 @@ class StocksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
       params.require(:stock).permit(:inventory_arrival_date, :purchase_price, :trager_name, :stock, :alert_border_line, :item_number_id)
+    end
+    def unlesslogin
+      if current_user.nil?
+        redirect_to "/"
+      end
     end
 end

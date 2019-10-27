@@ -197,21 +197,25 @@ p {
 .table-back tr:nth-child(even) {
 	background:  pink;
 }
-.table-back2{
-  background-color: #99FFFF;  /* 背景色指定 */
-  border-color: black
+.tr-back0 {
+	background: #CEF6CE;
 }
-.table-back2 th {
-	background: #00FFFF;
-	border-color: black;
+.tr-back1 {
+	background:  #01DF01;
 }
-.table-back2 td {
-	border: 1px solid #eee;
-	border-color: black;
+.tr-back2 {
+	background:  #33CC33;
 }
-.table-back2 tr:nth-child(even) {
-	background:  #00FFFF;
+.tr-sub-back2 {
+	background:  #87cefa;
 }
+.tr-sub-back0 {
+	background:  #afeeee;
+}
+.tr-sub-back1 {
+	background:  #e0ffff;
+}
+
 .btn-square-shadow {
   display: inline-block;
   padding: 0.5em 1em;
