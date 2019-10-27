@@ -29,7 +29,7 @@ class StocksController < ApplicationController
     @this_year = Date.today.year.to_s
     @prev_year = Date.today.prev_year.year.to_s
     #今年のitemのstock取得
-    @item_stocks = Stock.includes(:item).where("inventory_arrival_date LIKE ?", "%#{@athis_year}%").order("inventory_arrival_date ASC")
+    @item_stocks = Stock.includes(:item).where("inventory_arrival_date LIKE ?", "%#{@this_year}%").order("inventory_arrival_date ASC")
     calculation_item_cost
     Stock.takeinventory_find
     Stock.takeinventory_create
@@ -42,6 +42,12 @@ class StocksController < ApplicationController
       end
     elsif @this_year_beginning_product_inventory.present?
       calculation_of_total_amount
+    end
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data render_to_string, filename: "#{@this_year}年の棚卸し情報.csv", type: :csv
+      end
     end
   end
 
