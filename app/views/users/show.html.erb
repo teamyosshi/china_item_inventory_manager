@@ -22,14 +22,15 @@
                           <% else %>
                             権限なし。
                           <% end %> </li>
-    <li>退職理由:&ensp; <% @user.fired_flg %>
     <li>管理者権限:&ensp; <% if @user.admin == 1 %>
                           権限あり。
                         <% else %>
                           権限なし。
                         <% end %> </li>
+    <li>退職理由:&ensp; <% @user.fired_flg %>
   </ul>
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class= "show_btn">
+<%= link_to 'ユーザー情報編集', edit_user_path(@user),class:"btn btn-primary" %>
+<%= link_to 'ユーザー一覧に戻る', users_path,class:"btn btn-warning" %>
+</div>
