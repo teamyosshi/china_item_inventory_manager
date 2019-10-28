@@ -1,0 +1,85 @@
+ <style type="text/css">
+#table_detail .hidden_row{
+ display:none;
+}
+</style>
+<script>
+  $(function() {
+    //.accordion1の中のp要素がクリックされたら
+    $('.accordion1 p').click(function() {
+      //クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
+      $(this).next('ul').slideToggle();
+    });
+  });
+  function show_hide_row( row ) {
+    $( "." + row ).toggle();
+  }
+</script>
+ 
+ <% if @items.present? %>
+      <ul class="inner">
+        <div class="kousin2">
+          <table table border="1" id="table_detail">
+            <thead>
+              <tr class="tr-back2">
+                <th width="5" width="30">商品画像</th>
+                <th width="50">製品コード</th>
+                <th width="20">商品タイトル</th>
+                <th width="60">在庫計</th>
+                <th width="80">想定価格</th>
+                <th width="170">出品サイト</th>
+              </tr>
+            </thead>
+        </div>
+        <% i=1 %>
+        <% @items.each do |item| %>
+        <% yahoo=item.yahoo %>
+        <% amazon=item.amazon %>
+        <% mercari=item.mercari %>
+        <% rakuma=item.rakuma %>
+        <% rakuten=item.rakuten %>
+        <% yahooshoping=item.yahooshoping %>
+        <% k=i%2 %>
+        <tr  class="tr-back<%= k %>">
+          <td onclick="show_hide_row('hidden_row<%=i %>')"; >
+            <% if item.item_picture.present? %>
+              <% uri=URI.parse(item.item_picture) %>
+              <% if uri.scheme=="https" or uri.scheme=="http" %>
+                <%= image_tag item.item_picture, :size =>'50x25' %>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= item.part_number %></td>
+          <td width="500" align="left"><%= item.item_title%></td>
+          <td align="right">
+          <% if item.stocks.sum(:stock)<20 %>
+            <font color="red">
+          <% end %>
+          <%= item.stocks.sum(:stock)  %></td>
+          <td align="right"><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
+          <td align="left"><%= exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping) %></td>
+        </tr>
+        <% stocks=Stock.where(item_id:item.id)%>
+        
+        <% classname="hidden_row hidden_row"+i.to_s %>
+        <% if stocks.count>0 %>
+        <tr>
+          <tr class="<%= classname %> tr-sub-back2"><th colspan="2">仕入日</th><th>購入業者</th><th>在庫数</th><th>仕入原価</th><th>編集</th></tr>
+          <% y=1 %>
+        <% stocks.each do |stock| %>
+          <% u=y%2 %>
+          <tr class="<%= classname %> tr-sub-back<%= u %>">
+            <td colspan="2"><%= stock.inventory_arrival_date %></td>
+            <td align="left"><%= stock.trader_name %></td>
+              <td align="right"><%= stock.stock %></td>
+            <td align="right"><%= stock.purchase_price.to_s(:delimited, delimiter: ',') %></td>
+            <td><%= link_to "編集", "/stocks/#{stock.id}/edit" %></td>
+            </tr>
+          <% y=y+1 %>
+        <% end %>
+        </tr>
+        <% end %>
+        <% i=i.to_i+1 %>
+        <% end %>
+        <% end %>
+        </table>

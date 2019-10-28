@@ -11,7 +11,10 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
   end
-
+  def product_scarce
+    @stocks = Stock.all
+    @items=Item.all
+  end
   def import
     begin
       Item.import(params[:file])
