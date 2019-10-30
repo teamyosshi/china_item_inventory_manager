@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   post '/', to:'sessions#create'
   get '/signup',to:'users#new', as: :signup
   post   '/export',    to: 'stocks#csv_export'
-  #delete :items, to: 'items#destroy_many'
+  post   '/scarcecsv_export',    to: 'items#csv_scarceexport'
+  post 'items/item_number',    to: 'items#product_item_number' 
   delete '/items/destroy_many', to: 'items#destroy_many'
   post '/stocks/update',    to: 'stocks#update'
   #get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control

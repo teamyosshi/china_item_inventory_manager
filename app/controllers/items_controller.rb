@@ -26,6 +26,21 @@ class ItemsController < ApplicationController
     end
     redirect_to "/users/#{current_user.id}/inventory_control"
   end
+  def product_scarce
+    @items=Item.includes(:stocks)
+  end
+  
+  def product_item_number
+    item=Item.find(params[:id])
+    item.part_number=params[:part_number]
+    item.save
+    flash[:success] = "製品番号を変更しました"
+    redirect_to "/users/#{current_user.id}/product_scarce"
+  end
+  #僅少商品のみ
+  def csv_scarceexport
+      @items=Item.all
+  end
 
   # GET /items/new
   def new
