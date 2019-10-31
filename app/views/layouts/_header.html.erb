@@ -12,7 +12,7 @@
         <li><%#= link_to "リサーチ", item_research_path %></li>
         <li><%= link_to "商品棚卸", stock_path(current_user) %></li>
         <li><%#= link_to "商品仕入", stocking_path %></li>
-        <li><%#= link_to "商品僅少", product_scarce_path %></li>
+        <li><%= link_to "商品僅少", product_scarce_path(current_user)  %></li>
         <li><%#= link_to "売切リスト", sold_out_path %></li>
         <li><%= link_to "ユーザー一覧", users_path %></li>
         <li class="dropdown">

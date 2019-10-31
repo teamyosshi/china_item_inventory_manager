@@ -155,7 +155,6 @@ p {
         border:2px dotted #ffffff;
         color:black;
         line-height:1.5em;
-        text-align:center;
 }
 
 #file {
@@ -179,9 +178,12 @@ p {
   font-weight: bold;
   border: solid 2px #d27d00;/*線色*/
 }
+
+
 .btn-square-so-pop.red {
   background: red;/*色*/
 }
+
 .table-back{
   background-color: #FFEEFF;  /* 背景色指定 */
   border-color: black

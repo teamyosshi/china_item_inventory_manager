@@ -53,7 +53,7 @@ end
 #ストックサンプルデータ取込
 Stock.create!(
             inventory_arrival_date: '2019-04-24',
-            purchase_price:100,
+            purchase_price:3500,
             trader_name:"龍",
             stock:15,
             original_stock: 100,
@@ -101,9 +101,9 @@ Item.create!(item_number: "モペット版 電動機付自転車",
 #ストックサンプルデータ取込
 Stock.create!(
             inventory_arrival_date: '2019-04-24',
-            purchase_price:100,
+            purchase_price:3500,
             trader_name:"龍",
-            stock:15,
+            stock:10,
             alert_border_line:3,item_id:2)
 Stock.create!(
             inventory_arrival_date: '2019-05-24',

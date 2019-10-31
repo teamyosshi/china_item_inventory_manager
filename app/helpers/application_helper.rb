@@ -1,6 +1,9 @@
 module ApplicationHelper
   # https://freesworder.net/rails-link-a/ 　参照
   require "uri"
+  require 'nokogiri'
+  require 'open-uri'
+  
   def text_url_to_link text
     URI.extract(text, ['http','https'] ).uniq.each do |url|
       sub_text = ""
@@ -18,5 +21,11 @@ module ApplicationHelper
     ex=ex+"yahooshoping" if yahooshoping
     ex="なし" if ex.blank?
     ex
+  end
+  def chanarate(k)
+    url = 'https://info.finance.yahoo.co.jp/fx/detail/?code=CNHJPY=FX'
+    doc = Nokogiri::HTML(open(url))
+    bid = doc.xpath("//*[@id='CNHJPY_detail_bid']").text
+    bid.to_i*k
   end
 end
