@@ -26,6 +26,6 @@ module ApplicationHelper
     url = 'https://info.finance.yahoo.co.jp/fx/detail/?code=CNHJPY=FX'
     doc = Nokogiri::HTML(open(url))
     bid = doc.xpath("//*[@id='CNHJPY_detail_bid']").text
-    bid*k
+    bid.to_i*k
   end
 end

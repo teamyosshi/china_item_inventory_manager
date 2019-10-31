@@ -20,11 +20,11 @@ function show_hide_row(row) {
   <tr>
     <td width=50></td>
     <td width=50><%= button_to "エクスポート", {controller: 'items', action: 'csv_scarceexport',items: @item,format: :csv}, {method: :post, class: "btn-square-so-pop"} %></td>
-    <td width=600 align="left"></td>
-    <td>
+    <td width=260></td>
+    <td width=630>
       <div style="display:inline-flex">
-        <div class="btn btn-warning">現在の想定レート</div>
-        <input type="text" name="名前" readonly value=<%=chanarate(1) %> style="width:70px;"></input>
+        <button class="btn-square-so-pop"  style="height:35px; width:140px;"  disabled>現在の想定レート</button>
+        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px;"></input>
       </div>
     </td>
   </tr>
