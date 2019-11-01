@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  protect_from_forgery except: :destroy_many # destroy_manyアクションを除外
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -41,6 +42,10 @@ class ItemsController < ApplicationController
   def csv_scarceexport
       @items=Item.all
   end
+  
+  def sold_out
+    @items=Item.includes(:stocks)
+  end
 
   # GET /items/new
   def new
@@ -82,7 +87,7 @@ class ItemsController < ApplicationController
       else
         flash[:warning] = "失敗しました"
       end
-      redirect_to "/users/#{current_user.id}/inventory_control"
+      redirect_to request.referer
   end
   
   def destroy

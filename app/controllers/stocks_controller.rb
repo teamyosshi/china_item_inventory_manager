@@ -111,7 +111,7 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:inventory_arrival_date, :purchase_price, :trager_name, :stock, :alert_border_line, :item_number_id)
+      params.require(:stock).permit(:inventory_arrival_date, :purchase_price, :trader_name, :stock, :alert_border_line, :item_number_id)
     end
     def unlesslogin
       if current_user.nil?
