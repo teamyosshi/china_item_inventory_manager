@@ -1,7 +1,6 @@
 require 'csv'
 # bomを作成
 bom = %w(EF BB BF).map { |e| e.hex.chr }.join
-
 # generateで引数にbomを渡してあげる
 csv_file = CSV.generate(bom) do |csv|
   csv << ["僅少商品一覧"]
