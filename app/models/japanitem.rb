@@ -1,0 +1,2 @@
+class Japanitem < ApplicationRecord
+end
