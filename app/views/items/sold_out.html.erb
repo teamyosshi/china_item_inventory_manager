@@ -48,13 +48,13 @@ function show_hide_row(row) {
   <% i=1 %>
   <% @items.each do |item| %>
   <% if item.stocks.sum(:stock)==0 %>
-  <% yahoo=item.yahoo %>
-  <% amazon=item.amazon %>
-  <% mercari=item.mercari %>
-  <% rakuma=item.rakuma %>
-  <% rakuten=item.rakuten %>
-  <% yahooshoping=item.yahooshoping %>
-  <% k=i%2 %>
+    <% yahoo=item.yahoo %>
+    <% amazon=item.amazon %>
+    <% mercari=item.mercari %>
+    <% rakuma=item.rakuma %>
+    <% rakuten=item.rakuten %>
+    <% yahooshoping=item.yahooshoping %>
+    <% k=i%2 %>
   <tr class="tr-back<%= k %>">
     <td align="center" style="padding: 3px;"><%= check_box_tag "deletes[#{ item.id }]", item.id %></td>
     <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
