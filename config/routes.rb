@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/signup',to:'users#new', as: :signup
   post   '/export',    to: 'stocks#csv_export'
   post   '/scarcecsv_export',    to: 'items#csv_scarceexport'
+  post   '/soldoutcsv_export',    to: 'items#csv_soldoutexport'
   post 'items/item_number',    to: 'items#product_item_number' 
   delete '/items/destroy_many', to: 'items#destroy_many'
   post '/stocks/update',    to: 'stocks#update'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   get 'users/:id/product_inventory', to:'stocks#product_inventory', as: :stock
   get'users/:id/research', to:'researches#stocking', as: :stocking
   get 'users/:id/product_scarce', to:'items#product_scarce', as: :product_scarce
-  get 'users/:id/sold_out', to: 'stocks#sold_out', as: :sold_out
+  get 'users/:id/sold_out', to: 'items#sold_out', as: :sold_out
   get 'users', to: 'users#index', as: :index
   get 'users/:id/edit', to:'users#edit', as: :edit
   delete '/logout', to:'sessions#destroy'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get "/product_registration", to: 'researches#product_registration', as: :product_registration
     resources :researches
   resources :stocks
+  resources :items
   resources :items do
     collection { post :import }
   end

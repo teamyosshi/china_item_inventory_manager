@@ -3,10 +3,10 @@ require 'csv'
 bom = %w(EF BB BF).map { |e| e.hex.chr }.join
 # generateで引数にbomを渡してあげる
 csv_file = CSV.generate(bom) do |csv|
-  csv << ["僅少商品一覧"]
+  csv << ["売切れ商品一覧"]
   csv << ["商品画像", "製品コード", "商品タイトル","在庫計","限定価格","出品サイト"]
   @items.each do |b|
-    if b.stocks.sum(:stock)<25
+    if b.stocks.sum(:stock)==0
       yahoo=b.yahoo
 	    amazon=b.amazon
 	    mercari=b.mercari

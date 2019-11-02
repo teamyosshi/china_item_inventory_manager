@@ -18,8 +18,9 @@ function show_hide_row(row) {
 <table>
   <tr>
     <td width=50></td>
-    <td width=50><%= button_to "エクスポート", {controller: 'items', action: 'csv_scarceexport',items: @item,format: :csv}, {method: :post, class: "btn-square-so-pop"} %></td>
-    <td width=260></td>
+    <td width=50><%= button_to "エクスポート", {controller: 'items', action: 'csv_soldoutexport',items: @item,format: :csv}, {method: :post, class: "btn-square-so-pop"} %></td>
+    <td width=260> <%= form_with(url: "/items/destroy_many", method: :delete, local: true) do |form| %>
+      <%= form.submit '一括削除', class: 'btn-square-so-pop red',data: { confirm: '本当に削除しますか？' } %></td>
     <td width=630>
       <div style="display:inline-flex">
         <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
@@ -30,30 +31,32 @@ function show_hide_row(row) {
 </table>
 <% if @items.present? %>
 <ul class="inner">
-  <div class="kousin2">
+  <div class="kousin2" >
     <table table border="1" id="table_detail">
       <thead>
         <tr class="tr-back2">
-          <td align="center" width="5" width="30">商品画像</th>
-          <td align="center" width="150">製品コード</th>
-          <td align="center" width="250">商品タイトル</th>
-          <td align="center" width="60">在庫計</th>
-          <td align="center" width="80">想定価格</th>
+          <td width="40">削除</th>
+          <td align="center" width="70">商品画像</th>
+          <td align="center" width="100">製品コード</th>
+          <td align="center" width="400">商品タイトル</th>
+          <td align="center" width="100">在庫計</th>
+          <td align="center" width="100">想定価格</th>
           <td align="center" width="170">出品サイト</th>
         </tr>
       </thead>
   </div>
   <% i=1 %>
   <% @items.each do |item| %>
-  <% if item.stocks.sum(:stock)<25 %>
-  <% yahoo=item.yahoo %>
-  <% amazon=item.amazon %>
-  <% mercari=item.mercari %>
-  <% rakuma=item.rakuma %>
-  <% rakuten=item.rakuten %>
-  <% yahooshoping=item.yahooshoping %>
-  <% k=i%2 %>
+  <% if item.stocks.sum(:stock)==0 %>
+    <% yahoo=item.yahoo %>
+    <% amazon=item.amazon %>
+    <% mercari=item.mercari %>
+    <% rakuma=item.rakuma %>
+    <% rakuten=item.rakuten %>
+    <% yahooshoping=item.yahooshoping %>
+    <% k=i%2 %>
   <tr class="tr-back<%= k %>">
+    <td align="center" style="padding: 3px;"><%= check_box_tag "deletes[#{ item.id }]", item.id %></td>
     <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
       <% if item.item_picture.present? %>
         <% uri=URI.parse(item.item_picture) %>
@@ -62,12 +65,8 @@ function show_hide_row(row) {
         <%= image_tag item.item_picture, :size =>'50x25' %>
       <% end %>
     </td>
-    <td align="center" style="padding: 2px;">
-      <%= form_with(url: items_item_number_path, method: :post, local: true) do |form| %>
-        <%= form.text_field :part_number, value: item.part_number,style:"width: 100px;" %>
-        <%= form.hidden_field :id, value: item.id %>
-        <%= form.submit '変更', class: 'btn btn-primary btn-sm' %>
-      <% end %>
+    <td align="center" style="padding: 2px;" align="center">
+        <%= link_to item.part_number, "/items/#{item.id}/edit" %>
     </td>
     <td><%= item.item_title%></td>
     <td align="right">
@@ -79,12 +78,12 @@ function show_hide_row(row) {
   <% classname="hidden_row hidden_row"+i.to_s %>
   <% if stocks.count>0 %>
   <tr>
-  <tr class="<%= classname %> tr-sub-back2">
-    <td align="center" colspan="2">仕入日</th>
+  <tr class="<%= classname %> tr-sub-back2" align="center">
+    <th colspan="2">仕入日</th>
     <td align="center">購入業者</th>
     <td align="center">在庫数</th>
     <td align="center">仕入原価</th>
-    <td align="center">仕入原価合計</th>
+    <td >仕入原価合計</th>
   </tr>
   <% y=1 %>
   <% stocks.each do |stock| %>
@@ -100,6 +99,7 @@ function show_hide_row(row) {
   <% end %>
   <% end %>
   <% i=i.to_i+1 %>
+  <% end %>
   <% end %>
   <% end %>
   <% end %>

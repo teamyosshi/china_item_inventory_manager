@@ -13,6 +13,7 @@ module ApplicationHelper
     return text
   end
   def exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping)
+    ex=""
     ex="yahoo " if yahoo
     ex=ex+"amazon " if amazon
     ex=ex+"mercari " if mercari
