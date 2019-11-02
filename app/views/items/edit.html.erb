@@ -1,54 +1,48 @@
 <h1>商品データ更新</h1>
 <div class="col-md-6 col-md-offset-4">
 <%= form_for(@item, url:{controller:'items', action:'update'}) do |form| %>
- 
 <div class="field">
-    <%= form.label :part_number,"製品番号" %>
-    <%= form.text_field :part_number %>
+  <%= form.label :part_number,"製品番号" %>
+  <%= form.text_field :part_number %>
 </div>
 <div class="field">
-    <%= form.label :item_title,"商品名" %>
-    <%= form.text_field :item_title, :size=>"50" %>
+  <%= form.label :item_title,"商品名" %>
+  <%= form.text_field :item_title, :size=>"50" %>
   </div>
-  <div class="field">
-    <%= form.label :simulate_price,"想定価格" %>
-    <%= form.number_field :simulate_price %>
-  </div>
+<div class="field">
+  <%= form.label :simulate_price,"想定価格" %>
+  <%= form.number_field :simulate_price %>
+</div>
 --------出品サイト-----------
-  <div class="field">
-    <%= form.label :yahoo %>
-    <%= form.check_box :yahoo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amazon %>
-    <%= form.check_box :amazon %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mercari,"メルカリ" %>
-    <%= form.check_box :mercari %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rakuma,"ラクマ" %>
-    <%= form.check_box :rakuma %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rakuten,"楽天" %>
-    <%= form.check_box :rakuten %>
-  </div>
-
-  <div class="field">
-    <%= form.label :yahooshoping,"ヤフーショッピング" %>
-    <%= form.check_box :yahooshoping %>
-  </div>
+<div class="field">
+  <%= form.label :yahoo %>
+  <%= form.check_box :yahoo %>
+</div>
+<div class="field">
+  <%= form.label :amazon %>
+  <%= form.check_box :amazon %>
+</div>
+<div class="field">
+  <%= form.label :mercari,"メルカリ" %>
+  <%= form.check_box :mercari %>
+</div>
+<div class="field">
+  <%= form.label :rakuma,"ラクマ" %>
+  <%= form.check_box :rakuma %>
+</div>
+<div class="field">
+  <%= form.label :rakuten,"楽天" %>
+  <%= form.check_box :rakuten %>
+</div>
+<div class="field">
+  <%= form.label :yahooshoping,"ヤフーショッピング" %>
+  <%= form.check_box :yahooshoping %>
+</div>
   <p>
     <%= form.submit "更新する", :class=> 'btn btn-primary', :size=>'10px' %>
   </p>
-  <p>
-  <A HREF="javascript:history.back()">前のページに戻る</A>
-  </p>
+<p>
+<A HREF="javascript:history.back()">前のページに戻る</A>
+</p>
 <% end %>
 </div>
