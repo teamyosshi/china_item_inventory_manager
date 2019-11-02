@@ -13,6 +13,6 @@ csv_file = CSV.generate(bom) do |csv|
 	  rakuten=b.rakuten
 	  yahooshoping=b.yahooshoping
     ex=exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping)
-    csv << [b.item_picture, b.part_number, b.item_number,b.stocks.sum(:stock).to_s,b.simulate_price.to_s,ex]
+    csv << [b.item_picture, b.part_number, b.item_title,b.stocks.sum(:stock).to_s,b.simulate_price.to_s,ex]
   end
 end
