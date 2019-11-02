@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/signup',to:'users#new', as: :signup
   post   '/export',    to: 'stocks#csv_export'
   post   '/scarcecsv_export',    to: 'items#csv_scarceexport'
+  post   '/soldoutcsv_export',    to: 'items#csv_soldoutexport'
   post 'items/item_number',    to: 'items#product_item_number' 
   delete '/items/destroy_many', to: 'items#destroy_many'
   post '/stocks/update',    to: 'stocks#update'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get "/product_registration", to: 'researches#product_registration', as: :product_registration
     resources :researches
   resources :stocks
+  resources :items
   resources :items do
     collection { post :import }
   end

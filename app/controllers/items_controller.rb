@@ -43,6 +43,11 @@ class ItemsController < ApplicationController
       @items=Item.all
   end
   
+  #売切れ商品一覧
+  def csv_soldoutexport
+      @items=Item.all
+  end
+  
   def sold_out
     @items=Item.includes(:stocks)
   end
@@ -73,7 +78,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    
+    if @item.update(item_params)
+       flash[:success] = "商品データを変更しました"
+       redirect_to "/users/#{current_user.id}/sold_out"
+    else
+        flash[:warning] = "更新に失敗しました"
+        render 'edit'
+    end
   end
   
   def destroy_many
