@@ -1,77 +1,52 @@
-<%= form_with(model: item, local: true) do |form| %>
-  <% if item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_with(model: item, url: items_path, method: :post, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :item_title %>
+      <%= form.text_field :item_title, class:"form-control" %>
+    </div>
 
-      <ul>
-      <% item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="field">
+      <%= form.label :part_number %>
+      <%= form.text_field :part_number, class:"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :simulate_price %>
+      <%= form.text_field :simulate_price, class:"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :item_picture %>
+      <%= form.text_field :item_picture, class:"form-control" %>
+    </div>
+    <%= form.fields_for :stocks do |stock| %>
+      <div class="field">
+        <%= stock.label :buy_item_to_jpy %>
+        <%= stock.number_field :buy_item_to_jpy, class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= stock.label :buy_item_title %>
+        <%= stock.text_field :buy_item_title, class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= stock.label :buy_item_url %>
+        <%= stock.text_field :buy_item_url, class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= stock.label :buy_item_to_cny %>
+        <%= stock.number_field :buy_item_to_cny, class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= stock.label :buy_item_image_url %>
+        <%= stock.text_field :buy_item_image_url, class:"form-control" %>
+      </div>
       <% end %>
-      </ul>
+    <div class="actions">
+      <%= form.submit "商品作成" , class:"btn btn-primary btn-block" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :item_number %>
-    <%= form.text_field :item_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :item_image %>
-    <%= form.text_field :item_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :china_item_image %>
-    <%= form.text_field :china_item_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :part_number %>
-    <%= form.text_field :part_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :jan_code %>
-    <%= form.number_field :jan_code %>
-  </div>
-
-  <div class="field">
-    <%= form.label :simulate_price %>
-    <%= form.number_field :simulate_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :yahoo %>
-    <%= form.check_box :yahoo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amazon %>
-    <%= form.check_box :amazon %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mercari %>
-    <%= form.check_box :mercari %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rakuma %>
-    <%= form.check_box :rakuma %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rakuten %>
-    <%= form.check_box :rakuten %>
-  </div>
-
-  <div class="field">
-    <%= form.label :yahooshoping %>
-    <%= form.check_box :yahooshoping %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

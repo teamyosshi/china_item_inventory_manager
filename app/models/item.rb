@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
   has_many :stocks, dependent: :destroy
+  accepts_nested_attributes_for :stocks
   validates :simulate_price, numericality: true
+  validates :item_title, presence: true
+  validates :part_number, presence: true
+  validates :simulate_price, presence: true
 
   def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索

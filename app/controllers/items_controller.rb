@@ -51,10 +51,13 @@ class ItemsController < ApplicationController
   def sold_out
     @items=Item.includes(:stocks)
   end
-
+  
+  def product_registration
+    @item = Item.new
+    @item.stocks.build
+  end
   # GET /items/new
   def new
-    @item = Item.new
   end
 
   # GET /items/1/edit
@@ -64,16 +67,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    @item = Item.new(item_create_params)
+    if @item.save
+      flash[:sucuess] = "商品の作成に成功しました。"
+      redirect_to items_path
+    else
+      flash[:danger] = "商品作成に失敗しました。再度やり直してください。"
+      render "/items/product_registration"
     end
   end
 
@@ -100,9 +100,8 @@ class ItemsController < ApplicationController
       end
       redirect_to request.referer
   end
-  
+
   def destroy
-    
   end
 
   private
@@ -114,5 +113,9 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:item_number, :item_image, :china_item_image, :part_number, :jan_code, :simulate_price, :yahoo, :amazon, :mercari, :rakuma, :rakuten, :yahooshoping)
+    end
+
+    def item_create_params
+      params.require(:item).permit(:item_title, :part_number, :simulate_price, :item_picture, stocks_attributes: [:id, :buy_item_title, :buy_item_url, :buy_item_to_jpy, :buy_item_to_cny, :buy_item_image_url])
     end
 end
