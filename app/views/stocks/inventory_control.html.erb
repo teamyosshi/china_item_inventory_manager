@@ -161,7 +161,7 @@
             <td colspan="2"><%= stock.inventory_arrival_date %></td>
             <td><%= stock.trader_name %></td>
               <td><%= stock.stock %></td>
-            <td><%= stock.purchase_price.to_s(:delimited, delimiter: ',') %></td>
+            <td><%= stock.purchase_price.to_s(:delimited, delimiter: ',') if stock.purchase_price.present? %></td>
             <td><%= link_to "編集", "/stocks/#{stock.id}/edit" %></td>
             </tr>
           <% y=y+1 %>

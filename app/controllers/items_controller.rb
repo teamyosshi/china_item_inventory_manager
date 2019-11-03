@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_create_params)
     if @item.save
       flash[:sucuess] = "商品の作成に成功しました。"
-      redirect_to items_path
+      redirect_to inventory_control_path(current_user)
     else
       flash[:danger] = "商品作成に失敗しました。再度やり直してください。"
       render "/items/product_registration"
