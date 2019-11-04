@@ -14,7 +14,8 @@ gem 'mechanize'
 gem 'rails-i18n'
 gem 'jquery-rails', '4.3.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', groups: %w(test development), require: false
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
