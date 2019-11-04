@@ -31,12 +31,12 @@
       </thead>
   </div>
   <% i=1 %>
-  <% @buyitems.each do |buytime| %>
+  <% @buyitems.each do |buyitem| %>
   <% k=i%2 %>
   <tr class="tr-back<%= k %>">
     <td align="center" style="padding: 2px;">
     </td>
-    <td align="left"><%= buytime.japan_title%></td>
+    <td align="left"><%= buyitem.japan_title%></td>
     <td></td>
     <td align="right">
       <%#= item.stocks.sum(:stock)  %></td>
