@@ -51,11 +51,23 @@
     <%= form.password_field :password_confirmation, class:"form-control" %>
   </div>
   <% if current_user.admin? %>
-  <p>雇用形態を選択してください(複数選択可)</p>
+    <div class="field">
+      <%= form.label :account_bank_name, class:"administrator" %>
+      <%= form.text_field :account_bank_name, class:"form-control" %>
+    </div>
+    <div class="field">
+      <%= form.label :account_number, class:"administrator" %>
+      <%= form.number_field :account_number, class:"form-control" %>
+    </div>
+    <div class="field">
+      <%= form.label :business_consignment_expenses, class:"administrator" %>
+      <%= form.number_field :business_consignment_expenses, class:"form-control" %>
+    </div>
+  <p class = "administrator">雇用形態を選択してください(複数選択可)</p>
   <div class="field　form-inline" >
-  <label class="checkbox-inline"><%= form.check_box :inventory_manager_flg %>在庫管理</label>
+  <label class="checkbox-inline administrator"><%= form.check_box :inventory_manager_flg %>在庫管理</label>
 
-  <label class="checkbox-inline"><%= form.check_box :reserch_user_flg %>リサーチ</label>
+  <label class="checkbox-inline administrator"><%= form.check_box :reserch_user_flg %>リサーチ</label>
   </div>
   <% end %>
   <div class="actions" id="action">
