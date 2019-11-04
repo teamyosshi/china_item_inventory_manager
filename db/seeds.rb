@@ -150,3 +150,14 @@ TakeInventory.create!(
   beginning_product_inventory:2018,
   cost_of_sales:2018,
   period_end_product_inventory:2018)
+Buyitem.create!(
+            japan_image_url:"https://img.alicdn.com/imgextra/i4/850320452/O1CN01glcs1m1FD3agMdVMw_!!850320452.jpg",
+            japan_title:"純正 YAMAHA ヤマハ f310 バラードウッドギター",
+            japan_url:"https://chinamart.jp/tmall_item?iid=20525092687&key=15dfecc5d9b49932afe67bdc012b3dd5&sellerid=850320452",
+            japan_description:"純正 YAMAHA ヤマハ f310 バラードウッドギター初心者入門学生男性と女性の電気ボックス",
+            japan_price:17719,
+            china_image_url:"http://img.alicdn.com/bao/uploaded/i1/850320452/O1CN01JtIz7S1FD3akD8Q9K_!!0-item_pic.jpg_160x160.jpg",
+            china_title:"正品YAMAHA雅马哈f310民谣木吉他初学者入门学生男女电箱41寸f600",
+            china_url:"https://chinamart.jp/tmall_item?iid=20525092687&key=15dfecc5d9b49932afe67bdc012b3dd5&sellerid=850320452",
+            china_price:899,
+            user_id:1)

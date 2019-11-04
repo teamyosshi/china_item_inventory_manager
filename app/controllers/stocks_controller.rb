@@ -15,6 +15,9 @@ class StocksController < ApplicationController
       @items_find=Item.includes(:stocks).search(params[:search])
     end
   end
+  def buyitem
+    @buyitems = Buyitem.all
+  end
 
   def csv_export
     find=params[:items_find]

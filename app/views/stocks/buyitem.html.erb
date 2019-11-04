@@ -1,0 +1,61 @@
+<table>
+  <tr>
+    <td width=50></td>
+    <td width=630>
+      <div style="display:inline-flex">
+        <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
+        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px;"></input>
+      </div>
+    </td>
+    <td width=260></td>
+    <td width=30>
+      
+    </td>
+  </tr>
+</table>
+<%# if @buyitems.present? %>
+<ul class="inner">
+  <div class="kousin2">
+    <table table border="1" id="table_detail">
+      <thead>
+        <tr class="tr-back2">
+          <td align="center" width="5" width="30">商品画像</td>
+          <td align="center" width="150">商品タイトル(日本)</td>
+          <td align="center" width="40">リサーチ額></td>
+          <td align="center" width="60">仕入先画像</td>
+          <td align="center" width="80">商品タイトル(中国)</td>
+          <td align="center" width="20">仕入URL</td>
+          <td align="center" width="40">仕入原価(日本円)</td>
+          <td align="center" width="40">仕入原価(中国元)</td>
+        </tr>
+      </thead>
+  </div>
+  <% i=1 %>
+  <% @buyitems.each do |buytime| %>
+  <% k=i%2 %>
+  <tr class="tr-back<%= k %>">
+    <td align="center" style="padding: 2px;">
+    </td>
+    <td align="left"><%= buytime.japan_title%></td>
+    <td></td>
+    <td align="right">
+      <%#= item.stocks.sum(:stock)  %></td>
+    <td align="right"></td>
+    <td></td>
+  </tr>
+  <% i=i.to_i+1 %>
+  <% end %>
+  <%# end %>
+  </table>
+  <br>
+  <table align="right" style="margin-right:120px">
+    <tr><td>
+      <div class="reserch_btn">
+      <p class="reserch_p">⬇商品登録ページへ️️️</p>
+      <%= link_to product_registration_path(current_user), target: "_blank" do %>
+        <img src= "https://i1.wp.com/sozaikoujou.com/wordpress/wp-content/uploads/2016/06/th_app_button_plus.jpg?w=600&ssl=1"  border="0", class="reserch_btn_btn" />
+      <% end %>
+      </div>
+    </td></tr>
+  </table>
+
