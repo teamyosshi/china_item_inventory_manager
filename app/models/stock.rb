@@ -1,5 +1,5 @@
 class Stock < ApplicationRecord
-  belongs_to :item
+  belongs_to :item ,optional: true
 
   def self.takeinventory_find
     @this_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @this_year)

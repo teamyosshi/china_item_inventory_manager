@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to:'users#edit', as: :edit
   delete '/logout', to:'sessions#destroy'
   post "takeinventory/:id", to:'take_inventory#update', as: :takeinventory_update
-  get "/product_registration", to: 'researches#product_registration', as: :product_registration
+  get "/items/product_registration", to: 'items#product_registration', as: :product_registration
     resources :researches
   resources :stocks
   resources :items

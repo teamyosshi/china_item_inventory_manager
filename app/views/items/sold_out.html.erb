@@ -92,8 +92,8 @@ function show_hide_row(row) {
     <td colspan="2"><%= stock.inventory_arrival_date %></td>
     <td align="left"><%= stock.trader_name %></td>
     <td align="right"><%= stock.stock %></td>
-    <td align="right"><%= stock.purchase_price.to_s(:delimited, delimiter: ',') %></td>
-    <td align="right"><%= (stock.purchase_price*stock.stock).to_s(:delimited, delimiter: ',') %></td>
+    <td align="right"><%= stock.purchase_price.to_s(:delimited, delimiter: ',') if stock.purchase_price.present? %></td>
+    <td align="right"><%= (stock.purchase_price*stock.stock).to_s(:delimited, delimiter: ',') if stock.purchase_price.present? %></td>
     </tr>
     <% y=y+1 %>
   <% end %>

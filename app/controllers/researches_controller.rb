@@ -115,8 +115,6 @@ class ResearchesController < ApplicationController
     redirect_to item_research_url(japan_min_price: japan_min_price, japan_max_price: japan_max_price)
   end
 
-  def product_registration
-  end
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_research

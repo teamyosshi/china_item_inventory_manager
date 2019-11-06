@@ -91,7 +91,7 @@ Stock.create!(
             original_stock: 100,
             stock:25,
             alert_border_line:3,item_id:4)
-Item.create!(item_number: "モペット版 電動機付自転車",
+Item.create!(item_title: "モペット版 電動機付自転車",
              item_picture: "https://image.rakuten.co.jp/aruzan/cabinet/goods_photo/bike/eb/img57986231.jpg",
              part_number: "B079eert",
              jan_code: "0773602522838",
