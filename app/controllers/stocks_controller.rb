@@ -15,7 +15,7 @@ class StocksController < ApplicationController
       @items_find=Item.includes(:stocks).search(params[:search])
     end
   end
-
+  
   def csv_export
     find=params[:items_find]
     if find.present?
@@ -24,7 +24,9 @@ class StocksController < ApplicationController
       @items_find2=Item.all
     end
   end
-
+  def buyitem
+    @buyitems=Buyitem.all
+  end
   def product_inventory
     @this_year = Date.today.year.to_s
     @prev_year = Date.today.prev_year.year.to_s

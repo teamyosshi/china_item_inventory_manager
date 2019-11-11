@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/stocks/update',    to: 'stocks#update'
   #get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control
   get 'users/:id/inventory_control', to:'stocks#inventory_control', as: :inventory_control
+  get 'users/:id/buyitem', to:'stocks#buyitem', as: :buyitem
   get 'users/:id/item_research', to:'researches#item_research', as: :item_research
   get 'users/:id/product_inventory', to:'stocks#product_inventory', as: :stock
   get'users/:id/research', to:'researches#stocking', as: :stocking
