@@ -22,9 +22,9 @@ function show_hide_row(row) {
     <td width=260> <%= form_with(url: "/items/destroy_many", method: :delete, local: true) do |form| %>
       <%= form.submit '一括削除', class: 'btn-square-so-pop red',data: { confirm: '本当に削除しますか？' } %></td>
     <td width=630>
-      <div style="display:inline-flex">
+     <div style="display:inline-flex">
         <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
-        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px;"></input>
+        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px; text-align: center;"></input>
       </div>
     </td>
   </tr>

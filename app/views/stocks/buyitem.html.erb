@@ -1,0 +1,54 @@
+
+<table>
+  <tr>
+    <td width=50></td>
+    <td width=630>
+      <div style="display:inline-flex">
+        <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
+        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px; text-align: center;"></input>
+      </div>
+    </td>
+    <td width=260></td>
+    <td width=30></td>
+  </tr>
+</table>
+<% if @buyitems.present? %>
+<ul class="inner">
+  <div class="kousin2">
+    <table table border="1" id="table_detail">
+      <thead>
+        <tr class="tr-back2">
+          <td align="center" width="5" width="30">商品画像</td>
+          <td align="center" width="80">商品タイトル(日本)</td>
+          <td align="center" width="70">リサーチ額</td>
+          <td align="center" width="60">仕入画像</td>
+          <td align="center" width="80">商品タイトル(中国)</td>
+          <td align="center" width="40">URL</td>
+          <td align="center" width="65">中国元原価</td>
+          <td align="center" width="100">備考</td>
+        </tr>
+      </thead>
+  </div>
+  <% i=1 %>
+  <% @buyitems.each do |buyitem| %>
+  <% k=i%2 %>
+    <tr class="tr-back<%= k %>">
+     <td align="center" style="padding: 1px;">
+      <%= image_tag buyitem.japan_image_url, :size =>'90x45' if buyitem.japan_image_url.present? %>
+      </td>
+      <td><%= buyitem.japan_title%></td>
+      <td align="right"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
+      <td align="center" style="padding: 1px;">
+        <%= image_tag buyitem.china_image_url, :size =>'90x45' if buyitem.china_image_url.present? %>
+      </td>
+      <td><%=buyitem.china_title %></td>
+      <td align="center"><%= link_to "サイト", buyitem.china_url, target: :_blank %></td>
+      <td align="right"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')  if buyitem.china_price.present?%></td>
+      <td><%=buyitem.japan_description %></td>
+    </tr>
+  <% i=i.to_i+1 %>
+  <% end %>
+  <% end %>
+  </table>
+  <br>
+
