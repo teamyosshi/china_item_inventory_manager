@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_213715) do
+ActiveRecord::Schema.define(version: 2019_11_03_043808) do
+
+  create_table "buyitems", force: :cascade do |t|
+    t.string "japan_image_url"
+    t.string "japan_title"
+    t.string "japan_url"
+    t.string "japan_description"
+    t.integer "japan_price"
+    t.string "china_image_url"
+    t.string "china_title"
+    t.string "china_url"
+    t.integer "china_price"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_buyitems_on_user_id"
+  end
+
+  create_table "chinaitems", force: :cascade do |t|
+    t.string "image_url"
+    t.string "title"
+    t.string "url"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "item_number"
@@ -26,6 +51,16 @@ ActiveRecord::Schema.define(version: 2019_09_25_213715) do
     t.boolean "rakuma"
     t.boolean "rakuten"
     t.boolean "yahooshoping"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "japanitems", force: :cascade do |t|
+    t.string "image_url"
+    t.string "title"
+    t.string "url"
+    t.string "description"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,11 +86,29 @@ ActiveRecord::Schema.define(version: 2019_09_25_213715) do
     t.integer "purchase_price"
     t.string "trader_name"
     t.integer "stock"
+    t.integer "original_stock"
     t.integer "alert_border_line"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "item_number"
+    t.string "part_number"
+    t.integer "simulate_price"
+    t.string "buy_item_title"
+    t.string "buy_item_url"
+    t.integer "buy_item_to_jpy"
+    t.integer "buy_item_to_cny"
+    t.string "buy_item_image_url"
     t.index ["item_id"], name: "index_stocks_on_item_id"
+  end
+
+  create_table "take_inventories", force: :cascade do |t|
+    t.integer "fiscal_year"
+    t.integer "beginning_product_inventory"
+    t.integer "cost_of_sales"
+    t.string "period_end_product_inventory"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
