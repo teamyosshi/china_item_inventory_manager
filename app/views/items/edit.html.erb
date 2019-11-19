@@ -13,36 +13,40 @@
   <%= form.label :simulate_price,"想定価格" %>
   <%= form.number_field :simulate_price %>
 </div>
---------出品サイト-----------
-<div class="field">
-  <%= form.label :yahoo %>
-  <%= form.check_box :yahoo %>
-</div>
-<div class="field">
-  <%= form.label :amazon %>
-  <%= form.check_box :amazon %>
-</div>
-<div class="field">
-  <%= form.label :mercari,"メルカリ" %>
-  <%= form.check_box :mercari %>
-</div>
-<div class="field">
-  <%= form.label :rakuma,"ラクマ" %>
-  <%= form.check_box :rakuma %>
-</div>
-<div class="field">
-  <%= form.label :rakuten,"楽天" %>
+<b>出品サイト</b>
+<table>
+<tr style="height:30px;">
+<td>
+<%= form.check_box :yahoo %>
+<B>Yahoo</B>
+</td>
+<td>
+<%= form.check_box :amazon %>
+<B>Amazon</B>
+</td>
+<td>
+<%= form.check_box :mercari %>
+<b>メルカリ</b>
+</td>
+<td>
+<%= form.check_box :rakuma %>
+<b>ラクマ</b>
+</td></tr>
+<tr>
+  <td >
   <%= form.check_box :rakuten %>
-</div>
-<div class="field">
-  <%= form.label :yahooshoping,"ヤフーショッピング" %>
+  <b>楽天</b>
+  </td>
+<td colspan="2">
   <%= form.check_box :yahooshoping %>
-</div>
-  <p>
+  <b>ヤフーショッピング</b>
+</td></tr>
+</table>
+  <p><br>
     <%= form.submit "更新する", :class=> 'btn btn-primary', :size=>'10px' %>
+    <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
   </p>
 <p>
-<A HREF="javascript:history.back()">前のページに戻る</A>
 </p>
 <% end %>
 </div>
