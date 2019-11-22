@@ -53,8 +53,9 @@ a {
 }
 
 .img-url {
-  font-size: 12px;
-  font-weight: inherit;
+  overflow-wrap : break-word;
+  #text-align:center;
+  vertical-align: middle;
 }
 
 .img-url2 {
@@ -79,20 +80,9 @@ a {
   vertical-align: middle !important;
 }
 
-table th {
+.td-size {
   overflow-wrap : break-word;
   #text-align:center;
-  vertical-align: middle;
-}
-
-table td {
-  overflow-wrap : break-word;
-  #text-align:center;
-  vertical-align: middle;
-}
-
-.table-row {
-  text-align: center;
   vertical-align: middle;
 }
 
@@ -107,6 +97,9 @@ table td {
 .url-over {
   overflow: scroll;
   white-space: pre-wrap;
+  overflow-wrap : break-word;
+  text-align:center;
+  vertical-align: middle;
 }
 
 .rate {
