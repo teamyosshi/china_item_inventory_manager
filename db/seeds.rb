@@ -183,3 +183,15 @@ Buyitem.create!(
             china_url:"https://chinamart.jp/alibaba_item?iid=598197591869&key=e1af8d68c77b7adcb47023216b078263",
             china_price:78,
             user_id:1)
+Research.create!(
+  japan_image_url:"https://wing-auctions.c.yimg.jp/sim?furl=auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0511/users/c735a94bb47f29584b1c197dfc26f9a9ec0d9725/i-img900x1200-157424669063ltkc124475.jpg&dc=1&sr.fs=20000",
+  japan_title:"PAGANI DESIGN 腕時計クロノグラフ CX-2332-WH",
+  japan_url:"https://page.auctions.yahoo.co.jp/jp/auction/w351371235",
+  japan_price:"1",
+  user_id:1)
+Research.create!(
+  china_image_url:"https://cbu01.alicdn.com/img/ibank/2019/465/787/11637787564_1988683686.460x460xz.jpg",
+  china_title:"新款睫毛夹 卷翘睫毛器充电美妆工具电动烫跨境睫毛夹 厂家直销",
+  china_url:"https://chinamart.jp/alibaba_item?iid=598197591869&key=e1af8d68c77b7adcb47023216b078263",
+  china_price:78,
+  user_id:1)

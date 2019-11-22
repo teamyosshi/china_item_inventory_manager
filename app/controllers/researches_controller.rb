@@ -64,56 +64,54 @@ class ResearchesController < ApplicationController
   # リサーチページ表示
   def item_research
     @user = User.find(params[:id])
-    @researches = Research.paginate(page: params[:page], per_page: 50).order(japan_price: "ASC").where(japan_price: params[:japan_min_price]..params[:japan_max_price])
-    @research = Research.all
+    @researches = Research.paginate(page: params[:page], per_page: 50).order(japan_price: "ASC")
   end
 
   # スクレイピング
   def item_research_scrape
     require 'mechanize'
-    # @user = User.find(params[:id])
-    # Research.delete_all
-    # agent = Mechanize.new
-    # page = agent.get("https://auctions.yahoo.co.jp/search/search?p=#{params[:search]}")
-    # # 配列を作る準備/未定義時0代入
-    # @research_no ||= 0
-    # # リサーチナンバーの配列を作る準備
-    # @research_number_list = []
-    # # 多次元（2次元）ハッシュの初期化　hash["a"]["b"] = 1 => {"a"=>{"b"=>1}}
-    # hash = Hash.new { |h,k| h[k] = {} }
-    # # リサーチ額を絶対パスで取る準備
-    # num = -1
-    # doc = page.search("//li[@class='Product']")
-    # doc.each do |node|
-    #   @research_no += 1
-    #   @research_number_list.push("#{@research_no}")
-    #   # 商品画像取得
-    #   @image = node.css('img')[0].attribute('src').inner_text
-    #   hash["#{@research_no}"][:image] = @image
-    #   # 商品タイトル取得
-    #   @title = node.css('h3 a')[0].attribute('title').inner_text
-    #   hash["#{@research_no}"][:title] = @title
-    #   # リサーチURL習得
-    #   @research_url = node.css('h3')[0].attribute('href').inner_text
-    #   hash["#{@research_no}"][:research_url] = @research_url
-    #   # リサーチ額取得
-    #   @japan_min_price = params[:japan_min_price]
-    #   @japan_max_price = params[:japan_max_price]
-    #   num += 1
-    #   @japan_price = node.search("//span[@class='Product__priceValue u-textRed']")[num].inner_text.gsub(/[^\d]/, "").to_i
-    #   hash["#{@research_no}"][:japan_price] = @japan_price
-    # end
-    # @research_number_list.each do |research_number|
-    #   Research.create(
-    #       japan_title: hash[research_number][:title],
-    #       japan_image_url: hash[research_number][:image],
-    #       japan_url: hash[research_number][:research_url],
-    #       japan_price: hash[research_number][:japan_price],
-    #       user_id: 1)
-    # end
-    # japan_min_price = params[:japan_min_price]
-    # japan_max_price = params[:japan_max_price]
-    # redirect_to item_research_url(japan_min_price: japan_min_price, japan_max_price: japan_max_price)
+    @user = User.find(params[:id])
+     Research.delete_all
+     agent = Mechanize.new
+     page = agent.get("https://auctions.yahoo.co.jp/search/search?p=#{params[:search]}")
+     # 配列を作る準備/未定義時0代入
+     @research_no ||= 0
+     # リサーチナンバーの配列を作る準備
+     @research_number_list = []
+     # 多次元（2次元）ハッシュの初期化　hash["a"]["b"] = 1 => {"a"=>{"b"=>1}}
+     hash = Hash.new { |h,k| h[k] = {} }
+     # リサーチ額を絶対パスで取る準備
+     num = -1
+     doc = page.search("//li[@class='Product']")
+     doc.each do |node|
+       @research_no += 1
+       @research_number_list.push("#{@research_no}")
+       # 商品画像取得
+       @image = node.css('img')[0].attribute('src').inner_text
+       hash["#{@research_no}"][:image] = @image
+       # 商品タイトル取得
+       @title = node.css('h3 a')[0].attribute('title').inner_text
+       hash["#{@research_no}"][:title] = @title
+       # リサーチURL習得
+       @research_url = node.css('h3')[0].attribute('href').inner_text
+       hash["#{@research_no}"][:research_url] = @research_url
+       # リサーチ額取得
+       @japan_min_price = params[:japan_min_price]
+       @japan_max_price = params[:japan_max_price]
+       num += 1
+       @japan_price = node.search("//span[@class='Product__priceValue u-textRed']")[num].inner_text.gsub(/[^\d]/, "").to_i
+       hash["#{@research_no}"][:japan_price] = @japan_price
+     end
+     @research_number_list.each do |research_number|
+       Research.create(
+           japan_title: hash[research_number][:title],
+           japan_image_url: hash[research_number][:image],
+           japan_url: hash[research_number][:research_url],
+           japan_price: hash[research_number][:japan_price],
+           user_id: 1)
+     end
+     japan_min_price = params[:japan_min_price]
+     japan_max_price = params[:japan_max_price]
 
     puts "中国商品・・・・・・・・・・・・・・・・・・・・・"
     agent = Mechanize.new
@@ -130,7 +128,7 @@ class ResearchesController < ApplicationController
     @item_number_list = [@item_no]
     hash = Hash.new { |h,k| h[k] = {} }
 
-    image_url_list.each do |image_url_and_dust|     
+    image_url_list.each do |image_url_and_dust|
       if image_url_and_dust.include?('https://s.alicdn.com/@sc01/')
       @item_no += 1
       #バックスラッシュとかnとかの余計な文字列がはいってしまうので、削除してから特定の文字列が入っているものだけをitems配列にくわえるようにした
@@ -164,7 +162,7 @@ class ResearchesController < ApplicationController
     puts "つづけてタイトルをリサーチします・・・・・・・・・・・・・・・・・・・・・"
     @item_no = 0
     titles_and_dusts = doc.search('//h2/a[@title]').inner_text.gsub(",","_").gsub("  ",",").gsub("\n","").split(',').uniq.to_a
-    titles_and_dusts.each do |title_or_blank|  
+    titles_and_dusts.each do |title_or_blank|
       unless title_or_blank == ""
         @item_no += 1
         puts "#{@item_no}番のタイトルを正常に処理しました。"
@@ -177,7 +175,7 @@ class ResearchesController < ApplicationController
     titles_and_dusts = doc.xpath('//h2/a[@href]').to_html.gsub(" ",",").gsub("\n","").split(',')
     item_urls_and_dusts = titles_and_dusts.select {|x| x.include?("//www.alibaba.com/product-detail/") }
 
-    item_urls_and_dusts.each do |item_url| 
+    item_urls_and_dusts.each do |item_url|
       item_url.slice!(0..5)
       item_url.slice!(-1)
       unless item_url == ""
@@ -190,7 +188,7 @@ class ResearchesController < ApplicationController
     puts "つづけて価格をリサーチします・・・・・・・・・・・・・・・・・・・・・"
     @item_no = 0
     prices_and_dusts = doc.search('//div[@class="price"]/b').text.gsub(" ",",").gsub("\n","").split(',').uniq.to_a
-    prices_and_dusts.each do |price_or_blank|  
+    prices_and_dusts.each do |price_or_blank|
       unless price_or_blank == ""
         @item_no += 1
         puts "#{@item_no}番の価格を正常に処理しました。"
@@ -213,6 +211,22 @@ class ResearchesController < ApplicationController
     redirect_to item_research_url
   end
 
+  def update_resarch
+    @user = User.find(params[:id])
+    if research_update_invaflid?
+      research_update_params.each do |id, item|
+        research = Research.find(id)
+        research.update_attributes(item)
+      end
+      flash[:success] = "リサーチアイテムの設定に成功しました。"
+      redirect_to buyitem_path(current_user)
+    else
+      flash[:danger] = "リサーチアイテムの設定に失敗しました。再度やり直してください。"
+      redirect_to item_research_path(current_user)
+    end
+  end
+
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_research
@@ -221,5 +235,9 @@ class ResearchesController < ApplicationController
 
   def research_params
     params.require(:research).permit(:japan_image_url, :japan_title, :japan_url, :japan_description, :japan_price, :china_image_url, :china_title, :china_url, :china_price, :item_id, :user_id)
+  end
+
+  def research_update_params
+    params.permit(researches: [:jpn_reseach_check , :chn_reseach_check])[:researches]
   end
 end
