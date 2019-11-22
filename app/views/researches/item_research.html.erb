@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-4">
           <div class="text-search-china">
-            <%= f.text_field :"#", placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
+            <%= f.text_field :china_title, placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
             <div class="money-label">
               <label for="number" class="control-label col-md-3">金額</label>
               <select name="num">
@@ -67,10 +67,38 @@
   </div>
   <div class="col-md-12">
     <div class="row">
-      <%= form_with url: "#", method: :get, local: true do |f| %>
+    <!--jQueryでチェックボックスを択一式に。日本リサーチアイテム -->
+    <script type="text/javascript">
+        jQuery(function($){
+            $(function(){
+              $('.japanresearch').on('click', function() {
+                if ($(this).prop('checked')){
+                    // 一旦全てをクリアして再チェックする
+                    $('.japanresearch').prop('checked', false);
+                    $(this).prop('checked', true);
+                }
+              });
+            });
+        });
+    </script>
+    <!--jQueryでチェックボックスを択一式に。中国リサーチアイテム -->
+    <script type="text/javascript">
+        jQuery(function($){
+            $(function(){
+              $('.chinaresearch').on('click', function() {
+                if ($(this).prop('checked')){
+                    // 一旦全てをクリアして再チェックする
+                    $('.chinaresearch').prop('checked', false);
+                    $(this).prop('checked', true);
+                }
+              });
+            });
+        });
+    </script>
+      <%= form_with url: research_update_path, method: :patch, local: true do |f| %>
         <div class="row">
           <div class="col-md-4">
-            <%= f.submit '一括登録ボタン（在庫管理ページへ）', class: "btn btn-primary btn-block" %>
+            <%#= f.submit '一括登録ボタン（在庫管理ページへ）', class: "btn btn-primary btn-block" %>
           </div>
         </div>
         <div class="col-md-6">
@@ -88,27 +116,31 @@
             <!--NOにindexを付ける準備-->
             <% a = 0 %>
             <% @researches.each do |research| %>
-              <tbody>
-                <tr class="table-row">
-                  <th><input type="checkbox" value=""></th>
-                  <td class="img-url">
-                    <%= a += 1 %>
-                    (<%= l(research.created_at, format: :date) %>)
-                  </td>
-                  <td>
-                    <%= image_tag (research.japan_image_url), :size =>'100x100' %>
-                  </td>
-                  <td class="title-height">
-                    <%= research.japan_title %>
-                  </td>
-                  <td class="url-over" width="50">
-                    <%= text_url_to_link(h(research.japan_url)).html_safe %>
-                  </td>
-                  <td>
-                    <%= research.japan_price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse %>円
-                  </td>
-                </tr>
-              </tbody>
+              <%= fields_for "researches[]", research do |rf| %>
+                <% if research.japan_title.presence %>
+                  <tbody>
+                    <tr class="table-row">
+                      <th><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 --><%= rf.check_box :jpn_reseach_check, class: "japanresearch" %></th>
+                      <td class="img-url">
+                        <%= a += 1 %>
+                        (<%= l(research.created_at, format: :date) %>)
+                      </td>
+                      <td>
+                        <img src="<%=(research.japan_image_url) if research.japan_image_url.present? %>"width="100px"height="100px">
+                      </td>
+                      <td class="title-height">
+                        <%= research.japan_title %>
+                      </td>
+                      <td class="url-over" width="50">
+                        <%= text_url_to_link(h(research.japan_url)).html_safe %>
+                      </td>
+                      <td>
+                        <%= research.japan_price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse %>円
+                      </td>
+                    </tr>
+                  </tbody>
+                <% end %>
+              <% end %>
             <% end %>
           </table>
         </div>
@@ -125,23 +157,26 @@
             </tr>
             </thead>
             <% @researches.each do |research| %>
-              <tbody>
-              <tr class="table-row">
-                <th><input type="checkbox" value=""></th>
-                <td>
-                  <%#= image_tag (research.china_image_url), :size =>'80x80' %>
-                </td>
-                <th class="img-url2"><%= research.china_title %></th>
-                <td class="url-over">
-                  <%= text_url_to_link(h(research.china_url)).html_safe %>
-                </td>
-                <td></td>
-                <td></td>
-              </tr>
-              </tbody>
+              <%= fields_for "researches[]", research do |rf| %>
+                <% if research.china_title.presence %>
+                  <tbody>
+                    <tr class="table-row">
+                      <th><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
+                      <td>
+                        <img src="<%= research.china_image_url if research.china_image_url.present?  %>" width="100px">
+                      </td>
+                      <th class="img-url2"><%= research.china_title if research.china_title.present? %></th>
+                      <td class="url-over"><%= research.china_url if research.china_url.present? %></td>
+                      <td><%= research.china_price if research.china_price.present? %> </td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                <% end %>
+              <% end %>
             <% end %>
           </table>
         </div>
+        <%= f.submit '商品登録（在庫管理ページへ）', class: "btn btn-primary btn-block"%>
       <% end %>
       <%= will_paginate %>
     </div>

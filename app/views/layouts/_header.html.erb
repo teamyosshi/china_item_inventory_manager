@@ -9,7 +9,7 @@
       <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li><%= link_to "在庫管理", inventory_control_path(current_user) %></li>
-        <li><%#= link_to "リサーチ", item_research_path %></li>
+        <li><%= link_to "リサーチ", item_research_path(current_user) %></li>
         <li><%= link_to "商品棚卸", stock_path(current_user) %></li>
         <li><%= link_to "商品仕入", buyitem_path(current_user) %></li>
         <li><%= link_to "商品僅少", product_scarce_path(current_user)  %></li>
