@@ -31,7 +31,7 @@ class StocksController < ApplicationController
     @this_year = Date.today.year.to_s
     @prev_year = Date.today.prev_year.year.to_s
     #今年のitemのstock取得
-    @item_stocks = Stock.includes(:item).where("cast(inventory_arrival_date as integer) LIKE ?", "%#{@this_year}%").order("inventory_arrival_date ASC")
+    @item_stocks = Stock.includes(:item).where("cast(inventory_arrival_date as int) LIKE ?", "%#{@this_year}%").order("inventory_arrival_date ASC")
     calculation_item_cost
     Stock.takeinventory_find
     Stock.takeinventory_create
