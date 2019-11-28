@@ -69,10 +69,6 @@ class ResearchesController < ApplicationController
 
   # スクレイピング
   def item_research_scrape
-<<<<<<< HEAD
-    @user = User.find(params[:id])
-    Research.delete_all
-=======
     require 'mechanize'
     @user = User.find(params[:id])
      Research.delete_all
@@ -118,7 +114,6 @@ class ResearchesController < ApplicationController
      japan_max_price = params[:japan_max_price]
 
     puts "中国商品・・・・・・・・・・・・・・・・・・・・・"
->>>>>>> b593813... #104 リサーチページのform実装
     agent = Mechanize.new
     page = agent.get("https://auctions.yahoo.co.jp/search/search?p=#{params[:search]}")
     # 配列を作る準備/未定義時0代入
@@ -127,41 +122,6 @@ class ResearchesController < ApplicationController
     @research_number_list = []
     # 多次元（2次元）ハッシュの初期化　hash["a"]["b"] = 1 => {"a"=>{"b"=>1}}
     hash = Hash.new { |h,k| h[k] = {} }
-<<<<<<< HEAD
-    # リサーチ額を絶対パスで取る準備
-    num = -1
-    doc = page.search("//li[@class='Product']")
-    doc.each do |node|
-      @research_no += 1
-      @research_number_list.push("#{@research_no}")
-      # 商品画像取得
-      @image = node.css('img')[0].attribute('src').inner_text
-      hash["#{@research_no}"][:image] = @image
-      # 商品タイトル取得
-      @title = node.css('h3 a')[0].attribute('title').inner_text
-      hash["#{@research_no}"][:title] = @title
-      # リサーチURL習得
-      @research_url = node.css('h3')[0].attribute('href').inner_text
-      hash["#{@research_no}"][:research_url] = @research_url
-      # リサーチ額取得
-      @japan_min_price = params[:japan_min_price]
-      @japan_max_price = params[:japan_max_price]
-      num += 1
-      @japan_price = node.search("//span[@class='Product__priceValue u-textRed']")[num].inner_text.gsub(/[^\d]/, "").to_i
-      hash["#{@research_no}"][:japan_price] = @japan_price
-    end
-    @research_number_list.each do |research_number|
-      Research.create(
-          japan_title: hash[research_number][:title],
-          japan_image_url: hash[research_number][:image],
-          japan_url: hash[research_number][:research_url],
-          japan_price: hash[research_number][:japan_price],
-          user_id: 1)
-    end
-    japan_min_price = params[:japan_min_price]
-    japan_max_price = params[:japan_max_price]
-    redirect_to item_research_url(japan_min_price: japan_min_price, japan_max_price: japan_max_price)
-=======
 
     image_url_list.each do |image_url_and_dust|
       if image_url_and_dust.include?('https://s.alicdn.com/@sc01/')
@@ -244,7 +204,6 @@ class ResearchesController < ApplicationController
     user.researches.import researches
     flash[:success] = '商品のスクレイピングに成功しました。'
     redirect_to item_research_url
->>>>>>> b593813... #104 リサーチページのform実装
   end
 
   def update_resarch
