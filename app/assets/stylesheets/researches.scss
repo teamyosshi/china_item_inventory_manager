@@ -105,9 +105,8 @@ table td {
 }
 
 .url-over {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow: scroll;
+  white-space: pre-wrap;
 }
 
 .rate {
