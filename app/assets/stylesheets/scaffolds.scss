@@ -15,17 +15,17 @@ p, ol, ul, td {
 
 pre {
   background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+  padding: 20px;
+  font-size: 14px;
+  margin: 50px 300px;
+  float: none;
 }
 
 a {
   color: #000;
-
   &:visited {
     color: cornflowerblue;
   }
-
   &:hover {
     color: #fff;
     background-color: royalblue;

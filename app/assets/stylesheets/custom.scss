@@ -46,6 +46,7 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
 /* header */
 #logo {
     float: left;
@@ -58,10 +59,12 @@ p {
     font-weight: bold;
     padding-bottom: 15px;
   }
-  #logo:hover {
-    color: #fff;
-    text-decoration: none;
-  }
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* top */
 #title {
   text-align: left;
@@ -71,22 +74,28 @@ p {
   float: left;
   width: 60%;
 }
+
 #right_box {
   float: right;
   width: 40%;
 }
+
 .jumbotron {
    background-color: #fff;
 }
+
 #left_check_box {
   float: left;
 }
+
 #right_check_box {
   float: right;
 }
+
 #action {
   margin-top: 20px
 }
+
 .gravatar {
   width: 100%;
 }
@@ -94,10 +103,12 @@ p {
 .gravatar_edit {
   margin-top: 15px;
 }
+
 #left_gravatar {
   width: 25%;
   float: left;
 }
+
 #right_form {
   float: right;
   width: 60%;
@@ -116,6 +127,7 @@ p {
   display: block;
   margin-left: 20px;
 }
+
 .text-button{
   font-size:0.75em;
   display:block;
@@ -127,19 +139,23 @@ p {
   border-color:#aaaaaa #444444 #444444 #aaaaaa;
   background:orange;
 }
+
 .maintext {
     text-align: center;
     font-size:20px;
     margin-top:10px;
 }
+
 .maintext2 {
     text-align: left;
     font-size:25px;
     margin-top:10px;
 }
+
 .textbox-line{
   border: 2px solid #0a0;
 }
+
 .kousin {
         overflow:auto;
         width:700px; height:100px;
@@ -148,6 +164,7 @@ p {
         color:black;
         line-height:1.5em;
 }
+
 .kousin2 {
         overflow:auto;
         width:100%;
@@ -179,7 +196,6 @@ p {
   border: solid 2px #d27d00;/*線色*/
 }
 
-
 .btn-square-so-pop.red {
   background: red;/*色*/
 }
@@ -188,34 +204,42 @@ p {
   background-color: #FFEEFF;  /* 背景色指定 */
   border-color: black
 }
+
 .table-back th {
 	background: pink;
 	border-color: black;
 	text-align: center!important;
 }
+
 .table-back td {
 	border: 1px solid #eee;
 	border-color: black;
 }
+
 .table-back tr:nth-child(even) {
 	background:  pink;
 }
+
 .tr-back0 {
 	background: #CEF6CE;
 }
+
 .tr-back1 {
 	background:  #66CC66;
 }
+
 .tr-back2 {
 	background:  #66CC66;
-	
 }
+
 .tr-sub-back2 {
 	background:  #87cefa;
 }
+
 .tr-sub-back0 {
 	background:  #afeeee;
 }
+
 .tr-sub-back1 {
 	background:  #e0ffff;
 }
@@ -229,23 +253,40 @@ p {
   border-bottom: solid 4px #627295;
   border-radius: 3px;
 }
+
 .row-height {
     display: flex;
     flex-wrap: wrap;
 }
+
 .acstyle{
   text-align: center;
 }
+
 .reserch_btn{
   position: fixed;
-  margin: 500px 0px 0px 1200px;
+  margin: 680px 0px 0px 1400px;
 }
+
 .reserch_btn_btn{
   width: 100px;
 }
+
 .reserch_p{
-  margin-right: 10px
+  margin-right: 10px;
+  font-size: 16px;
+
 }
+
 .administrator {
   color: red;
+}
+
+pre.debug_dump {
+  margin: 100px 100px;
+  float: left;
+}
+
+a.btn.btn-success.btn-lg {
+  color: #FFFFFF;
 }
