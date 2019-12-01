@@ -18,7 +18,7 @@
           <%= link_to "在庫管理", inventory_control_path(current_user) %>
         <% end %>
         </li>
-        <li><%#= link_to "リサーチ", item_research_path %></li>
+        <li><%= link_to "リサーチ", item_research_path(current_user) %></li>
         <li>
         <% if activeheadertext(url,"product_inventory",17) %>
           <div class="header-text">
@@ -81,10 +81,10 @@
 </header>
 
 <% if logged_in? && current_user.admin? %>
-<div class="reserch_btn">
-  <p class="reserch_p">⬇商品登録ページへ️️️</p>
-  <%= link_to product_registration_path(current_user), target: "_blank" do %>
-    <img src= "https://i1.wp.com/sozaikoujou.com/wordpress/wp-content/uploads/2016/06/th_app_button_plus.jpg?w=600&ssl=1"  border="0", class="reserch_btn_btn" />
-  <% end %>
-</div>
+  <div class="reserch_btn">
+    <p class="reserch_p">⬇商品登録ページへ️️️</p>
+    <%= link_to product_registration_path(current_user), target: "_blank" do %>
+      <img src= "https://i1.wp.com/sozaikoujou.com/wordpress/wp-content/uploads/2016/06/th_app_button_plus.jpg?w=600&ssl=1"  border="0", class="reserch_btn_btn" />
+    <% end %>
+  </div>
 <% end %>
