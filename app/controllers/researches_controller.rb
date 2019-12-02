@@ -226,10 +226,14 @@ class ResearchesController < ApplicationController
         research = Research.find(id)
         research.update_attributes(item)
       end
-      flash[:success] = "リサーチアイテムの設定に成功しました。"
-      redirect_to buyitem_path(current_user)
+      @japan_item = Research.find_by(jpn_reseach_check: 1)
+      @china_item = Research.find_by(chn_reseach_check: 1)
+      item = Item.new(item_title: @japan_item.japan_title,item_picture: @japan_item.japan_image_url, china_item_picture: @china_item.china_image_url)
+      item.save(validate: false)
+      flash[:success] = "リサーチアイテムに基づいた商品の作成に成功しました。"
+      redirect_to item_research_path(current_user)
     else
-      flash[:danger] = "リサーチアイテムの設定に失敗しました。再度やり直してください。"
+      flash[:danger] = "リサーチアイテムに基づいた商品の作成に成功しました。再度やり直してください。"
       redirect_to item_research_path(current_user)
     end
   end

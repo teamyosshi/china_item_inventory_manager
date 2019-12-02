@@ -121,9 +121,9 @@
                   <tbody>
                     <tr class="table-row">
                       <th><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
-<!--                        <%#= rf.check_box :jpn_reseach_check, class: "japanresearch" %></th>-->
                         <%#= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
                       </th>
+
                       <td class="img-url">
                         <%= a += 1 %>
                         (<%= l(research.created_at, format: :date) %>)
@@ -179,7 +179,7 @@
             <% end %>
           </table>
         </div>
-        <%= f.submit '商品登録（在庫管理ページへ）', class: "btn btn-primary btn-block"%>
+        <%= f.submit '商品登録', class: "btn btn-primary btn-block"%>
       <% end %>
       <%= will_paginate %>
     </div>
