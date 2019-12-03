@@ -121,7 +121,7 @@ def item_research_scrape
 
   puts "画像URLをリサーチします・・・・・・・・・・・・・・・・・・・・・"
   # 空白にカンマを入れ、特定の取り出しやすい文字列に修正し、カンマ区切りで分割、一意性ありにしてダブりを消して配列にした。
-  image_url_list = doc.text.gsub(" ",",").gsub('multiImg":[','"multiImg://').gsub('//s.alicdn.com/','https://s.alicdn.com/').split(',').uniq.to_a
+  image_url_list = doc.text.gsub(" ",",").gsub('\\/\\/s.alicdn.com\\/@sc01\\/','"https://s.alicdn.com/@sc01/').gsub('"','').split(',').uniq.to_a
 
   # 配列を作るための準備
   @item_no ||= 0
@@ -130,24 +130,11 @@ def item_research_scrape
   hash = Hash.new { |h,k| h[k] = {} }
 
   image_url_list.each do |image_url_and_dust|     
-    if image_url_and_dust.include?('https://s.alicdn.com/@sc01/')
-    @item_no += 1
-    #バックスラッシュとかnとかの余計な文字列がはいってしまうので、削除してから特定の文字列が入っているものだけをitems配列にくわえるようにした
-    if image_url_and_dust[0] == "\""
-      image_url_and_dust.slice!(0)
-      image_url_and_dust.slice!(-1)
-      image_url_and_dust.gsub("ttps://","https://")
+    if image_url_and_dust.include?('mainImage:https://s.alicdn.com/@sc01/')
+      @item_no += 1
+      image_url_and_dust.slice!(0..9)
       #ごみがとれたことを明示
       image_url = image_url_and_dust
-    end
-    if image_url_and_dust[0] == "'"
-      image_url_and_dust.slice!(0)
-      image_url_and_dust.slice!(-3)
-      image_url_and_dust.slice!(-2)
-      image_url_and_dust.slice!(-1)
-      #ごみがとれたことを明示
-      image_url = image_url_and_dust
-      end
       if hash["#{@item_no - 1}"]["china_image_url"].present? && hash["#{@item_no - 1}"]["china_image_url"][-30..-1] == image_url[-30..-1]
         puts "#{@item_no}は前回と画像イメージが同じなのでスキップ"
         @item_no -= 1
@@ -162,24 +149,23 @@ def item_research_scrape
 
   puts "つづけてタイトルをリサーチします・・・・・・・・・・・・・・・・・・・・・"
   @item_no = 0
-  titles_and_dusts = doc.search('//h2/a[@title]').inner_text.gsub(",","_").gsub("  ",",").gsub("\n","").split(',').uniq.to_a
-  titles_and_dusts.each do |title_or_blank|  
-    unless title_or_blank == ""
+  titles_and_dusts = doc.text.gsub('"','').split(',').uniq.to_a
+  titles_and_dusts.each do |title_and_dust|  
+    if title_and_dust.include?('puretitle:')
+      title_and_dust.slice!(0..9)
       @item_no += 1
       puts "#{@item_no}番のタイトルを正常に処理しました。"
-      hash["#{@item_no}"]["china_title"] = title_or_blank
+      hash["#{@item_no}"]["china_title"] = title_and_dust
     end
   end
 
   puts "つづけてURLをリサーチします・・・・・・・・・・・・・・・・・・・・・"
   @item_no = 0
-  titles_and_dusts = doc.xpath('//h2/a[@href]').to_html.gsub(" ",",").gsub("\n","").split(',')
-  item_urls_and_dusts = titles_and_dusts.select {|x| x.include?("//www.alibaba.com/product-detail/") }
+  item_urls_and_dusts = doc.text.gsub('"','').gsub('\\/\\/www.alibaba.com\\/product-detail\\/','https://www.alibaba.com/product-detail/').split(',').uniq.to_a
 
   item_urls_and_dusts.each do |item_url| 
-    item_url.slice!(0..5)
-    item_url.slice!(-1)
-    unless item_url == ""
+    if item_url.include?('productUrl:')
+      item_url.slice!(0..10)
       @item_no += 1
       puts "#{@item_no}番のURLを正常に処理しました。"
       hash["#{@item_no}"]["china_url"] = item_url
@@ -188,12 +174,13 @@ def item_research_scrape
 
   puts "つづけて価格をリサーチします・・・・・・・・・・・・・・・・・・・・・"
   @item_no = 0
-  prices_and_dusts = doc.search('//div[@class="price"]/b').text.gsub(" ",",").gsub("\n","").split(',').uniq.to_a
-  prices_and_dusts.each do |price_or_blank|  
-    unless price_or_blank == ""
+  prices_and_dusts = doc.text.gsub('"','').gsub('-',',-,').gsub('US ','').gsub('$','').split(',').uniq.to_a
+  prices_and_dusts.each do |prices_and_dust|  
+    if prices_and_dust.include?('price:')
+      prices_and_dust.slice!(0..5)
       @item_no += 1
       puts "#{@item_no}番の価格を正常に処理しました。"
-      hash["#{@item_no}"]["china_price"] = price_or_blank
+      hash["#{@item_no}"]["china_price"] = prices_and_dust.to_f
     end
   end
   # カラムごとの配列を作って、bulk insert
