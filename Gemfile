@@ -7,7 +7,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 gem 'bcrypt'
 gem 'faker'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'mechanize'
@@ -17,7 +17,7 @@ gem 'jquery-rails', '4.3.1'
 gem 'sqlite3', groups: %w(test development), require: false
 
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
