@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post   '/export',    to: 'stocks#csv_export'
   post   '/scarcecsv_export',    to: 'items#csv_scarceexport'
   post   '/soldoutcsv_export',    to: 'items#csv_soldoutexport'
-  post 'items/item_number',    to: 'items#product_item_number' 
+  post 'items/item_number',    to: 'items#product_item_number'
+  put '/stocks/manynewbuyitem',    to: 'stocks#manynewbuyitem' 
   delete '/items/destroy_many', to: 'items#destroy_many'
   post '/stocks/update',    to: 'stocks#update'
   #get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control

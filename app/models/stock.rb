@@ -1,6 +1,6 @@
 class Stock < ApplicationRecord
   belongs_to :item ,optional: true
-
+  attr_accessor :check
   def self.takeinventory_find
     @this_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @this_year)
     @prev_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @prev_year)
