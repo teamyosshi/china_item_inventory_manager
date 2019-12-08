@@ -174,7 +174,7 @@ def item_research_scrape
 
   puts "つづけて価格をリサーチします・・・・・・・・・・・・・・・・・・・・・"
   @item_no = 0
-  prices_and_dusts = doc.text.gsub('"','').gsub('-',',-,').gsub('US ','').gsub('$','').split(',').uniq.to_a
+  prices_and_dusts = doc.text.gsub('"','').gsub('-',',-,').gsub('US ','').gsub('$','').split(',').to_a
   prices_and_dusts.each do |prices_and_dust|  
     if prices_and_dust.include?('price:')
       prices_and_dust.slice!(0..5)
@@ -183,6 +183,9 @@ def item_research_scrape
       hash["#{@item_no}"]["china_price"] = prices_and_dust.to_f
     end
   end
+  agent = Mechanize.new
+  page = agent.get("https://jp.investing.com/currencies/usd-jpy")
+  usdjpy = page.at('//*[@id="last_last"]').text.to_f
   # カラムごとの配列を作って、bulk insert
   user = User.find(params[:id])
   researches = []
@@ -193,8 +196,17 @@ def item_research_scrape
                     :china_url => hash[item_number]["china_url"],
                     :china_price => hash[item_number]["china_price"]
                     )
-    end
+  end
   user.researches.import researches
+    #リサーチ額の更新
+    researches =  Research.all
+    researches.each do |research|
+      if research.china_price.present?
+        usd = research.china_price * usdjpy
+        usd = usd.round(2)
+        research.update_attributes(simulate_price: usd)
+      end
+    end
   flash[:success] = '商品のスクレイピングに成功しました。'
   redirect_to item_research_url
 end
@@ -208,7 +220,7 @@ end
       end
       @japan_item = Research.find_by(jpn_reseach_check: 1)
       @china_item = Research.find_by(chn_reseach_check: 1)
-      item = Item.new(item_title: @japan_item.japan_title,item_picture: @japan_item.japan_image_url, china_item_picture: @china_item.china_image_url)
+      item = Item.new(item_title: @japan_item.japan_title,item_picture: @japan_item.japan_image_url, china_item_picture: @china_item.china_image_url,simulate_price: @china_item.simulate_price)
       item.save(validate: false)
       flash[:success] = "リサーチアイテムに基づいた商品の作成に成功しました。"
       redirect_to item_research_path(current_user)

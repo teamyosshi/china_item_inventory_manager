@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_043808) do
     t.string "china_title"
     t.string "china_url"
     t.float "china_price"
+    t.float "simulate_price"
     t.integer "jpn_reseach_check"
     t.integer "chn_reseach_check"
     t.integer "user_id"

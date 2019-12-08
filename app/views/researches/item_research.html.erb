@@ -171,7 +171,7 @@
                       <th class="img-url2"><%= research.china_title if research.china_title.present? %></th>
                       <td class="url-over"><%= research.china_url if research.china_url.present? %></td>
                       <td><%= research.china_price if research.china_price.present? %> </td>
-                      <td></td>
+                      <td><%= research.simulate_price.to_s + "円" if research.simulate_price.present? %></td>
                     </tr>
                   </tbody>
                 <% end %>
