@@ -10,7 +10,7 @@
       <% if logged_in? %>
       <% url = request.url %>
       <li>
-        <% if activeheadertext(url,"inventory_control",17) %>
+        <% if activeheadertext(url,"inventory_control") %>
           <div class="header-text">
           <%= link_to "在庫管理", inventory_control_path(current_user) %>
           </div>
@@ -20,7 +20,7 @@
         </li>
         <li><%= link_to "リサーチ", item_research_path(current_user) %></li>
         <li>
-        <% if activeheadertext(url,"product_inventory",17) %>
+        <% if activeheadertext(url,"product_inventory") %>
           <div class="header-text">
           <%= link_to "商品棚卸", stock_path(current_user) %>
           </div>
@@ -29,7 +29,7 @@
         <% end %>
         </li>
         <li>
-        <% if activeheadertext(url,"buyitem",7) %>
+        <% if activeheadertext(url,"buyitem") %>
           <div class="header-text">
           <%= link_to "商品仕入", buyitem_path(current_user) %>
           </div>
@@ -38,7 +38,7 @@
         <% end %>
         </li>
         <li>
-          <% if activeheadertext(url,"product_scarce",14) %>
+          <% if activeheadertext(url,"product_scarce") %>
             <div class="header-text">
             <%= link_to "商品僅少", product_scarce_path(current_user)  %>
             </div>
@@ -47,7 +47,7 @@
           <% end %>
         </li>
         <li>
-          <% if activeheadertext(url,"sold_out",8) %>
+          <% if activeheadertext(url,"sold_out") %>
             <div class="header-text">
             <%= link_to "売切れ商品", sold_out_path(current_user) %>
             </div>

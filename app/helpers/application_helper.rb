@@ -29,7 +29,8 @@ module ApplicationHelper
     bid = doc.xpath("//*[@id='CNHJPY_detail_bid']").text
     bid.to_i*k
   end
-  def activeheadertext(url,action,textcount)
+  def activeheadertext(url,action)
+    textcount=action.length
     thisaction=url[0-textcount,textcount]
     if thisaction==action
       kekka=true

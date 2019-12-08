@@ -8,8 +8,9 @@ class StocksController < ApplicationController
   end
   def inventory_control
     @stocks = Stock.all
-    @items=Item.all
-    @items_find=Item.includes(:stocks).all
+      @items=Item.includes(:stocks).all
+    @items_find=Item.all
+    @stockslist=Stock.includes(:item).all
     @search=params[:search]
     if params[:kubun]=="1"
       @items_find=Item.includes(:stocks).search(params[:search])
@@ -104,7 +105,34 @@ class StocksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def manynewbuyitem
+    i=0
+    stocktobuyitems_params.each{|id, val|item_id,check = val.values_at("item_id","check")
+    if check=="1"
+      item = Item.find(item_id)
+      stock=Stock.find(id)
+      @buyitem = Buyitem.new(
+        japan_image_url:item.item_picture,
+        japan_title:item.item_title,
+        japan_url:stock.buy_item_url,
+        japan_price:item.simulate_price,
+        china_image_url:stock.buy_item_image_url,
+        china_title:stock.buy_item_title,
+        china_url:stock.buy_item_url,
+        china_price:stock.purchase_price,
+        user_id:current_user.id)
+      if @buyitem.save
+        i=i+1
+      end
+    end
+    }
+    if i>0
+      flash[:success] = "#{i}件の在庫データを追加しました"
+    else
+      flash[:warning] = "商品は追加されませんでした"
+    end
+    redirect_to "/users/#{current_user.id}/buyitem"
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
@@ -114,6 +142,10 @@ class StocksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
       params.require(:stock).permit(:inventory_arrival_date, :purchase_price, :trader_name, :stock, :alert_border_line, :item_number_id)
+    end
+    
+    def stocktobuyitems_params
+      params.permit(stocktobuyitems: [:item_id,:check])[:stocktobuyitems]
     end
     def unlesslogin
       if current_user.nil?

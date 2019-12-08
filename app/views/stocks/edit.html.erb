@@ -2,7 +2,7 @@
 <div class="col-md-6 col-md-offset-4">
 <%= form_for(@stock, url:{controller:'stocks', action:'update'}) do |form| %>
  <div class="field">
-    <%= form.label :purchase_price,"商品名" %>
+    <%= form.label :item_title,"商品名" %>
     <%= Item.find(@stock.item_id).item_title %>
   </div>
 <div class="field">

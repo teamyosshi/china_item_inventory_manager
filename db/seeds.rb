@@ -60,7 +60,7 @@ Stock.create!(
             alert_border_line:3,item_id:2)
 
 # 商品追加
-Item.create!(item_title: "携帯タブレットアンドロイド",
+Item.create!(item_title: "携帯タブレットア��ドロイド",
              item_picture: "https://images-na.ssl-images-amazon.com/images/I/416MxeBnCAL._SY300_.jpg",
              part_number: "B079Q44444",
              jan_code: "不明",
@@ -98,6 +98,17 @@ Item.create!(item_title: "モペット版 電動機付自転車",
              simulate_price: 48000,
              yahoo:true,
              amazon:true)
+Item.create!(item_title: "ヘンユアンシアンウール",
+             item_picture: "http://img02.taobaocdn.com/bao/uploaded/i3/908948999/O1CN01cn3B5R2GLalsS1Cmg_!!0-item_pic.jpg",
+             part_number: "560545085804",
+             jan_code: "不明",
+             simulate_price:5304 )
+
+Item.create!(item_title: "カスタム野球帽刺繍ロゴオーダー帽子",
+             item_picture: "http://img02.taobaocdn.com/bao/uploaded/i4/4132611238/O1CN01HOAYva1L12trLchSs_!!0-item_pic.jpg",
+             part_number: "586544174650",
+             jan_code: "不明",
+             simulate_price:392 )
 #ストックサンプルデータ取込
 Stock.create!(
             inventory_arrival_date: '2019-04-24',
