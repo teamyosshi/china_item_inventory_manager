@@ -64,7 +64,7 @@ class ResearchesController < ApplicationController
   # リサーチページ表示
   def item_research
     @user = User.find(params[:id])
-    @researches = Research.paginate(page: params[:page], per_page: 50).order(japan_price: "ASC")
+    @researches = Research.paginate(page: params[:page], per_page: 100).order(japan_price: "ASC")
   end
 
 # スクレイピング
@@ -116,7 +116,7 @@ def item_research_scrape
 
   puts "中国商品・・・・・・・・・・・・・・・・・・・・・"
   agent = Mechanize.new
-  page = agent.get("https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText=watch")
+  page = agent.get("https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText=#{params[:china_title]}")
   doc = page.search('//script')
 
   puts "画像URLをリサーチします・・・・・・・・・・・・・・・・・・・・・"

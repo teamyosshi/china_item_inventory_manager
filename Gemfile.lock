@@ -84,11 +84,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
-<<<<<<< HEAD
     crass (1.0.5)
-=======
-    crass (1.0.4)
->>>>>>> e6550cc... #122 cherry-pickミスの修正兼コンフリクトが発生しない様に。
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.9.0)
