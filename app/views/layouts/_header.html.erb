@@ -18,7 +18,15 @@
           <%= link_to "在庫管理", inventory_control_path(current_user) %>
         <% end %>
         </li>
-        <li><%= link_to "リサーチ", item_research_path(current_user) %></li>
+        <li>
+          <% if activeheadertext(url,"item_research") %>
+            <div class="header-text">
+              <%= link_to "リサーチ", item_research_path(current_user) %>
+            </div>
+          <% else %>
+            <%= link_to "リサーチ", item_research_path(current_user) %>
+          <% end %>
+        </li>
         <li>
         <% if activeheadertext(url,"product_inventory") %>
           <div class="header-text">
