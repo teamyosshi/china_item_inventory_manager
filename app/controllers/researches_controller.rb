@@ -198,15 +198,6 @@ def item_research_scrape
                     )
   end
   user.researches.import researches
-    #リサーチ額の更新
-    researches =  Research.all
-    researches.each do |research|
-      if research.china_price.present?
-        usd = research.china_price * usdjpy
-        usd = usd.round(2)
-        research.update_attributes(simulate_price: usd)
-      end
-    end
   flash[:success] = '商品のスクレイピングに成功しました。'
   redirect_to item_research_url
 end
