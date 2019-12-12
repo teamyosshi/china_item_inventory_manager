@@ -95,7 +95,11 @@ class StocksController < ApplicationController
         render 'edit'
     end
   end
-
+  def stock_new
+  item_id=params[:id]
+  @item=Item.find(item_id)
+  @stock = Stock.new
+  end 
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy

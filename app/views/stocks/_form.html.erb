@@ -12,35 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :inventory_arrival_date %>
+    <%= form.label :仕入日 %>
     <%= form.date_select :inventory_arrival_date %>
   </div>
 
   <div class="field">
-    <%= form.label :purchase_price %>
+    <%= form.label :想定価格 %>
     <%= form.number_field :purchase_price %>
   </div>
 
   <div class="field">
-    <%= form.label :trager_name %>
-    <%= form.text_field :trager_name %>
+    <%= form.label :仲介業者 %>
+    <%= form.text_field :trader_name %>
   </div>
 
   <div class="field">
-    <%= form.label :stock %>
+    <%= form.label :在庫数 %>
     <%= form.number_field :stock %>
   </div>
 
   <div class="field">
-    <%= form.label :alert_border_line %>
+    <%= form.label :最低在庫数 %>
     <%= form.number_field :alert_border_line %>
   </div>
 
   <div class="field">
-    <%= form.label :item_number_id %>
+    <%= form.label :商品製造番号 %>
     <%= form.text_field :item_number_id %>
   </div>
-
+  <div class="hidden">
+    
+    <%= form.hidden_field :item_id,value:@item.id %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>
