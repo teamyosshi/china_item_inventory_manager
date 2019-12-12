@@ -75,11 +75,11 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @stock.save
-        format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
-        format.json { render :show, status: :created, location: @stock }
+        flash[:success] = "在庫データを変更しました"
+        redirect_to "/users/#{current_user.id}/inventory_control"
       else
-        format.html { render :new }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
+        flash[:warning] = "更新に失敗しました"
+        render 'edit'
       end
     end
   end
@@ -89,11 +89,11 @@ class StocksController < ApplicationController
   def update
     if @stock.update(stock_params)
        flash[:success] = "在庫データを変更しました"
-       redirect_to "/users/#{current_user.id}/inventory_control"
     else
         flash[:warning] = "更新に失敗しました"
         render 'edit'
     end
+    redirect_to "/users/#{current_user.id}/inventory_control"
   end
   def stock_new
   item_id=params[:id]
@@ -145,7 +145,7 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:inventory_arrival_date, :purchase_price, :trader_name, :stock, :alert_border_line, :item_number_id)
+      params.require(:stock).permit(params.require(:stock).permit(:inventory_arrival_date,:purchase_price,:trader_name,:stock,:original_stock,:alert_border_line,:item_id,:item_number,:part_number,:simulate_price,:buy_item_title,:buy_item_url,:buy_item_to_jpy,:buy_item_to_cny,:buy_item_image_url))
     end
     
     def stocktobuyitems_params

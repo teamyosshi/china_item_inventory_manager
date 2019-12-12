@@ -1,6 +1,6 @@
 <h1>商品データ更新</h1>
 <div class="col-md-6 col-md-offset-4">
-<%= form_for(@item, url:{controller:'items', action:'update'}) do |form| %>
+<%= form_for(@item, url:{controller:'items', action:'create'}) do |form| %>
 <div class="field">
   <%= form.label :part_number,"製品番号" %>
   <%= form.text_field :part_number %>

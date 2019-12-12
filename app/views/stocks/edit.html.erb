@@ -1,41 +1,81 @@
-<h1>在庫データ更新</h1>
-<div class="col-md-6 col-md-offset-4">
-<%= form_for(@stock, url:{controller:'stocks', action:'update'}) do |form| %>
- <div class="field">
-    <%= form.label :item_title,"商品名" %>
-    <%= Item.find(@stock.item_id).item_title %>
-  </div>
+<h1>在庫新規登録</h1>
+<%= form_for(@stock, url:{controller:'stocks', action:'create'}) do |form| %>
+<div class="row">
+<div class="col-sm-6 col-md-3"></div>
+        <div class="col-md-9 lead">商品名：<%= Item.find(@stock.item_id).item_title %></div>
+</div>
+<%#= render 'form', stock: @stock %>
+<div class="col-sm-6 col-md-3"></div>
+<div class="col-sm-6 col-md-3">
 <div class="field">
-    <%= form.label :inventory_arrival_date,"仕入日" %>
+    <%= form.label :仕入日 %>
     <%= form.date_select :inventory_arrival_date %>
 </div>
 
   <div class="field">
-    <%= form.label :purchase_price,"仕入原価" %>
-    <%= form.number_field :purchase_price %>
+    <%= form.label :想定価格 %>
+    <%= form.number_field :simulate_price,value:@item.simulate_price%>
   </div>
 
   <div class="field">
-    <%= form.label :trader_name,"購入業者" %>
+    <%= form.label :仲介業者 %>
     <%= form.text_field :trader_name %>
   </div>
-
-  <div class="field">
-    <%= form.label :stock,"在庫" %>
+<div class="field">
+    <%= form.label :在庫数 %>
     <%= form.number_field :stock %>
   </div>
+  <div class="field">
+    <%= form.label :元々の在庫数 %>
+    <%= form.number_field :original_stock %>
+  </div>
 
   <div class="field">
-    <%= form.label :alert_border_line,"最低在庫数" %>
+    <%= form.label :最低在庫数 %>
     <%= form.number_field :alert_border_line %>
   </div>
-    <%= form.hidden_field :item_id %>
+  <div class="field">
+    <%= form.label :商品製造番号 %>
+    <%= form.text_field :item_number_id,value:@item.item_number %>
+  </div>
+
   
-  <p>
-    <%= form.submit "更新する", :class=> 'btn btn-primary', :size=>'10px' %>
-  </p>
-  <p>
-  <A HREF="javascript:history.back()">前のページに戻る</A>
-  </p>
+  <div class="hidden">
+    
+    <%= form.hidden_field :item_id,value:@item.id %>
+  </div>
+ 
+</div>
+<div class="col-sm-6 col-md-3">
+  <div class="field">
+    <%= form.label :部品番号 %>
+    <%= form.text_field :part_number,value:@item.part_number%>
+  </div>
+  
+  <div class="field">
+    <%= form.label :仕入商品名 %>
+    <%= form.text_field :buy_item_title,value:@item.item_title,size:"40" %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :仕入URL %>
+    <%= form.text_field :buy_item_url,value:@item.china_item_picture,size:"40" %>
+  </div>
+  <div class="field">
+    <%= form.label :購入原価（円） %>
+    <%= form.number_field :buy_item_to_jpy %>
+  </div>
+  <div class="field">
+    <%= form.label :購入原価（中国元） %>
+    <%= form.number_field :buy_item_to_cny %>
+  </div>
+  <div class="field">
+    <%= form.label :仕入商品画像 %>
+    <%= form.text_field :buy_item_image_url,value:@item.item_picture,size:"40" %>
+  </div>
+   <%= form.submit "登録する", :class=> 'btn btn-primary', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
+    <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
+  
 <% end %>
+
 </div>
