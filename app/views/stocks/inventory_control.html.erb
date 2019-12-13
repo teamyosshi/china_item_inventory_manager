@@ -178,10 +178,10 @@
         <td><%= link_to "編集", "/stocks/#{stock.id}/edit" %></td>
       </tr>
       <% y=y+1 %>
-      <%# end %>
+      
       </tr>
       <% end %>
-      <tr class="<%= classname %> tr-sub-back0"><td colspan="6"><%= link_to "新規登録", "/stocks/#{item.id}/stock_new" %></td></tr>
+      <tr class="<%= classname %> tr-sub-back0"><td colspan="5"  style="border-right-style:none;"></td><td style="border-left-style:none; "><%= link_to "新規登録", "/stocks/#{item.id}/stock_new" %></td></tr>
       <% i=i.to_i+1 %>
       <% end %>
       <% end %>

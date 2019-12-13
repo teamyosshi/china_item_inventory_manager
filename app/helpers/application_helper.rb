@@ -24,10 +24,15 @@ module ApplicationHelper
     ex
   end
   def chanarate(k)
-    url = 'https://info.finance.yahoo.co.jp/fx/detail/?code=CNHJPY=FX'
-    doc = Nokogiri::HTML(open(url))
-    bid = doc.xpath("//*[@id='CNHJPY_detail_bid']").text
-    bid.to_i*k
+    begin
+      url = 'https://info.finance.yahoo.co.jp/fx/detail/?code=CNHJPY=FX'
+      doc = Nokogiri::HTML(open(url))
+      bid = doc.xpath("//*[@id='CNHJPY_detail_bid']").text
+      bid.to_i*k
+    rescue => e
+      bid="error!"
+    end
+
   end
   def activeheadertext(url,action)
     textcount=action.length

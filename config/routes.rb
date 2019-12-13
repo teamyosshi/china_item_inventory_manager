@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   put '/stocks/manynewbuyitem',    to: 'stocks#manynewbuyitem' 
   delete '/items/destroy_many', to: 'items#destroy_many'
   post '/stocks/update',    to: 'stocks#update'
+  post '/stocks/stock_new',    to: 'stocks#stock_new', as: :stock_new
   #get 'inventory_control_index', to:'stocks#inventory_control', as: :inventory_control
   get 'users/:id/inventory_control', to:'stocks#inventory_control', as: :inventory_control
   get 'users/:id/buyitem', to:'stocks#buyitem', as: :buyitem

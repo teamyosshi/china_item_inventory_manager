@@ -58,50 +58,35 @@ class StocksController < ApplicationController
   # GET /stocks/1.json
   def show
   end
-
-  # GET /stocks/new
   def new
     @stock = Stock.new
   end
-
-  # GET /stocks/1/edit
   def edit
   end
-
-  # POST /stocks
-  # POST /stocks.json
-  def create
-    @stock = Stock.new(stock_params)
-
-    respond_to do |format|
-      if @stock.save
-        flash[:success] = "在庫データを変更しました"
-        redirect_to "/users/#{current_user.id}/inventory_control"
-      else
-        flash[:warning] = "更新に失敗しました"
-        render 'edit'
-      end
-    end
-  end
-
-  # PATCH/PUT /stocks/1
-  # PATCH/PUT /stocks/1.json
   def update
     if @stock.update(stock_params)
-       flash[:success] = "在庫データを変更しました"
+       flash[:success] = "#{Item.find(@stock.item_id).item_title}の在庫データを変更しました"
+       redirect_to "/users/#{current_user.id}/inventory_control"
     else
-        flash[:warning] = "更新に失敗しました"
-        render 'edit'
+      flash[:warning] = "更新に失敗しました。必須項目の入力等ご確認下さい。"
+      render 'stock_new_path'
     end
-    redirect_to "/users/#{current_user.id}/inventory_control"
   end
   def stock_new
-  item_id=params[:id]
-  @item=Item.find(item_id)
-  @stock = Stock.new
+    @item=Item.find(params[:id])
+    @stock=Stock.new
+  end
+  def create
+    @stock = Stock.new(stock_params)
+    @stock.simulate_price=(@stock.purchase_price*3)
+    if @stock.save
+      flash[:success] = "#{Item.find(@stock.item_id).item_title}在庫データを登録しました"
+      redirect_to "/users/#{current_user.id}/inventory_control"
+    else
+      flash[:warning] = "登録に失敗しました"
+      render 'edit'
+    end
   end 
-  # DELETE /stocks/1
-  # DELETE /stocks/1.json
   def destroy
     @stock.destroy
     respond_to do |format|
@@ -145,7 +130,7 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(params.require(:stock).permit(:inventory_arrival_date,:purchase_price,:trader_name,:stock,:original_stock,:alert_border_line,:item_id,:item_number,:part_number,:simulate_price,:buy_item_title,:buy_item_url,:buy_item_to_jpy,:buy_item_to_cny,:buy_item_image_url))
+      params.require(:stock).permit(:inventory_arrival_date,:purchase_price,:trader_name,:stock,:original_stock,:alert_border_line,:item_id,:item_number,:part_number,:simulate_price,:buy_item_title,:buy_item_url,:buy_item_to_jpy,:buy_item_to_cny,:buy_item_image_url)
     end
     
     def stocktobuyitems_params
