@@ -1,31 +1,31 @@
-<h1>在庫編集</h1>
+  <h1>在庫編集</h1>
 <% if @item.blank? %>
-  <% @item=Item.find(@stock.item_id) %>
-<% end %> 
+<% @item=Item.find(@stock.item_id) %>
+<% end %>
 <%= form_for(@stock, url:{controller:'stocks', action:'update'}) do |form| %>
 <div class="row">
-<div class="col-sm-6 col-md-3"></div>
-        <div class="col-md-9 lead">商品名：<%= @item.item_title %><br></div>
+  <div class="col-sm-6 col-md-3"></div>
+  <div class="col-md-9 lead">商品名：<%= @item.item_title %><br></div>
 </div>
 <div class="col-sm-6 col-md-3"></div>
 <div class="col-sm-6 col-md-3">
-<div class="field">
+  <div class="field">
     <%= form.label :仕入日 %>
     <%= form.date_select :inventory_arrival_date %>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= form.label :仕入原価 %>
     <%= form.number_field :purchase_price,id:"jsNum" %>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= form.label :仲介業者 %>
     <%= form.text_field :trader_name %>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= form.label :在庫数 %>
     <%= form.number_field :stock %>
   </div>
-<div class="field">
+  <div class="field">
     <%= form.label :最低在庫数 %>
     <%= form.number_field :alert_border_line %>
   </div>
@@ -40,8 +40,8 @@
     <%= form.text_field :part_number %>
   </div>
   <div class="field">
-  <%= form.label :仕入商品名 %>
-      <%= form.text_field :buy_item_title %>
+    <%= form.label :仕入商品名 %>
+    <%= form.text_field :buy_item_title %>
   </div>
   <div class="field">
     <%= form.label :仕入商品URL %>
@@ -63,7 +63,7 @@
     <%= form.hidden_field :item_id,value:@item.id %>
   </div>
   <br>
-   <%= form.submit "登録する", :class=> 'btn btn-primary', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
-    <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
-<% end %>
+  <%= form.submit "登録する", :class=> 'btn btn-primary', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
+  <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
+  <% end %>
 </div>

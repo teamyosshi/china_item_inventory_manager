@@ -144,7 +144,7 @@
           <% end %>
           <% end %>
         </td>
-        <td><%= item.part_number %></td>
+        <td><%= link_to item.part_number, "/items/#{item.id}/edit" %></td>
         <td width="500" align="left"><%= item.item_title%></td>
         <td>
           <% if item.stocks.sum(:stock)<20 %>

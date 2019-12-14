@@ -1,6 +1,6 @@
 <h1>商品データ更新</h1>
 <div class="col-md-6 col-md-offset-4">
-<%= form_for(@item, url:{controller:'items', action:'create'}) do |form| %>
+<%= form_with(model: @item, local: true) do |form| %>  
 <div class="field">
   <%= form.label :part_number,"製品番号" %>
   <%= form.text_field :part_number %>
@@ -41,6 +41,7 @@
   <%= form.check_box :yahooshoping %>
   <b>ヤフーショッピング</b>
 </td></tr>
+
 </table>
   <p><br>
     <%= form.submit "更新する", :class=> 'btn btn-primary', :size=>'10px' %>
@@ -49,4 +50,5 @@
 <p>
 </p>
 <% end %>
+<% session[:before_url]=request.referer %> 
 </div>
