@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_043808) do
+ActiveRecord::Schema.define(version: 2019_12_14_015932) do
 
   create_table "buyitems", force: :cascade do |t|
     t.string "japan_image_url"
@@ -74,7 +74,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_043808) do
     t.string "china_image_url"
     t.string "china_title"
     t.string "china_url"
-    t.integer "china_price"
+    t.float "china_price"
+    t.float "simulate_price"
     t.integer "jpn_reseach_check"
     t.integer "chn_reseach_check"
     t.integer "user_id"
