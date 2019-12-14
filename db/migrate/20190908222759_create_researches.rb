@@ -9,7 +9,8 @@ class CreateResearches < ActiveRecord::Migration[5.2]
       t.string :china_image_url
       t.string :china_title
       t.string :china_url
-      t.integer :china_price
+      t.float :china_price
+      t.float :simulate_price
       t.integer :jpn_reseach_check
       t.integer :chn_reseach_check
       t.references :user, foreign_key: true

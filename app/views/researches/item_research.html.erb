@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="research-introduce">
           <h1 id="research-label">商品リサーチフォーム</h1>
-          <p id="introduce">※ リサーチしたい商品を</br>日本語と中国語でそれぞれ入力してみましょう！</p>
+          <p id="introduce">※ リサーチしたい商品を</br>日本語と英語でそれぞれ入力してみましょう！</p>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-4">
           <div class="text-search-china">
-            <%= f.text_field :china_title, placeholder: "中国語キーワード入力　例：篮球", class:"form-control" %>
+            <%= f.text_field :china_title, placeholder: "英語キーワード入力　例：watch", class:"form-control" %>
             <div class="money-label">
               <label for="number" class="control-label col-md-3">金額</label>
               <select name="num">
@@ -106,7 +106,6 @@
             <thead>
             <tr class="success">
               <th width="10"></th>
-              <th width="34">NO</th>
               <th width="50">商品画像</th>
               <th width="50">商品タイトル（日本）</th>
               <th width="35">リサーチURL</th>
@@ -121,13 +120,8 @@
                   <tbody>
                     <tr class="table-row">
                       <th><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
-                        <%#= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
+                        <%= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
                       </th>
-
-                      <td class="img-url">
-                        <%= a += 1 %>
-                        (<%= l(research.created_at, format: :date) %>)
-                      </td>
                       <td>
                         <img src="<%=(research.japan_image_url) if research.japan_image_url.present? %>"width="100px"height="100px">
                       </td>
@@ -153,10 +147,9 @@
             <tr class="success">
               <th width="30"></th>
               <th width="80">商品画像</br>(仕入先)</th>
-              <th width="80">商品タイトル（中国語）</th>
+              <th width="80">商品タイトル（英語）</th>
               <th class="url" width="50">仕入URL</th>
-              <th width="60">中国元</th>
-              <th width="60">想定単価</th>
+              <th width="60">リサーチ額(usd)</th>
             </tr>
             </thead>
             <% @researches.each do |research| %>
@@ -171,7 +164,6 @@
                       <th class="img-url2"><%= research.china_title if research.china_title.present? %></th>
                       <td class="url-over"><%= research.china_url if research.china_url.present? %></td>
                       <td><%= research.china_price if research.china_price.present? %> </td>
-                      <td></td>
                     </tr>
                   </tbody>
                 <% end %>
