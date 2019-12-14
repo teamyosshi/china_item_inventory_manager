@@ -140,7 +140,7 @@ def item_research_scrape
         @item_no -= 1
         next
       end
-    puts "#{@item_no}番のタイトルを正常に処理しました。"
+    puts "#{@item_no}番の画像を正常に処理しました。"
     hash["#{@item_no}"]["china_image_url"] = image_url
     #無事ハッシュに追加できたら、最後の一括バルクインサートのための配列の準備をする。
     @item_number_list.push("#{@item_no}")
