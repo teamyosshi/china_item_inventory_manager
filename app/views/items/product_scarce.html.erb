@@ -72,7 +72,7 @@ function show_hide_row(row) {
     <td><%= item.item_title%></td>
     <td align="right">
       <%= item.stocks.sum(:stock)  %></td>
-    <td align="right"><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
+    <td align="right"><%= item.simulate_price.to_s(:delimited, delimiter: ',') if item.simulate_price.present? %></td>
     <td><%= exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping) %></td>
   </tr>
   <% stocks=Stock.where(item_id:item.id)%>
