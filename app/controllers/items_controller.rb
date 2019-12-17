@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   protect_from_forgery except: :destroy_many # destroy_manyアクションを除外
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :price_update]
 
   # GET /items
   # GET /items.json
@@ -101,6 +101,15 @@ class ItemsController < ApplicationController
       redirect_to request.referer
   end
 
+  def price_update
+    if @item.update_attributes(item_price_update_params)
+      flash[:success] = "想定販売額の初期設定をしました。"
+    else
+      flash[:danger] =  "想定販売額の初期設定に失敗しました。再度やり直してください。"
+    end
+    redirect_to request.referer
+  end
+
   def destroy
   end
 
@@ -117,5 +126,9 @@ class ItemsController < ApplicationController
 
     def item_create_params
       params.require(:item).permit(:item_title, :part_number, :simulate_price, :item_picture, stocks_attributes: [:id, :buy_item_title, :buy_item_url, :buy_item_to_jpy, :buy_item_to_cny, :buy_item_image_url])
+    end
+
+    def item_price_update_params
+      params.permit(:simulate_price)
     end
 end

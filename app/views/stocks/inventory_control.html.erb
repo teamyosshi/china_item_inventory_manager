@@ -99,8 +99,10 @@
       </button></div>
     <div class="col-xs-1"></div>
     <div class="col-xs-1">
-      <%= form_with(url: "/items/destroy_many", method: :delete, local: true) do |form| %>
-      <%= form.submit '一括削除', class: 'btn-square-so-pop red', data: { confirm: '本当に削除しますか？' } %>
+      <%= form_with(url: "/items/destroy_many", method: :delete, local: true, id: :delete_form) do |form| %>
+      <%= form.submit '一括削除',id: "delete_form", class: 'btn-square-so-pop red', data: { confirm: '本当に削除しますか？' } %>
+      <% end %>
+      <!--<form id="delete_form" action=""> -->
     </div>
     <div class="col-xs-5"></div>
   </div>
@@ -120,7 +122,7 @@
               <th width="50">製品コード</th>
               <th width="20">商品タイトル</th>
               <th width="60">在庫計</th>
-              <th width="80">想定価格</th>
+              <th width="160">想定価格</th>
               <th width="170">出品サイト</th>
               <th width="30">削除</th>
             </tr>
@@ -151,9 +153,21 @@
           <font color="red">
             <% end %>
             <%= item.stocks.sum(:stock)  %></td>
-        <td><%= item.simulate_price.to_s(:delimited, delimiter: ',') %></td>
+        <td><% if item.simulate_price.presence %>
+              <%= item.simulate_price.to_s(:delimited, delimiter: ',') %>
+            <% else %>
+              <form action="price_update_path" method="patch" target="_blank" id="simulate_price_form"></form>
+              <%= form_with(model:@item ,url: price_update_path(item.id), method: :patch, local: true) do |fp| %>
+                <div id = "price_form">
+                  <div class="side_by_side"><%= fp.number_field :simulate_price, class:"fp_form side_form"%></div>
+
+                  <div class="side_by_side"><%= fp.submit "更新", class:"btn btn-primary btn-sm side_btn"%></div>
+              <% end %>
+            <% end %>
+              </td>
         <td><%= exhibition(yahoo,amazon,mercari,rakuma,rakuten,yahooshoping) %></td>
-        <td><%= check_box_tag "deletes[#{ item.id }]", item.id %></td>
+        <td><input type="checkbox" form="delete_form" name="deletes[<%= item.id %>]" id="deletes_<%= item.id %>" value="1">
+        <%#= check_box_tag "deletes[#{ item.id }]", item.id%></td>
       </tr>
       <% stocks=Stock.where(item_id:item.id)%>
 
@@ -182,7 +196,6 @@
       </tr>
       <% end %>
       <% i=i.to_i+1 %>
-      <% end %>
       <% end %>
       <% end %>
       </table>
