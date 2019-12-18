@@ -60,8 +60,8 @@ class ItemsController < ApplicationController
   def new
   end
 
-  # GET /items/1/edit
   def edit
+    session[:before_url]=request.referer
   end
 
   # POST /items
@@ -80,9 +80,12 @@ class ItemsController < ApplicationController
   def update
     if @item.update(item_params)
        flash[:success] = "商品データを変更しました"
-       redirect_to "/users/#{current_user.id}/sold_out"
+       url=session[:before_url]
+       session.delete(:before_url)
+       redirect_to url
     else
         flash[:warning] = "更新に失敗しました"
+        session.delete(:before_url)
         render 'edit'
     end
   end
