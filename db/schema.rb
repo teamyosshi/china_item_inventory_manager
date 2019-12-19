@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_14_015932) do
+ActiveRecord::Schema.define(version: 2019_12_14_095157) do
 
   create_table "buyitems", force: :cascade do |t|
     t.string "japan_image_url"
@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 2019_12_14_015932) do
     t.index ["user_id"], name: "index_buyitems_on_user_id"
   end
 
-  create_table "chinaitems", force: :cascade do |t|
-    t.string "image_url"
-    t.string "title"
-    t.string "url"
-    t.integer "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "item_number"
     t.string "item_title"
@@ -51,16 +42,6 @@ ActiveRecord::Schema.define(version: 2019_12_14_015932) do
     t.boolean "rakuma"
     t.boolean "rakuten"
     t.boolean "yahooshoping"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "japanitems", force: :cascade do |t|
-    t.string "image_url"
-    t.string "title"
-    t.string "url"
-    t.string "description"
-    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
