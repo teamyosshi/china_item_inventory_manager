@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post "takeinventory/:id", to:'take_inventory#update', as: :takeinventory_update
   get "/items/product_registration", to: 'items#product_registration', as: :product_registration
   patch "/researches/:id/update", to: "researches#update_resarch", as: :research_update
+  patch "/items/:id/price_update", to: "items#price_update", as: :price_update
     resources :researches
   resources :stocks
   resources :items

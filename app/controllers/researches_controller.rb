@@ -211,7 +211,8 @@ end
       end
       @japan_item = Research.find_by(jpn_reseach_check: 1)
       @china_item = Research.find_by(chn_reseach_check: 1)
-      item = Item.new(item_title: @japan_item.japan_title,item_picture: @japan_item.japan_image_url, china_item_picture: @china_item.china_image_url,simulate_price: @china_item.simulate_price)
+      @rand_part_number = ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(8).join
+      item = Item.new(item_title: @japan_item.japan_title,item_picture: @japan_item.japan_image_url, china_item_picture: @china_item.china_image_url, part_number: @rand_part_number)
       item.save(validate: false)
       flash[:success] = "リサーチアイテムに基づいた商品の作成に成功しました。"
       redirect_to item_research_path(current_user)
