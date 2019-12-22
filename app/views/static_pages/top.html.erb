@@ -11,28 +11,28 @@
     </div>
   </div>
   <div id="right_box">
-  <div class ="box_imege">
-  <img class="box_img" src="https://warehouse-images.com/highresolution/173-images-transportation.png"alt="">
-  </div>
-  <div class ="box_login">
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
-    <h1>ログイン</h1>
-    <%= form_with(scope: :session, url: root_path, local: true) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class:"form-control" %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class:"form-control" %>
-
-      <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember_me" do %>
-        <%= f.check_box :remember_me, id: "remember-me" %>
-        <span>ログイン情報を記憶する</span>
+    <div class ="box_imege">
+      <img class="box_img" src="https://warehouse-images.com/highresolution/173-images-transportation.png"alt="">
+    </div>
+    <div class ="box_login">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
+      <h1>ログイン</h1>
+      <%= form_with(scope: :session, url: root_path, local: true) do |f| %>
 
-      <%= f.submit "ログイン", class:"btn btn-primary btn-block btn-login" %>
-    <% end %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class:"form-control" %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class:"form-control" %>
+
+        <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember_me" do %>
+          <%= f.check_box :remember_me, id: "remember-me" %>
+          <span>ログイン情報を記憶する</span>
+        <% end %>
+        <%= f.submit "ログイン", class:"btn btn-primary btn-block btn-login" %>
+      <% end %>
+    </div>
   </div>
 </div>

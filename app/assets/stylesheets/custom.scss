@@ -70,6 +70,17 @@ p {
   text-align: left;
 }
 
+.box_title{
+  //float: left;
+  //margin: 20px 400px 0 0;
+  font-family: "Source Code Pro", Monaco, monospace;
+  padding: 0 0 0 100px;/*文字周りの余白*/
+  margin: 30px;
+  color: #494949;/*文字色*/
+  background: #fffaf4;/*背景色*/
+  border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
+}
+
 #left_box {
   float: left;
   width: 60%;
@@ -198,50 +209,43 @@ p {
 
 .btn-square-so-pop.red {
   background: red;/*色*/
-}
-
-.table-back{
-  background-color: #FFEEFF;  /* 背景色指定 */
-  border-color: black
+  margin: 20px 0 0 50px;
 }
 
 .table-back th {
-	background: pink;
-	border-color: black;
-	text-align: center!important;
-}
-
-.table-back td {
-	border: 1px solid #eee;
-	border-color: black;
+  background: #dff0d8;
+  border-color: black;
+  text-align: center!important;
 }
 
 .table-back tr:nth-child(even) {
-	background:  pink;
+  background-color: #F7F7F7;
 }
 
 .tr-back0 {
-	background: #CEF6CE;
+  background: #F7F7F7;
 }
 
 .tr-back1 {
-	background:  #66CC66;
+  background: #FFFFFF;
 }
 
 .tr-back2 {
-	background:  #66CC66;
+  //background: #afeeee;
+  background: lightblue;
+
 }
 
 .tr-sub-back2 {
-	background:  #87cefa;
+	background: #87cefa;
 }
 
 .tr-sub-back0 {
-	background:  #afeeee;
+	background: #afeeee;
 }
 
 .tr-sub-back1 {
-	background:  #e0ffff;
+	background: #e0ffff;
 }
 
 .btn-square-shadow {
@@ -255,8 +259,9 @@ p {
 }
 
 .row-height {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px;
 }
 
 .acstyle{
@@ -290,3 +295,30 @@ pre.debug_dump {
 a.btn.btn-success.btn-lg {
   color: #FFFFFF;
 }
+
+#item-label {
+  float: left;
+  margin: 20px 400px 0 0;
+  font-family: "Source Code Pro", Monaco, monospace;
+  padding: 0.5em;/*文字周りの余白*/
+  color: #494949;/*文字色*/
+  background: #fffaf4;/*背景色*/
+  border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
+}
+
+.rate {
+  float: right;
+  margin-top: 30px;
+  color: black;
+}
+
+.rate-color {
+  background-color: darkorange;
+  color: #F7F7F7;
+  font-size: 15px;
+}
+
+.rate-border {
+  border: solid 1.5px darkgray;
+}
+
