@@ -209,17 +209,16 @@ p {
 
 .btn-square-so-pop.red {
   background: red;/*色*/
-  margin: 20px 0 0 50px;
 }
 
 .table-back th {
-  background: #dff0d8;
+  background: crimson;
   border-color: black;
   text-align: center!important;
 }
 
 .table-back tr:nth-child(even) {
-  background-color: #F7F7F7;
+  background-color: mistyrose;
 }
 
 .tr-back0 {
@@ -322,3 +321,11 @@ a.btn.btn-success.btn-lg {
   border: solid 1.5px darkgray;
 }
 
+#little-item-title {
+  color: #B00100;
+  font-size: 30px;
+}
+
+#delete_form {
+  margin-left: 100px;
+}

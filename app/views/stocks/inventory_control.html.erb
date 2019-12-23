@@ -24,7 +24,7 @@
 </script>
 <div class="container">
   <div class="row row-height">
-    <div class="col-sm-3 lead" style="margin-left:30px">僅少商品一覧</div>
+    <div class="col-sm-3" id="little-item-title" style="margin-left:30px">僅少商品一覧</div>
     <div class="col-sm-3">
       <div style="display:inline-flex">
         <button class="btn-square-so-pop" style="height:35px; width:130px;" disabled>現在の想定レート</button>
@@ -42,22 +42,23 @@
             <div class="kousin">
               <table table border="1" class="table-back">
                 <thead>
-                <tr>
-                  <th width="500">商品タイトル</th>
-                  <th class="th-text" width="120" align="right">在庫数合計</th>
-                </tr>
+                  <tr>
+                    <th width="500">商品タイトル</th>
+                    <th class="th-text" width="120" align="right">在庫数合計</th>
+                  </tr>
                 </thead>
+                <% @items.each do |item| %>
+                  <% stockcount=item.stocks.sum(:stock)  %>
+                  <% if stockcount<20 %>
+                    <tr>
+                      <td><%= item.item_title %></td>
+                      <td><%= item.stocks.sum(:stock)  %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </table>
             </div>
-            <% @items.each do |item| %>
-              <% stockcount=item.stocks.sum(:stock)  %>
-              <% if stockcount<20 %>
-                <tr>
-                  <td><%= item.item_title %></td>
-                  <td><%= item.stocks.sum(:stock)  %></td>
-                </tr>
-              <% end %>
-            <% end %>
-            </table>
+          </div>
         </ul>
       </div>
     </section>
