@@ -1,0 +1,1 @@
+/Users/saitouhayato/celeb_task/china_item_inventory_manager/vendor/bundle/ruby/2.6.0/gems/ffi-1.11.3/ext/ffi_c/libffi/src/x86/ffitarget.h

@@ -1,14 +1,4 @@
 <div class="container">
-  <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="research-introduce">
-          <h1 id="research-label">商品リサーチフォーム</h1>
-          <p id="introduce">※ リサーチしたい商品を</br>日本語と英語でそれぞれ入力してみましょう！</p>
-        </div>
-      </div>
-    </div>
-  </div>
   <%= form_with url: item_research_scrape_path, method: :get, local: true do |f| %>
     <div class="col-md-12">
       <div class="row">
@@ -58,10 +48,10 @@
   <div class="rate">
     <table class="table table-bordered">
       <tbody>
-      <tr class="rate-border">
-        <th class="rate-color">現在の想定レート</th>
-        <td width="205"><%= chanarate(1.5) %></td>
-      </tr>
+        <div style="display:inline-flex">
+          <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
+          <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:100px; text-align: center;"></input>
+        </div>
       </tbody>
     </table>
   </div>
@@ -106,10 +96,10 @@
             <thead>
             <tr class="success">
               <th width="10"></th>
-              <th width="50">商品画像</th>
-              <th width="50">商品タイトル（日本）</th>
+              <th width="35">商品画像</th>
+              <th width="40">商品タイトル<br>（日本）</th>
               <th width="35">リサーチURL</th>
-              <th width="40">リサーチ額</th>
+              <th width="30">リサーチ額</th>
             </tr>
             </thead>
             <!--NOにindexを付ける準備-->
@@ -119,7 +109,7 @@
                 <% if research.japan_title.presence %>
                   <tbody>
                     <tr class="table-row">
-                      <th><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
+                      <th height="170"><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
                         <%= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
                       </th>
                       <td>
@@ -145,10 +135,10 @@
           <table class="table table-bordered table-striped table-design">
             <thead>
             <tr class="success">
-              <th width="30"></th>
-              <th width="80">商品画像</br>(仕入先)</th>
-              <th width="80">商品タイトル（英語）</th>
-              <th class="url" width="50">仕入URL</th>
+              <th width="40"></th>
+              <th width="90">商品画像</br>(仕入先)</th>
+              <th width="100">商品タイトル<br>（英語）</th>
+              <th class="url" width="100">仕入URL</th>
               <th width="60">リサーチ額(usd)</th>
             </tr>
             </thead>
@@ -157,12 +147,14 @@
                 <% if research.china_title.presence %>
                   <tbody>
                     <tr class="table-row">
-                      <th><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
+                      <th height="170"><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
                       <td>
-                        <img src="<%= research.china_image_url if research.china_image_url.present?  %>" width="100px">
+                        <img src="<%= research.china_image_url if research.china_image_url.present? %>" width="100px">
                       </td>
                       <th class="img-url2"><%= research.china_title if research.china_title.present? %></th>
-                      <td class="url-over"><%= research.china_url if research.china_url.present? %></td>
+                      <td class="url-over" width="50">
+                        <%= text_url_to_link(h(research.china_url)).html_safe %>
+                      </td>
                       <td><%= research.china_price if research.china_price.present? %> </td>
                     </tr>
                   </tbody>
