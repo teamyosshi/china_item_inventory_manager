@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include StocksHelper
   include ResearchesHelper
+  NUM=0 #カウンター初期値
 end
