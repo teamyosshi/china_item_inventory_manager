@@ -28,6 +28,26 @@ class StocksController < ApplicationController
   def buyitem
     @buyitems=Buyitem.all
   end
+  def buyitem_edit
+    buyitem=Buyitem.find(params[:id])
+    buyitem.japan_description=params[:japan_description]
+    if buyitem.save
+      flash[:success]="備考を更新しました"
+    else
+      flash[:warning]="備考に失敗しました"
+    end
+    redirect_to "/users/#{current_user.id}/buyitem"
+  end
+  def buyitem_delete
+    buyitem=Buyitem.find(params[:id])
+    begin
+    buyitem.destroy
+      flash[:success]="データを削除しました"
+    rescue => e
+      flash[:warning]="データ削除に失敗しました"
+    end
+    redirect_to "/users/#{current_user.id}/buyitem"
+  end
   def product_inventory
     @this_year = Date.today.year.to_s
     @prev_year = Date.today.prev_year.year.to_s
@@ -95,7 +115,7 @@ class StocksController < ApplicationController
   end
   def manynewbuyitem
     i=0
-    stocktobuyitems_params.each{|id, val|item_id,check = val.values_at("item_id","check")
+    stocktobuyitems_params.each{|id, val|item_id,check,japan_description = val.values_at("item_id","check","japan_description")
     if check=="1"
       item = Item.find(item_id)
       stock=Stock.find(id)
@@ -104,6 +124,7 @@ class StocksController < ApplicationController
         japan_title:item.item_title,
         japan_url:stock.buy_item_url,
         japan_price:item.simulate_price,
+        japan_description:japan_description,
         china_image_url:stock.buy_item_image_url,
         china_title:stock.buy_item_title,
         china_url:stock.buy_item_url,
@@ -133,7 +154,7 @@ class StocksController < ApplicationController
     end
     
     def stocktobuyitems_params
-      params.permit(stocktobuyitems: [:item_id,:check])[:stocktobuyitems]
+      params.permit(stocktobuyitems: [:item_id,:check,:japan_description])[:stocktobuyitems]
     end
     def unlesslogin
       if current_user.nil?
