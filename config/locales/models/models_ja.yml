@@ -11,3 +11,11 @@ ja:
         password_confirmation: パスワード再入力
         created_at: 作成日
         updated_at: 更新日
+        employee_number: 社員番号
+        address: 住所
+        phone_number: 電話番号
+        account_bank_name: 銀行名
+        account_number: 通帳番号
+        fired_flg: 退社理由
+        inventory_manager_flg: 在庫管理
+        reserch_user_flg: リサーチ

@@ -1,7 +1,7 @@
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "個の入力不足があります。") %></h2>
 
       <ul>
       <% user.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
 <div class="col-md-6 col-md-offset-3">
   <div class="field">
-    <%= form.label :name%>
+    <%= form.label :name, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
     <%= form.text_field :name, class:"form-control"%>
   </div>
 
@@ -27,30 +27,30 @@
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label :email, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
     <%= form.text_field :email, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
+    <%= form.label :address, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
     <%= form.text_field :address, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :phone_number %>
+    <%= form.label :phone_number, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
     <%= form.telephone_field :phone_number, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :password, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
     <%= form.password_field :password, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %>
+  <%= form.label :password_confirmation, class:"inline_form"%><p class="smoll_required inline_form">*必須</p>
     <%= form.password_field :password_confirmation, class:"form-control" %>
   </div>
-  <p>あなたの雇用形態を選択してください(複数選択可)</p>
+  <p class="inline_form">あなたの雇用形態を選択してください(複数選択可)</p><p class="smoll_required inline_form">*必須</p>
   <div class="field　form-inline" >
   <label class="checkbox-inline"><%= form.check_box :inventory_manager_flg %>在庫管理</label>
 

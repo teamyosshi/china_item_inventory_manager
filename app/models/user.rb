@@ -8,12 +8,21 @@ class User < ApplicationRecord
               format: { with: VALID_EMAIL_REGEX },
               uniqueness: {case_sensitive: false}
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { in: 6..30 }, allow_nil: true
   validates :line_id, length: {maximum: 255}
   validates :address, presence: true, length: { maximum: 255}
   validates :phone_number, presence: true, length: {maximum: 255}
   validates :employee_number, length: {maximum: 255}
   validates :fired_flg, length: {maximum: 50}
+  validates :inventory_manager_flg ,acceptance: true, if: :reserch_user_flg_validation?
+  validates :reserch_user_flg, acceptance: true, if: :inventory_manager_flg_validation?
+  def reserch_user_flg_validation?
+    reserch_user_flg == false
+  end
+
+  def inventory_manager_flg_validation?
+    inventory_manager_flg == false
+  end
 
   def User.digest(string)
     cost =
