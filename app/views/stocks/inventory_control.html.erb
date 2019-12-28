@@ -225,6 +225,7 @@
             <td width="100" align="center">購入業者</td>
             <td width="50" align="center">在庫数</td>
             <td width="100" align="center">仕入原価</td>
+            <td width="50" align="center">在庫備考</td>
             <td width="40" align="center">対象</td>
           </tr>
           </thead>
@@ -248,6 +249,7 @@
               <td><%= stocklist.trader_name[0,8] %></td>
               <td align="right"><%= stocklist.stock %></td>
               <td align="right"><%= stocklist.purchase_price.to_s(:delimited, delimiter: ',') if stocklist.purchase_price.present? %></td>
+              <td align="center"><%= buy.text_field:japan_description %></td>
               <td align="center"><%= buy.check_box :check %></td>
               <%= buy.hidden_field :item_id %>
             </tr>

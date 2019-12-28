@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post   '/scarcecsv_export',    to: 'items#csv_scarceexport'
   post   '/soldoutcsv_export',    to: 'items#csv_soldoutexport'
   get    '/stocks/:id/stock_new', to:'stocks#stock_new'
+  post '/stocks/buyitem_edit', to:'stocks#buyitem_edit',as: :buyitem_edit
+  delete '/stocks/buyitem_delete', to:'stocks#buyitem_delete',as: :buyitem_delete
   post 'items/item_number',    to: 'items#product_item_number'
   put '/stocks/manynewbuyitem',    to: 'stocks#manynewbuyitem' 
   delete '/items/destroy_many', to: 'items#destroy_many'
