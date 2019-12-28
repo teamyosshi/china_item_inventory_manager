@@ -6,29 +6,20 @@
   margin: auto;
 }
 
-#research-label {
-  color: darkblue;
-  float: left;
-  margin: 20px;
-  font-family: "Source Code Pro", Monaco, monospace;
-}
-
-#introduce {
-  color: #cc0000;
-  padding: 40px;
-  font-size: 15px;
-}
-
 .bulk_registration-btn {
   float: right;
- }
+}
 
 .text-search-japan {
-  margin: 10px 10px 50px 10px;
+  margin: 50px 10px 50px 10px;
 }
 
 .text-search-china {
-  margin: 10px;
+  margin: 50px 10px 50px 0px;
+}
+
+.research-btn-color{
+  margin-top: 50px;
 }
 
 .money-label {
@@ -64,9 +55,9 @@ a {
 }
 
 #th-while {
-   background-color: white;
-   border: 0;
- }
+  background-color: white;
+  border: 0;
+}
 
 #td-while {
   background-color: white;
@@ -82,7 +73,7 @@ a {
 
 .td-size {
   overflow-wrap : break-word;
-  #text-align:center;
+  text-align: center;
   vertical-align: middle;
 }
 
@@ -95,16 +86,14 @@ a {
 }
 
 .url-over {
-  overflow: scroll;
-  white-space: pre-wrap;
   overflow-wrap : break-word;
   text-align:center;
   vertical-align: middle;
+  font-size: 10px;
 }
 
 .title-height {
   overflow: hidden;
-  //height: 5.0em;
   height: 140px;
   font-size: 11px;
   line-height: 1.0;

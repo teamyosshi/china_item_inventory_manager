@@ -4,30 +4,30 @@
   }
 </style>
 <script>
-  $(function() {
-      //.accordion1の中のp要素がクリックされたら
-      $('.accordion1 p').click(function() {
-          //クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
-          $(this).next('ul').slideToggle();
-      });
-  });
-  $(function() {
-      //ファイルが選択されたときに下記のchange()が作動
-      $('#file').change(function() {
-          //idがfoo要素のsubmitボタンを押す処理を行う。
-          $('form')[0].submit().click('submit');
-      });
-  });
-  function show_hide_row(row) {
-      $("." + row).toggle();
-  }
+    $(function() {
+        //.accordion1の中のp要素がクリックされたら
+        $('.accordion1 p').click(function() {
+            //クリックされた.accordion1の中のp要素に隣接するul要素が開いたり閉じたりする。
+            $(this).next('ul').slideToggle();
+        });
+    });
+    $(function() {
+        //ファイルが選択されたときに下記のchange()が作動
+        $('#file').change(function() {
+            //idがfoo要素のsubmitボタンを押す処理を行う。
+            $('form')[0].submit().click('submit');
+        });
+    });
+    function show_hide_row(row) {
+        $("." + row).toggle();
+    }
 </script>
 <div class="container">
   <div class="row row-height">
     <div class="col-sm-3">
       <div style="display:inline-flex">
         <button class="btn-square-so-pop" style="height:35px; width:130px;" disabled>現在の想定レート</button>
-        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px; text-align: center;"></input>
+        <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:100px; text-align: center;"></input>
       </div>
     </div>
     <div class="col-sm-1"></div>
@@ -41,10 +41,10 @@
             <div class="kousin">
               <table table border="1" class="table-back">
                 <thead>
-                  <tr>
-                    <th width="500">商品タイトル</th>
-                    <th class="th-text" width="120" align="right">在庫数合計</th>
-                  </tr>
+                <tr>
+                  <th width="500">商品タイトル</th>
+                  <th class="th-text" width="120" align="right">在庫数合計</th>
+                </tr>
                 </thead>
                 <% @items.each do |item| %>
                   <% stockcount=item.stocks.sum(:stock)  %>
