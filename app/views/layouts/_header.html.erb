@@ -1,23 +1,30 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%# if logged_in? %>
-      <%#= link_to "在庫管理システム", item_research_path, id: "logo" %>
-      <%# else %>
-      <%= link_to "在庫管理システム", root_path, id: "logo" %>
-      <%# end %>
+    <% if logged_in? %>
+      <% if current_user.inventory_manager_flg? || current_user.admin? %>
+        <%= link_to "在庫管理システム", inventory_control_path(current_user), id: "logo" %>
+      <% elsif current_user.reserch_user_flg? %>
+        <%= link_to "在庫管理システム", item_research_path(current_user), id: "logo" %>
+      <% else %>
+        <%= link_to "在庫管理システム", root_path, id: "logo" %>
+      <% end %>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
       <% url = request.url %>
-      <li>
-        <% if activeheadertext(url,"inventory_control") %>
-          <div class="header-text">
-          <%= link_to "在庫管理", inventory_control_path(current_user) %>
-          </div>
-        <% else %>
-          <%= link_to "在庫管理", inventory_control_path(current_user) %>
-        <% end %>
+      <% if current_user.inventory_manager_flg? || current_user.admin? %>
+        <li>
+          <% if activeheadertext(url,"inventory_control") %>
+            <div class="header-text">
+            <%= link_to "在庫管理", inventory_control_path(current_user) %>
+            </div>
+          <% else %>
+            <%= link_to "在庫管理", inventory_control_path(current_user) %>
+          <% end %>
         </li>
+      <% end %>
+      <% if current_user.reserch_user_flg? || current_user.admin? %>
         <li>
           <% if activeheadertext(url,"item_research") %>
             <div class="header-text">
@@ -27,14 +34,16 @@
             <%= link_to "リサーチ", item_research_path(current_user) %>
           <% end %>
         </li>
+      <% end %>
+      <% if current_user.admin? %>
         <li>
-        <% if activeheadertext(url,"product_inventory") %>
-          <div class="header-text">
-          <%= link_to "商品棚卸", stock_path(current_user) %>
-          </div>
-        <% else %>
-          <%= link_to "商品棚卸", stock_path(current_user) %>
-        <% end %>
+          <% if activeheadertext(url,"product_inventory") %>
+            <div class="header-text">
+            <%= link_to "商品棚卸", stock_path(current_user) %>
+            </div>
+          <% else %>
+            <%= link_to "商品棚卸", stock_path(current_user) %>
+          <% end %>
         </li>
         <li>
         <% if activeheadertext(url,"buyitem") %>
@@ -45,6 +54,8 @@
           <%= link_to "商品仕入", buyitem_path(current_user) %>
         <% end %>
         </li>
+      <% end %>
+      <% if current_user.inventory_manager_flg? || current_user.admin? %>
         <li>
           <% if activeheadertext(url,"product_scarce") %>
             <div class="header-text">
@@ -62,7 +73,11 @@
           <% else %>
             <%= link_to "売切れ商品", sold_out_path(current_user) %>
           <% end %>
-        <li><%= link_to "ユーザー一覧", users_path %></li>
+        </li>
+      <% end %>
+        <% if current_user.admin? %>
+          <li><%= link_to "ユーザー一覧", users_path %></li>
+        <% end %>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               マイアカウント <b class="caret"></b>
@@ -76,8 +91,8 @@
             </ul>
           </li><% gravatar_id = Digest::MD5::hexdigest(current_user.email.downcase) %>
             <%= link_to edit_path(current_user), target: "_blank" do %>
-             <img src= "https://secure.gravatar.com/avatar/#{gravatar_id}"  border="0", class="header_gravatar" />
-             <% end %>
+              <img src= "https://secure.gravatar.com/avatar/#{gravatar_id}"  border="0", class="header_gravatar" />
+              <% end %>
           </li>
         <% else %>
         <li><%= link_to "トップ", root_path %></li>

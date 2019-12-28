@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update,:show]
+  before_action :admin_user,　only: [:index, :destroy]
 
   # GET /users
   # GET /users.json
@@ -27,29 +28,27 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        log_in @user
-        format.html { redirect_to @user, notice: 'ユーザーを作成しました。' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if @user.save
+      log_in @user
+      flash[:success] = "アカウントを作成しました。"
+      if @user.reserch_user_flg?
+        redirect_to  item_research_path(current_user)
+      elsif @user.inventory_manager_flg?
+        redirect_to inventory_control_path(current_user)
       end
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'ユーザー情報を更新しました。' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      flash[:success] = "ユーザー情報を更新しました。"
+      redirect_to user_path(@user)
+    else
+      render :edit
     end
   end
 
@@ -57,10 +56,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'ユーザーを削除しました。' }
-      format.json { head :no_content }
-    end
+    flash[:danger] = "ユーザーを削除しました。"
+    redirect_to users_path
   end
 
   private
@@ -85,7 +82,19 @@ class UsersController < ApplicationController
     def correct_user
       redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
+
     def admin_user
-      redirect_to root_url unless current_user.admin?
+      if logged_in?
+        unless current_user.admin?
+          flash[:danger] =  "権限がありません。"
+          if current_user.inventory_manager_flg?
+            redirect_to inventory_control_path(current_user)
+          elsif current_user.reserch_user_flg
+            redirect_to item_research_path(current_user)
+          else
+            redirect_to root_url
+          end
+        end
+      end
     end
 end

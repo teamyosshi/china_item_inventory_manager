@@ -109,7 +109,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
-      accepted: を受諾してください
+      accepted: どちらか選択してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
       empty: を入力してください

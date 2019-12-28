@@ -1,5 +1,6 @@
 class ResearchesController < ApplicationController
   before_action :set_research, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: :item_research
 
   # GET /researches
   # GET /researches.json
@@ -227,6 +228,14 @@ end
   # Use callbacks to share common setup or constraints between actions.
   def set_research
     @research = Research.find(params[:id])
+  end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください。"
+      redirect_to root_url
+    end
   end
 
   def research_params
