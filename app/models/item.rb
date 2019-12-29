@@ -20,7 +20,6 @@ class Item < ApplicationRecord
       # CSVからデータを取得し、設定する
       item.attributes = row.to_hash.slice(*updatable_attributes)
       # 保存する
-      debugger
       if item.save
         @proccesinng=1
       else
