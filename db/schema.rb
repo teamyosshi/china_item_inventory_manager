@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_14_095157) do
+ActiveRecord::Schema.define(version: 2019_12_29_005615) do
 
   create_table "buyitems", force: :cascade do |t|
     t.string "japan_image_url"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_12_14_095157) do
     t.boolean "yahooshoping"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "buy_item_title"
+    t.string "buy_item_url"
   end
 
   create_table "researches", force: :cascade do |t|
