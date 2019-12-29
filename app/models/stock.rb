@@ -1,5 +1,14 @@
 class Stock < ApplicationRecord
   belongs_to :item ,optional: true
+  validates :inventory_arrival_date, presence: true
+  validates :purchase_price, presence: true
+  validates :trader_name, presence: true
+  validates :stock, presence: true
+  validates :alert_border_line, presence: true
+  validates :purchase_price, presence: true
+  validates :buy_item_to_jpy, presence: true
+  validates :buy_item_to_cny, presence: true
+
   attr_accessor :check
   attr_accessor:japan_description
   def self.takeinventory_find
