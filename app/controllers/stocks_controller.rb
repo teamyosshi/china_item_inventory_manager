@@ -30,7 +30,7 @@ class StocksController < ApplicationController
     if buyitem.save
       flash[:success]="備考を更新しました"
     else
-      flash[:warning]="備考に失敗しました"
+      flash[:danger]="備考に失敗しました"
     end
     redirect_to "/users/#{current_user.id}/buyitem"
   end
@@ -40,7 +40,7 @@ class StocksController < ApplicationController
     buyitem.destroy
       flash[:success]="データを削除しました"
     rescue => e
-      flash[:warning]="データ削除に失敗しました"
+      flash[:danger]="データ削除に失敗しました"
     end
     redirect_to "/users/#{current_user.id}/buyitem"
   end
@@ -84,8 +84,8 @@ class StocksController < ApplicationController
        flash[:success] = "#{Item.find(@stock.item_id).item_title}の在庫データを変更しました"
        redirect_to "/users/#{current_user.id}/inventory_control"
     else
-      flash[:warning] = "更新に失敗しました。必須項目の入力等ご確認下さい。"
-      render 'stock_new_path'
+      flash[:danger] = "更新に失敗しました。必須項目の入力等ご確認下さい。"
+      render 'edit'
     end
   end
   def stock_new
@@ -98,8 +98,8 @@ class StocksController < ApplicationController
       flash[:success] = "#{Item.find(@stock.item_id).item_title}在庫データを登録しました"
       redirect_to "/users/#{current_user.id}/inventory_control"
     else
-      flash[:warning] = "登録に失敗しました"
-      render 'edit'
+      flash[:danger] = "登録に失敗しました"
+      render 'stock_new'
     end
   end 
   def destroy
@@ -134,7 +134,7 @@ class StocksController < ApplicationController
     if count>0
       flash[:success] = "#{count}件の在庫データを追加しました"
     else
-      flash[:warning] = "商品は追加されませんでした"
+      flash[:danger] = "商品は追加されませんでした"
     end
     redirect_to "/users/#{current_user.id}/buyitem"
   end
