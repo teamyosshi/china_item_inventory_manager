@@ -1,14 +1,23 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.table_haed_color {
-  background-color: #66CC33 !important;
+.s-tbl {
+  margin-top: 20px;
+}
+.s-tbl2 {
+  margin-top: 96px;
 }
 .s-tbl tr:nth-child(even) {
-	background-color: #FFFFCC;
+	background-color: #F7F7F7;
 }
 .s-tbl tr:nth-child(odd) {
-	background: #99CC99;
+	//background: #F7F7F7;
+}
+.inventory-tr {
+  background-color: lightblue;
+}
+.inventory-tr2 {
+  background-color: dodgerblue;
 }
 ul.show_deta{
 	margin-left: 500px;
@@ -23,4 +32,24 @@ ul {
 }
 .show_left_gravatar{
 	margin-left: 200px
+}
+#update-btn {
+  margin: 10px;
+}
+#num-field {
+  margin: 10px;
+}
+.f-size{
+  font-size: 14px;
+  font-weight: bold;
+  text-align:  center;
+}
+.f-size2{
+  font-size: 16px;
+  text-align:  center;
+  width: 90px;
+}
+.img-position {
+  text-align: center;
+  padding: 10px;
 }

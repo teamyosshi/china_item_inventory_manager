@@ -15,7 +15,7 @@ function show_hide_row(row) {
     $("." + row).toggle();
 }
 </script>
-<table>
+<table id="ex-position">
   <tr>
     <td width=50></td>
     <td width=50><%= button_to "エクスポート", {controller: 'items', action: 'csv_soldoutexport',items: @item,format: :csv}, {method: :post, class: "btn-square-so-pop"} %></td>
@@ -57,11 +57,11 @@ function show_hide_row(row) {
     <% k=i%2 %>
   <tr class="tr-back<%= k %>">
     <td align="center" style="padding: 3px;"><%= check_box_tag "deletes[#{ item.id }]", item.id %></td>
-    <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
+    <td align="center" style="padding: 10px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
       <% if item.item_picture.present? %>
         <% uri=URI.parse(item.item_picture) %>
         <% if uri.scheme=="https" or uri.scheme=="http" %>
-          <%= image_tag item.item_picture, :size =>'60x45' %>
+          <%= image_tag item.item_picture, :size =>'80x40' %>
         <% end %>
       <% end %>
     </td>

@@ -117,13 +117,13 @@
           <table table border="1" id="table_detail" class="table-back22">
             <thead>
             <tr class="tr-back2">
-              <th width="5" width="30">商品画像</th>
-              <th width="50">製品コード</th>
-              <th width="20">商品タイトル</th>
-              <th width="60">在庫計</th>
-              <th width="160">想定価格</th>
-              <th width="170">出品サイト</th>
-              <th width="30">削除</th>
+              <th class="f-size2">商品画像</th>
+              <th class="f-size" width="50">製品コード</th>
+              <th class="f-size" width="20">商品タイトル</th>
+              <th class="f-size" width="60">在庫計</th>
+              <th class="f-size" width="160">想定価格</th>
+              <th class="f-size" width="170">出品サイト</th>
+              <th class="f-size" width="30">削除</th>
             </tr>
             </thead>
         </div>
@@ -137,15 +137,23 @@
           <% yahooshoping=item.yahooshoping %>
           <% k=i%2 %>
           <tr class="tr-back<%= k %>">
+<!--<<<<<<< HEAD-->
             <td style="padding:2px"; onclick="show_hide_row('hidden_row<%=i %>')" ;>
               <% if item.item_picture.present? %>
                 <% uri=URI.parse(item.item_picture) %>
                 <% if uri.scheme=="https" or uri.scheme=="http" %>
-                  <%= image_tag item.item_picture, :size =>'60x45' %>
+                  <%= image_tag item.item_picture, :size =>'80x40' %>
+<!--=======-->
+<!--            <td onclick="show_hide_row('hidden_row<%= i %>')" class="img-position">-->
+              <%# if item.item_picture.present? %>
+                <%# uri=URI.parse(item.item_picture) %>
+                <%# if uri.scheme=="https" or uri.scheme=="http" %>
+                  <%#= image_tag item.item_picture, :size =>'80x40' %>
+
                 <% end %>
               <% end %>
             </td>
-            <td><%= link_to item.part_number, "/items/#{item.id}/edit" %></td>
+            <td><%= link_to item.part_number, "/items/#{item.id}/edit" %></td>git
             <td width="500" align="left"><%= item.item_title%></td>
             <td>
               <% if item.stocks.sum(:stock)<20 %>

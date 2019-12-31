@@ -98,7 +98,7 @@
               <th width="10"></th>
               <th width="35">商品画像</th>
               <th width="40">商品タイトル<br>（日本）</th>
-              <th width="35">リサーチURL</th>
+              <th width="22">リサーチURL</th>
               <th width="30">リサーチ額</th>
             </tr>
             </thead>
@@ -119,7 +119,10 @@
                       <%= research.japan_title %>
                     </td>
                     <td class="url-over" width="50">
-                      <%= text_url_to_link(h(research.japan_url)).html_safe %>
+                      <%#= text_url_to_link(h(research.japan_url)).html_safe %>
+                      <% if research.japan_url.present? %>
+                        <%= link_to image_tag('home.jpg'), research.japan_url, target: :_blank , :size =>'8×4' %>
+                      <% end %>
                     </td>
                     <td>
                       <%= research.japan_price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse %>円
@@ -138,7 +141,7 @@
               <th width="40"></th>
               <th width="90">商品画像</br>(仕入先)</th>
               <th width="100">商品タイトル<br>（英語）</th>
-              <th class="url" width="100">仕入URL</th>
+              <th class="url" width="50">仕入URL</th>
               <th width="60">リサーチ額(usd)</th>
             </tr>
             </thead>
@@ -153,7 +156,10 @@
                     </td>
                     <th class="img-url2"><%= research.china_title if research.china_title.present? %></th>
                     <td class="url-over" width="50">
-                      <%= text_url_to_link(h(research.china_url)).html_safe %>
+                      <%#= text_url_to_link(h(research.china_url)).html_safe %>
+                      <% if research.china_url.present? %>
+                        <%= link_to image_tag('home.jpg'), research.china_url, target: :_blank , :size =>'8×4' %>
+                      <% end %>
                     </td>
                     <td><%= research.china_price if research.china_price.present? %> </td>
                   </tr>

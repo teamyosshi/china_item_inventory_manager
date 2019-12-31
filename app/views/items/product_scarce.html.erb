@@ -15,11 +15,11 @@ function show_hide_row(row) {
     $("." + row).toggle();
 }
 </script>
-<table>
+<table id="ex-position">
   <tr>
-    <td width=50></td>
-    <td width=50><%= button_to "エクスポート", {controller: 'items', action: 'csv_scarceexport',items: @item,format: :csv}, {method: :post, class: "btn-square-so-pop"} %></td>
-    <td width=260></td>
+    <div>
+      <td width=50><%= button_to "エクスポート", {controller: 'items', action: 'csv_scarceexport',items: @item,format: :csv}, {method: :post, class: "btn-square-so-pop2"} %></td>
+    </div>
     <td width=630>
       <div style="display:inline-flex">
         <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
@@ -54,15 +54,27 @@ function show_hide_row(row) {
   <% yahooshoping=item.yahooshoping %>
   <% k=i%2 %>
   <tr class="tr-back<%= k %>">
-    <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
+<!--<<<<<<< HEAD-->
+    <td align="center" style="padding: 10px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
         <% if item.item_picture.present? %>
           <% uri=URI.parse(item.item_picture) %>
           <% if uri.scheme=="https" or uri.scheme=="http" %>
-            <%= image_tag item.item_picture, :size =>'60x45' %>
+            <%= image_tag item.item_picture, :size =>'80x40' %>
           <% end %>
         <% end %>
       </td>
-    <td align="center" style="padding: 2px;">
+    <td align="center" style="padding: 10px;">
+<!--=======-->
+<!--    <td align="center" style="padding: 10px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>-->
+      <%# if item.item_picture.present? %>
+        <%# uri=URI.parse(item.item_picture) %>
+      <%# end %>
+      <%# if uri.scheme=="https" or uri.scheme=="http" %>
+        <%#= image_tag item.item_picture, :size =>'80x40' %>
+      <%# end %>
+<!--    </td>-->
+<!--    <td align="center" style="padding: 10px;">-->
+<!--1ee7749... “#158_modify_admin_user_design”-->
       <%= form_with(url: items_item_number_path, method: :post, local: true) do |form| %>
         <%= form.text_field :part_number, value: item.part_number,style:"width: 100px;" %>
         <%= form.hidden_field :id, value: item.id %>

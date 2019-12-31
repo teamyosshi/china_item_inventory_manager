@@ -1,12 +1,12 @@
 <div class="inventory_table">
   <table class="table table-bordered table-condensed s-tbl">
-    <tr>
-      <td>仕入れ日</td>
-      <td>タイトル</td>
-      <td>JANコード</td>
-      <td>業者名</td>
-      <td>金額</td>
-      <td>購入数</td>
+    <tr class="inventory-tr">
+      <td class="f-size">仕入れ日</td>
+      <td class="f-size">タイトル</td>
+      <td class="f-size">JANコード</td>
+      <td class="f-size">業者名</td>
+      <td class="f-size">金額</td>
+      <td class="f-size">購入数</td>
     </tr>
   <% @item_stocks.each do |item_stock| %>
     <tr>
@@ -21,25 +21,31 @@
   </table>
 </div>
 <div>
-  <table class="table table-bordered table-condensed s-tbl sale_table">
-    <tr>
-      <td>前年度期末<br>
+  <table class="table table-bordered table-condensed s-tbl2 sale_table">
+    <tr class="inventory-tr2">
+      <td class="f-size">前年度期末<br>
           商品棚卸高</td>
-      <td>今年度仕入<br>
+      <td class="f-size">今年度仕入<br>
           原価合計額</td>
-      <td>今年度期末<br>
+      <td class="f-size">今年度期末<br>
           商品棚卸高</td>
-      <td>売上原価</td>
+      <td class="f-size">売上原価</td>
     </tr>
     <tr>
-      <td><% if @this_year_beginning_product_inventory.beginning_product_inventory.nil? %>
-            <%= form_with(url: takeinventory_update_path,local: true) do |ti| %>
-              <%= ti.number_field :beginning_product_inventory %>
+      <td>
+        <% if @this_year_beginning_product_inventory.beginning_product_inventory.nil? %>
+          <%= form_with(url: takeinventory_update_path,local: true) do |ti| %>
+            <div id="num-field">
+              <%= ti.number_field :beginning_product_inventory,{ class: "form-control" } %>
+            </div>
+            <div id="update-btn">
               <%= ti.submit "更新", class:"btn btn-primary"%>
-            <% end %>
-            <% else %>
-            <%= @this_year_beginning_product_inventory.beginning_product_inventory %>
-          <% end %></td>
+            </div>
+          <% end %>
+          <% else %>
+          <%= @this_year_beginning_product_inventory.beginning_product_inventory %>
+        <% end %>
+      </td>
       <td><%= @total_purchase_cost_this_year %></td>
       <td><%= @this_year_beginning_product_inventory.period_end_product_inventory if @this_year_beginning_product_inventory.period_end_product_inventory.present? %></td>
       <td><%= @this_year_beginning_product_inventory.cost_of_sales if @this_year_beginning_product_inventory.cost_of_sales.present? %></td>
