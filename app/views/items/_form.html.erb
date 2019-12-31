@@ -1,47 +1,43 @@
 <div class="col-md-6 col-md-offset-3">
   <%= form_with(model: item, url: items_path, method: :post, local: true) do |form| %>
     <div class="field">
-      <%= form.label :item_title %>
+      <%= form.label :商品タイトル %>
       <%= form.text_field :item_title, class:"form-control" %>
     </div>
 
     <div class="field">
-      <%= form.label :part_number %>
+      <%= form.label :製品コード%>
       <%= form.text_field :part_number, class:"form-control" %>
     </div>
 
     <div class="field">
-      <%= form.label :simulate_price %>
+      <%= form.label :想定金額 %>
       <%= form.text_field :simulate_price, class:"form-control" %>
     </div>
 
-    <div class="field">
-      <%= form.label :item_picture %>
-      <%= form.text_field :item_picture, class:"form-control" %>
-    </div>
     <%= form.fields_for :stocks do |stock| %>
       <div class="field">
-        <%= stock.label :buy_item_to_jpy %>
+        <%= stock.label :仕入原価（日本円） %>
         <%= stock.number_field :buy_item_to_jpy, class:"form-control" %>
       </div>
 
       <div class="field">
-        <%= stock.label :buy_item_title %>
+        <%= stock.label :仕入タイトル %>
         <%= stock.text_field :buy_item_title, class:"form-control" %>
       </div>
 
       <div class="field">
-        <%= stock.label :buy_item_url %>
+        <%= stock.label :仕入リンク %>
         <%= stock.text_field :buy_item_url, class:"form-control" %>
       </div>
 
       <div class="field">
-        <%= stock.label :buy_item_to_cny %>
+        <%= stock.label :仕入原価（中国元） %>
         <%= stock.number_field :buy_item_to_cny, class:"form-control" %>
       </div>
 
       <div class="field">
-        <%= stock.label :buy_item_image_url %>
+        <%= stock.label :仕入画像リンク %>
         <%= stock.text_field :buy_item_image_url, class:"form-control" %>
       </div>
       <% end %>

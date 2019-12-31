@@ -137,11 +137,11 @@
           <% yahooshoping=item.yahooshoping %>
           <% k=i%2 %>
           <tr class="tr-back<%= k %>">
-            <td onclick="show_hide_row('hidden_row<%=i %>')" ;>
+            <td style="padding:2px"; onclick="show_hide_row('hidden_row<%=i %>')" ;>
               <% if item.item_picture.present? %>
                 <% uri=URI.parse(item.item_picture) %>
                 <% if uri.scheme=="https" or uri.scheme=="http" %>
-                  <%= image_tag item.item_picture, :size =>'50x25' %>
+                  <%= image_tag item.item_picture, :size =>'60x45' %>
                 <% end %>
               <% end %>
             </td>
@@ -240,13 +240,13 @@
                 <% if stocklist.item.item_picture.present? %>
                   <% uri=URI.parse(stocklist.item.item_picture) %>
                   <% if uri.scheme=="https" or uri.scheme=="http" %>
-                    <%= image_tag stocklist.item.item_picture, :size =>'50x25' %>
+                    <%= image_tag stocklist.item.item_picture, :size =>'60x45' %>
                   <% end %>
                 <% end %>
               </td>
               <td><%= stocklist.item.part_number %></td>
-              <td><%= stocklist.item.item_title[0,30] %></td>
-              <td><%= stocklist.trader_name[0,8] %></td>
+              <td><%= stocklist.item.item_title %></td>
+              <td><%= stocklist.trader_name %></td>
               <td align="right"><%= stocklist.stock %></td>
               <td align="right"><%= stocklist.purchase_price.to_s(:delimited, delimiter: ',') if stocklist.purchase_price.present? %></td>
               <td align="center"><%= buy.text_field:japan_description %></td>
