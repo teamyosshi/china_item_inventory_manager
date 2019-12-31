@@ -19,11 +19,11 @@ class ItemsController < ApplicationController
       if Item.get_processing==1
         flash[:success] = "インポートに成功しました"
       else
-        flash[:warning] = "インポートに失敗しました"
+        flash[:danger] = "インポートに失敗しました"
       end
     rescue => e
       logger.error e
-      flash[:warning] = "ＣＳＶファイルを選択して下さい"
+      flash[:danger] = "ＣＳＶファイルを選択して下さい"
     end
     redirect_to "/users/#{current_user.id}/inventory_control"
   end
@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
        session.delete(:before_url)
        redirect_to url
     else
-        flash[:warning] = "更新に失敗しました"
+        flash[:danger] = "更新に失敗しました"
         session.delete(:before_url)
         render 'edit'
     end
@@ -99,7 +99,7 @@ class ItemsController < ApplicationController
           end
         end
       else
-        flash[:warning] = "失敗しました"
+        flash[:danger] = "失敗しました"
       end
       redirect_to request.referer
   end

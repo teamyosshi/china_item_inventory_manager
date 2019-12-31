@@ -6,6 +6,20 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      item:
+      stock:
+    attributes:
+      stock:
+        purchase_price: 仕入原価
+        trader_name: 仕入業者
+        stock: 在庫
+        alert_border_line: 最低在庫数
+        buy_item_to_jpy: 購入原価（円）
+        buy_item_to_cny: 購入原価（中国元）
+      item:
+        simulate_price: 想定金額
+
   date:
     abbr_day_names:
       - 日
