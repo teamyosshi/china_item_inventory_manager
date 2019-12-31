@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   post '/', to:'sessions#create'
   get '/signup',to:'users#new', as: :signup
-  post   '/export',    to: 'stocks#csv_export'
+  post   '/export',    to: 'stocks#csv_export', as: :csv_export
   post   '/scarcecsv_export',    to: 'items#csv_scarceexport'
   post   '/soldoutcsv_export',    to: 'items#csv_soldoutexport'
   get    '/stocks/:id/stock_new', to:'stocks#stock_new'
