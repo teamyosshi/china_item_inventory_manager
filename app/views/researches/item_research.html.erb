@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="text-search-japan">
-            <%= f.text_field :search, placeholder: "日本語キーワード入力　例：バスケットボール", class:"form-control" %>
+            <%= f.text_field :search, placeholder: "日本語キーワード入力　例：時計", class:"form-control" %>
             <div class="money-label">
               <label for="number" class="control-label col-md-3">金額</label>
               <%= f.select :japan_min_price, [['下限なし', 0], ['1,000', 1000], ['5,000', 5000], ['10,000', 10000], ['50,000', 50000], ['100,000', 100000], ['500,000', 500000], ['1,000,000', 1000000]] %>
@@ -109,7 +109,7 @@
                 <% if research.japan_title.presence %>
                   <tbody>
                   <tr class="table-row">
-                    <th height="170"><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
+                    <th height="170" class="ch"><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
                       <%= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
                     </th>
                     <td>
@@ -150,7 +150,7 @@
                 <% if research.china_title.presence %>
                   <tbody>
                   <tr class="table-row">
-                    <th height="170"><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
+                    <th class="ch" height="170"><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
                     <td>
                       <img src="<%= research.china_image_url if research.china_image_url.present? %>" width="100px">
                     </td>

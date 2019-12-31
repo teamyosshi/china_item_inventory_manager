@@ -19,17 +19,21 @@
       <% @users.each do |user| %>
         <tr>
           <td id="grav-size"><%= gravatar_for user %></td>
-          <td style="font-size: 18px; text-align: center"><%= link_to user.name, user %></td>
+          <div>
+            <td id="name-link" style="font-size: 18px; text-align: center"><%= link_to user.name, user %></td>
+          </div>
           <td style="font-size: 18px; text-align: center"><%= user.employee_number %></td>
           <td style="font-size: 18px; text-align: center"><%= user.line_id %></td>
           <td style="font-size: 18px; text-align: center"><%= user.phone_number %></td>
-          <td style="font-size: 18px; text-align: center"><%= link_to '編集', edit_user_path(user) %></td>
+          <td style="font-size: 18px; text-align: center"><%= link_to '編集', edit_user_path(user), class: 'btn btn-success' %></td>
           <td style="font-size: 18px; text-align: center"><%= link_to '削除', user, class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
+  a:visited {
+  color: black;
+  }
   <br>
   <%= will_paginate %>
 </div>

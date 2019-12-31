@@ -248,6 +248,11 @@ p {
   font-weight: bold;
 }
 
+.tr-back-red {
+  background: crimson;
+  font-weight: bold;
+}
+
 .tr-sub-back2 {
   background: #87cefa;
 }
@@ -368,4 +373,12 @@ a.btn.btn-success.btn-lg {
 
 .a.btn.btn-danger a:visited {
   color: white;
+}
+
+.ch {
+  text-align: center;
+}
+
+#name-link a:visited {
+color: #666666;
 }
