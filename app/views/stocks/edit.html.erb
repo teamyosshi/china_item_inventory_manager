@@ -2,6 +2,17 @@
 <% if @item.blank? %>
 <% @item=Item.find(@stock.item_id) %>
 <% end %>
+  <% if @stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stock.errors.count, "") %>件のエラーがあります。</h2>
+
+      <ul>
+      <% @stock.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <%= form_for(@stock, url:{controller:'stocks', action:'update'}) do |form| %>
 <div class="row center">
   <div class="col-sm-12 col-md-12"></div>
