@@ -55,13 +55,13 @@ function show_hide_row(row) {
   <% k=i%2 %>
   <tr class="tr-back<%= k %>">
     <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
-      <% if item.item_picture.present? %>
-        <% uri=URI.parse(item.item_picture) %>
-      <% end %>
-      <% if uri.scheme=="https" or uri.scheme=="http" %>
-        <%= image_tag item.item_picture, :size =>'50x25' %>
-      <% end %>
-    </td>
+        <% if item.item_picture.present? %>
+          <% uri=URI.parse(item.item_picture) %>
+          <% if uri.scheme=="https" or uri.scheme=="http" %>
+            <%= image_tag item.item_picture, :size =>'60x45' %>
+          <% end %>
+        <% end %>
+      </td>
     <td align="center" style="padding: 2px;">
       <%= form_with(url: items_item_number_path, method: :post, local: true) do |form| %>
         <%= form.text_field :part_number, value: item.part_number,style:"width: 100px;" %>

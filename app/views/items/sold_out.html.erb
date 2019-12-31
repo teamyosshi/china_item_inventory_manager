@@ -60,9 +60,9 @@ function show_hide_row(row) {
     <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
       <% if item.item_picture.present? %>
         <% uri=URI.parse(item.item_picture) %>
-      <% end %>
-      <% if uri.scheme=="https" or uri.scheme=="http" %>
-        <%= image_tag item.item_picture, :size =>'50x25' %>
+        <% if uri.scheme=="https" or uri.scheme=="http" %>
+          <%= image_tag item.item_picture, :size =>'60x45' %>
+        <% end %>
       <% end %>
     </td>
     <td align="center" style="padding: 2px;" align="center">
