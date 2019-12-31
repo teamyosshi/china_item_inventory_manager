@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :stocks
   validates :simulate_price, numericality: true, presence: true
   validates :item_title, presence: true
-  validates :part_number, presence: true, on: :product_registration
+  validates :part_number, presence: true, on: [:product_registration, :update]
   validates :buy_item_title, presence: true, on: :product_registration
   validates :buy_item_url, presence: true, on: :product_registration
   validates :china_item_picture, presence: true, on: :product_registration
