@@ -19,6 +19,8 @@ ja:
         buy_item_to_cny: 購入原価（中国元）
       item:
         simulate_price: 想定金額
+        item_titke: 商品名
+        part_number: 製品番号
 
   date:
     abbr_day_names:
