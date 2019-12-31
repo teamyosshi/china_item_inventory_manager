@@ -3,12 +3,12 @@
 <% @item=Item.find(@stock.item_id) %>
 <% end %>
 <%= form_for(@stock, url:{controller:'stocks', action:'create'}) do |form| %>
-<div class="row">
-  <div class="col-sm-6 col-md-3"></div>
-  <div class="col-md-9 lead">商品名：<%= @item.item_title %><br></div>
+<div class="row center">
+  <div class="col-sm-12 col-md-12"></div>
+  <div class="col-sm-12 col-md-12 lead">商品名：<%= @item.item_title %><br></div>
 </div>
-<div class="col-sm-6 col-md-3"></div>
-<div class="col-sm-6 col-md-3">
+<div class="col-sm-2 col-md-3"></div>
+<div class="col-sm-4 col-md-3">
   <div class="field">
     <%= form.label :仕入日 %>
     <%= form.date_select :inventory_arrival_date %>
@@ -30,32 +30,6 @@
     <%= form.number_field :alert_border_line %>
   </div>
   <div class="field">
-    <%= form.label :商品製造番号 %>
-    <%= form.text_field :item_number %>
-  </div>
-</div>
-<div class="col-sm-6 col-md-3">
-  <div class="field">
-    <%= form.label :部品番号 %>
-    <% if @stock.part_number.blank? %>
-    <%= form.text_field :part_number,value:@item.part_number %>
-    <% else %>
-    <%= form.text_field :part_number %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= form.label :仕入商品名 %>
-    <% if @stock.buy_item_title.blank? %>
-    <%= form.text_field :buy_item_title,value:@item.item_title,size:"40" %>
-    <% else %>
-    <%= form.text_field :buy_item_title %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= form.label :仕入商品URL %>
-    <%= form.text_field :buy_item_url ,size:"40"%>
-  </div>
-  <div class="field">
     <%= form.label :購入原価（円） %>
     <%= form.number_field :buy_item_to_jpy %>
   </div>
@@ -63,19 +37,31 @@
     <%= form.label :購入原価（中国元） %>
     <%= form.number_field :buy_item_to_cny %>
   </div>
+</div>
+<div class="col-sm-4 col-md-3">
   <div class="field">
-    <%= form.label :仕入商品画像 %>
-    <% if @stock.buy_item_image_url.blank? %>
-    <%= form.text_field :buy_item_image_url,value:@item.item_picture,size:"40" %>
-    <% else %>
-    <%= form.text_field :buy_item_image_url %>
-    <% end %>
+    <p><b>仕入商品名</b></p>
+    <%= @item.buy_item_title %>
+  </div>
+  <div class="field">
+    <p><b>仕入商品URL</b></p>
+    <%= @item.buy_item_url %>
+  </div>
+  <div class="field">
+    <p><b>仕入商品画像</b></p>
+    <img src="<%= @item.china_item_picture %>">
   </div>
   <div class="hidden">
     <%= form.hidden_field :item_id,value:@item.id %>
   </div>
-  <br>
-  <%= form.submit "登録する", :class=> 'btn btn-primary', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
-  <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
-  <% end %>
+</div>
+<div class="col-sm-2 col-md-3"></div>
+
+<div class="center">
+  <div class="col-sm-12 col-md-12">
+    <br>
+    <%= form.submit "登録する", :class=> 'btn btn-primary', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
+    <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
+    <% end %>
+  </div>
 </div>

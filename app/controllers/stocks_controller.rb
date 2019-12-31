@@ -18,13 +18,9 @@ class StocksController < ApplicationController
   end
   
   def csv_export
-    find=params[:items_find]
-    if find.present?
-      @items_find2=Item.search(find)
-    else
-      @items_find2=Item.all
-    end
+      send_data render_to_string, filename: "#{Time.now.strftime("%Y_%m%d_%H%M%S")}_item_products.csv", type: :csv
   end
+
   def buyitem
     @buyitems=Buyitem.all
   end
