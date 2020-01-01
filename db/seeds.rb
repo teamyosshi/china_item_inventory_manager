@@ -54,4 +54,36 @@ b = 0
                    china_url: "https://www.marimekko.jp/shop/marimekko/item/list/category_id/34")
 end
 
-
+Buyitem.create!(
+    japan_image_url:"https://img.alicdn.com/imgextra/i4/850320452/O1CN01glcs1m1FD3agMdVMw_!!850320452.jpg",
+    japan_title:"純正 YAMAHA ヤマハ f310 バラードウッドギター",
+    japan_url:"https://chinamart.jp/tmall_item?iid=20525092687&key=15dfecc5d9b49932afe67bdc012b3dd5&sellerid=850320452",
+    japan_description:"純正 YAMAHA ヤマハ f310 バラードウッドギター初心者入門学生男性と女性の電気ボックス",
+    japan_price:17719,
+    china_image_url:"http://img.alicdn.com/bao/uploaded/i1/850320452/O1CN01JtIz7S1FD3akD8Q9K_!!0-item_pic.jpg_160x160.jpg",
+    china_title:"正品YAMAHA雅马哈f310民谣木吉他初学者入门学生男女电箱41寸f600",
+    china_url:"https://chinamart.jp/tmall_item?iid=20525092687&key=15dfecc5d9b49932afe67bdc012b3dd5&sellerid=850320452",
+    china_price:899,
+    user_id:1)
+Buyitem.create!(
+    japan_image_url:"https://cbu01.alicdn.com/img/ibank/2018/725/696/9323696527_1359731289.460x460xz.jpg",
+    japan_title:"全自動壁ブレーカー",
+    japan_url:"https://chinamart.jp/alibaba_item?iid=551312382726&key=9e0b982b3aa924fd0beeff2442f07093",
+    japan_description:"全自動壁ブレーカー加熱攪拌多機能搾り搾り肉ベビー補助食品豆乳機代用 OEM",
+    japan_price:11822,
+    china_image_url:"https://cbu01.alicdn.com/img/ibank/2018/725/696/9323696527_1359731289.460x460xz.jpg",
+    china_title:"全自动破壁机加热搅拌多功能榨汁绞肉婴儿辅食料理豆浆机代发OEM",
+    china_url:"https://chinamart.jp/alibaba_item?iid=551312382726&key=9e0b982b3aa924fd0beeff2442f07093",
+    china_price:591,
+    user_id:1)
+Buyitem.create!(
+    japan_image_url:"https://cbu01.alicdn.com/img/ibank/2019/465/787/11637787564_1988683686.460x460xz.jpg",
+    japan_title:"新しいまつげクリップ",
+    japan_url:"https://chinamart.jp/alibaba_item?iid=598197591869&key=e1af8d68c77b7adcb47023216b078263",
+    japan_description:"新しいまつげクリップ ロールマスカラチャージ美容ツール電気ホットクロスボーダーまつげクリップ メーカーダイレクトマーケティング",
+    japan_price:1561,
+    china_image_url:"https://cbu01.alicdn.com/img/ibank/2019/465/787/11637787564_1988683686.460x460xz.jpg",
+    china_title:"新款睫毛夹 卷翘睫毛器充电美妆工具电动烫跨境睫毛夹 厂家直销",
+    china_url:"https://chinamart.jp/alibaba_item?iid=598197591869&key=e1af8d68c77b7adcb47023216b078263",
+    china_price:78,
+    user_id:1)
