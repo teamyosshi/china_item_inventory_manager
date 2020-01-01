@@ -61,7 +61,7 @@ function show_hide_row(row) {
       <% if item.item_picture.present? %>
         <% uri=URI.parse(item.item_picture) %>
         <% if uri.scheme=="https" or uri.scheme=="http" %>
-          <%= image_tag item.item_picture, :size =>'80x40' %>
+          <%= image_tag item.item_picture, :size =>'80x50' %>
         <% end %>
       <% end %>
     </td>

@@ -137,19 +137,11 @@
           <% yahooshoping=item.yahooshoping %>
           <% k=i%2 %>
           <tr class="tr-back<%= k %>">
-<!--<<<<<<< HEAD-->
-            <td style="padding:2px"; onclick="show_hide_row('hidden_row<%=i %>')" ;>
+            <td style="padding:8px"; onclick="show_hide_row('hidden_row<%= i %>')" class="img-position";>
               <% if item.item_picture.present? %>
                 <% uri=URI.parse(item.item_picture) %>
                 <% if uri.scheme=="https" or uri.scheme=="http" %>
-                  <%= image_tag item.item_picture, :size =>'80x40' %>
-<!--=======-->
-<!--            <td onclick="show_hide_row('hidden_row<%= i %>')" class="img-position">-->
-              <%# if item.item_picture.present? %>
-                <%# uri=URI.parse(item.item_picture) %>
-                <%# if uri.scheme=="https" or uri.scheme=="http" %>
-                  <%#= image_tag item.item_picture, :size =>'80x40' %>
-
+                  <%= image_tag item.item_picture, :size =>'80x50' %>
                 <% end %>
               <% end %>
             </td>
