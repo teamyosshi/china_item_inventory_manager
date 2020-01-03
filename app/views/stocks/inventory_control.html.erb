@@ -75,6 +75,14 @@
             </label>
           <% end %>
         </div>
+    <% elsif admin!=true && current_user %>
+      <div class="row" style="margin-left:30px">
+        <div class="col-xs-1">
+          <label>
+            <div class="btn-square-so-pop-user center">インポート(使用不可)</div>
+            <%= submit_tag "インポート" ,class: "input-default" %>
+          </label>
+        </div>
     <% end %>
     <div class="col-xs-1"></div>
     <div class="col-xs-1">
