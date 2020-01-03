@@ -90,7 +90,6 @@
     </div>
     </div>
   </div>
-  <br>
   <div class="row">
     <div class="col-xs-6">
       <%= form_with :action=>"inventory_control", :controller=>"stocks" , method: :get, local: true do |form| %>
@@ -122,7 +121,7 @@
 </div>
 <section id="acdemo1">
   <div class="accordion1">
-    &emsp; &emsp; &emsp; <p class="btn btn-primary btn-xs right style" "display:inline;">表示/非表示</p>
+    <p class="btn btn-primary btn-xs right style" "display:inline;">表示/非表示</p>
     <% if @items_find.present? %>
       <%= "検索件数#{@items_find.count}件です" %>
       <ul class="inner">
@@ -130,13 +129,13 @@
           <table table border="1" id="table_detail" class="table-back22">
             <thead>
             <tr class="tr-back2">
-              <th width="5" width="30">商品画像</th>
-              <th width="50">製品コード</th>
-              <th width="20">商品タイトル</th>
-              <th width="60">在庫計</th>
-              <th width="160">想定価格</th>
-              <th width="170">出品サイト</th>
-              <th width="30">削除</th>
+              <th width="5" width="30" style="text-align: center">商品画像</th>
+              <th width="50" style="text-align: center">製品コード</th>
+              <th width="20" style="text-align: center">商品タイトル</th>
+              <th width="60" style="text-align: center">在庫計</th>
+              <th width="160" style="text-align: center">想定価格</th>
+              <th width="170" style="text-align: center">出品サイト</th>
+              <th width="30" style="text-align: center">削除</th>
             </tr>
             </thead>
         </div>
@@ -150,11 +149,11 @@
           <% yahooshoping=item.yahooshoping %>
           <% k=i%2 %>
           <tr class="tr-back<%= k %>">
-            <td style="padding:2px"; onclick="show_hide_row('hidden_row<%=i %>')" ;>
+            <td style="padding:6px"; onclick="show_hide_row('hidden_row<%=i %>')" ;>
               <% if item.item_picture.present? %>
                 <% uri=URI.parse(item.item_picture) %>
                 <% if uri.scheme=="https" or uri.scheme=="http" %>
-                  <%= image_tag item.item_picture, :size =>'60x45' %>
+                  <%= image_tag item.item_picture, :size =>'80x80' %>
                 <% end %>
               <% end %>
             </td>
@@ -173,9 +172,9 @@
               <% else %>
                 <%= form_with(model:@item ,url: price_update_path(item.id), method: :patch, local: true) do |fp| %>
                   <div id = "price_form">
-                    <div class="side_by_side"><%= fp.number_field :simulate_price, class:"fp_form side_form"%></div>
-
-                    <div class="side_by_side"><%= fp.submit "更新", class:"btn btn-primary btn-sm side_btn"%></div>
+<!--                    <div class="side_by_side"><%#= fp.number_field :simulate_price, class:"fp_form side_form"%></div>-->
+                    <div class="side_by_side"><%= fp.number_field :simulate_price, class:"form-control input-sm"%></div>
+                    <div class="side_by_side"><%= fp.submit "更新", class:"btn btn-primary btn-xs side_btn"%></div>
                 <% end %>
               <% end %>
             </td>
@@ -192,7 +191,7 @@
             <th>購入業者</th>
             <th>在庫数</th>
             <th>仕入原価</th>
-            <th>編集</th>
+            <th colspan="2">編集</th>
           </tr>
           <% y=1 %>
           <% stocks.each do |stock| %>
@@ -202,12 +201,17 @@
               <td><%= stock.trader_name %></td>
               <td><%= stock.stock %></td>
               <td><%= stock.purchase_price.to_s(:delimited, delimiter: ',') if stock.purchase_price.present? %></td>
-              <td><%= link_to "編集", "/stocks/#{stock.id}/edit" %></td>
+              <td colspan="2" class="link"><%= link_to "編集", "/stocks/#{stock.id}/edit" %></td>
             </tr>
             <% y=y+1 %>
             </tr>
           <% end %>
-          <tr class="<%= classname %> tr-sub-back0"><td colspan="5"  style="border-right-style:none;"></td><td style="border-left-style:none; "><%= link_to "新規登録", "/stocks/#{item.id}/stock_new" %></td></tr>
+          <tr class="<%= classname %> tr-sub-back0">
+            <td colspan="5" style="border-right-style:none;"></td>
+            <td colspan="2" class="link" style="border-left-style:none; ">
+              <%= link_to "新規登録", "/stocks/#{item.id}/stock_new" %>
+            </td>
+          </tr>
           <% i=i.to_i+1 %>
         <% end %>
     <% end %>
