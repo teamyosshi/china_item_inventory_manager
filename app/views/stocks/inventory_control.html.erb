@@ -86,10 +86,15 @@
   <div class="row">
     <div class="col-xs-6">
       <%= form_with :action=>"inventory_control", :controller=>"stocks" , method: :get, local: true do |form| %>
-        <p style="margin-left:30px">商品名及び製品番号検索：<%= text_field_tag :search, params[:search] %>
+        <label>商品名及び製品番号検索
+          <div id="search-input">
+            <%= text_field_tag :search, params[:search], class: 'form-control input-sm' %>
+          </div>
           <%= hidden_field_tag :kubun, "1"  %>
-          <%= submit_tag "検索", :name => nil,class: "btn-square-so-pop", data: { disable_with: "検索中" }  %>
-        </p>
+          <div id="search-btn">
+            <%= submit_tag "検索", :name => nil, data: { disable_with: "検索中" }, class:"btn btn-primary btn-xs"  %>
+          </div>
+        </label>
       <% end %>
     </div>
     <div class="col-xs-1">
