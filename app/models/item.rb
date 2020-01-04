@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
   has_many :stocks, dependent: :destroy
   accepts_nested_attributes_for :stocks
-  validates :simulate_price, numericality: true, presence: true
-  validates :item_title, presence: true
-  validates :part_number, presence: true, on: [:product_registration, :update]
-  validates :buy_item_title, presence: true, on: :product_registration
-  validates :buy_item_url, presence: true, on: :product_registration
-  validates :china_item_picture, presence: true, on: :product_registration
+  validates :simulate_price, numericality: true, presence: true, on: :create
+  validates :item_title, presence: true, on: :create
+  validates :part_number, presence: true, on: [:create, :update]
+  validates :buy_item_title, presence: true, on: :create
+  validates :buy_item_url, presence: true, on: :create
+  validates :item_japan_url, presence: true, on: :create
 
   def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
@@ -30,7 +30,7 @@ class Item < ApplicationRecord
 
   # 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["item_picture", "part_number","item_title", "simulate_price"]
+    ["item_picture", "part_number","item_title", "simulate_price","buy_item_title","buy_item_url","buy_item_url"]
   end
   #インポートできたどうかをコントローラーに渡すためのメソッド
   def self.get_processing

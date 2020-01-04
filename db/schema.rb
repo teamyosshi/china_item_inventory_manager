@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_111710) do
+ActiveRecord::Schema.define(version: 2020_01_04_124322) do
 
   create_table "buyitems", force: :cascade do |t|
     t.string "japan_image_url"
@@ -73,19 +73,14 @@ ActiveRecord::Schema.define(version: 2020_01_04_111710) do
     t.integer "purchase_price"
     t.string "trader_name"
     t.integer "stock"
-    t.integer "original_stock"
     t.integer "alert_border_line"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "item_number"
-    t.string "part_number"
     t.integer "simulate_price"
-    t.string "buy_item_title"
     t.string "buy_item_url"
     t.integer "buy_item_to_jpy"
     t.integer "buy_item_to_cny"
-    t.string "buy_item_image_url"
     t.index ["item_id"], name: "index_stocks_on_item_id"
   end
 

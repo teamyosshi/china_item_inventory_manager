@@ -124,11 +124,11 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_number,:item_title, :item_image, :china_item_image, :part_number, :jan_code, :simulate_price, :yahoo, :amazon, :mercari, :rakuma, :rakuten, :yahooshoping, :buy_item_title, :buy_item_url, :china_item_picture)
+      params.require(:item).permit(:item_number,:item_title, :item_image, :china_item_image, :part_number, :jan_code, :simulate_price, :yahoo, :amazon, :mercari, :rakuma, :rakuten, :yahooshoping)
     end
 
     def item_create_params
-      params.require(:item).permit(:item_title, :part_number, :simulate_price, :item_picture, stocks_attributes: [:id, :buy_item_title, :buy_item_url, :buy_item_to_jpy, :buy_item_to_cny, :buy_item_image_url])
+      params.require(:item).permit(:item_title, :part_number, :simulate_price, :item_picture, :buy_item_title, :buy_item_url, :item_japan_url, :buy_item_title, :buy_item_url, :item_japan_url, :china_item_picture, :yahoo, :amazon, :mercari, :rakuma, :rakuten, :yahooshoping)
     end
 
     def item_price_update_params

@@ -1,5 +1,21 @@
 <div class="col-md-6 col-md-offset-3">
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "") %>件のエラーがあります。</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= form_with(model: item, url: items_path, method: :post, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :商品の画像リンク（日本側） %>
+      <%= form.text_field :item_japan_url, class:"form-control" %>
+    </div>
+
     <div class="field">
       <%= form.label :商品タイトル %>
       <%= form.text_field :item_title, class:"form-control" %>
@@ -15,32 +31,51 @@
       <%= form.text_field :simulate_price, class:"form-control" %>
     </div>
 
-    <%= form.fields_for :stocks do |stock| %>
-      <div class="field">
-        <%= stock.label :仕入原価（日本円） %>
-        <%= stock.number_field :buy_item_to_jpy, class:"form-control" %>
-      </div>
+    <b>出品サイト</b>
+    <table>
+    <tr style="height:30px;">
+      <td>
+        <%= form.check_box :yahoo %>
+        <B>Yahoo</B>
+      </td>
+      <td>
+        <%= form.check_box :amazon %>
+        <B>Amazon</B>
+      </td>
+      <td>
+        <%= form.check_box :mercari %>
+        <b>メルカリ</b>
+      </td>
+      <td>
+        <%= form.check_box :rakuma %>
+        <b>ラクマ</b>
+      </td></tr>
+    <tr>
+    <td >
+      <%= form.check_box :rakuten %>
+      <b>楽天</b>
+    </td>
+    <td colspan="2">
+      <%= form.check_box :yahooshoping %>
+      <b>ヤフーショッピング</b>
+    </td></tr>
+    </table>
 
-      <div class="field">
-        <%= stock.label :仕入タイトル %>
-        <%= stock.text_field :buy_item_title, class:"form-control" %>
-      </div>
+    <div class="field">
+      <%= form.label :仕入タイトル（中国側） %>
+      <%= form.text_field :buy_item_title, class:"form-control" %>
+    </div>
 
-      <div class="field">
-        <%= stock.label :仕入リンク %>
-        <%= stock.text_field :buy_item_url, class:"form-control" %>
-      </div>
+    <div class="field">
+      <%= form.label :仕入リンク（中国側） %>
+      <%= form.text_field :buy_item_url, class:"form-control" %>
+    </div>
 
-      <div class="field">
-        <%= stock.label :仕入原価（中国元） %>
-        <%= stock.number_field :buy_item_to_cny, class:"form-control" %>
-      </div>
+    <div class="field">
+      <%= form.label :商品の画像リンク（中国側） %>
+      <%= form.text_field :china_item_picture, class:"form-control" %>
+    </div>
 
-      <div class="field">
-        <%= stock.label :仕入画像リンク %>
-        <%= stock.text_field :buy_item_image_url, class:"form-control" %>
-      </div>
-      <% end %>
     <div class="actions">
       <%= form.submit "商品作成" , class:"btn btn-primary btn-block" %>
     </div>

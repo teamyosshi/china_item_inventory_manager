@@ -19,8 +19,12 @@ ja:
         buy_item_to_cny: 購入原価（中国元）
       item:
         simulate_price: 想定金額
-        item_titke: 商品名
+        item_title: 商品名
         part_number: 製品番号
+        buy_item_title: 仕入れタイトル
+        buy_item_url: 日本側の商品URL
+        item_japan_url: 商品の画像リンク（日本側）
+        china_item_picture: 商品の画像リンク（中国側）
 
   date:
     abbr_day_names:
