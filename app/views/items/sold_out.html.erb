@@ -59,10 +59,7 @@ function show_hide_row(row) {
     <td align="center" style="padding: 3px;"><%= check_box_tag "deletes[#{ item.id }]", item.id %></td>
     <td align="center" style="padding: 2px;" onclick="show_hide_row('hidden_row<%=i %>')" ;>
       <% if item.item_picture.present? %>
-        <% uri=URI.parse(item.item_picture) %>
-        <% if uri.scheme=="https" or uri.scheme=="http" %>
-          <%= image_tag item.item_picture, :size =>'60x45' %>
-        <% end %>
+        <%= image_tag item.item_picture, :size =>'60x45' %>
       <% end %>
     </td>
     <td align="center" style="padding: 2px;" align="center">

@@ -151,10 +151,7 @@
           <tr class="tr-back<%= k %>">
             <td style="padding:6px"; onclick="show_hide_row('hidden_row<%=i %>')" ;>
               <% if item.item_picture.present? %>
-                <% uri=URI.parse(item.item_picture) %>
-                <% if uri.scheme=="https" or uri.scheme=="http" %>
-                  <%= image_tag item.item_picture, :size =>'80x80' %>
-                <% end %>
+                <%= image_tag item.item_picture, :size =>'80x80' %>
               <% end %>
             </td>
             <td class="link">
@@ -257,10 +254,7 @@
             <tr class="tr-sub-back<%= k %>">
               <td>
                 <% if stocklist.item.item_picture.present? %>
-                  <% uri=URI.parse(stocklist.item.item_picture) %>
-                  <% if uri.scheme=="https" or uri.scheme=="http" %>
-                    <%= image_tag stocklist.item.item_picture, :size =>'60x45' %>
-                  <% end %>
+                  <%= image_tag stocklist.item.item_picture, :size =>'60x45' %>
                 <% end %>
               </td>
               <td><%= stocklist.item.part_number %></td>
