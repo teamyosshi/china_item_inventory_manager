@@ -118,12 +118,12 @@ class StocksController < ApplicationController
       @buyitem = Buyitem.new(
         japan_image_url:item.item_picture,
         japan_title:item.item_title,
-        japan_url:stock.buy_item_url,
+        japan_url:item.item_url,
         japan_price:item.simulate_price,
         japan_description:japan_description,
-        china_image_url:stock.buy_item_image_url,
-        china_title:stock.buy_item_title,
-        china_url:stock.buy_item_url,
+        china_image_url:item.buy_item_image_url,
+        china_title:item.buy_item_title,
+        china_url:item.buy_item_url,
         china_price:stock.purchase_price,
         user_id:current_user.id)
       if @buyitem.save
