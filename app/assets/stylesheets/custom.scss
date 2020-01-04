@@ -71,8 +71,6 @@ p {
 }
 
 .box_title{
-  //float: left;
-  //margin: 20px 400px 0 0;
   font-family: "Source Code Pro", Monaco, monospace;
   padding: 0 0 0 100px;/*文字周りの余白*/
   margin: 30px;
@@ -282,21 +280,6 @@ p {
   text-align: center;
 }
 
-.reserch_btn{
-  position: fixed;
-  margin: 680px 0 0 1450px;
-}
-
-.reserch_btn_btn{
-  width: 100px;
-}
-
-.reserch_p{
-  margin-right: 10px;
-  font-size: 16px;
-
-}
-
 .administrator {
   color: red;
 }
@@ -340,6 +323,7 @@ a.btn.btn-success.btn-lg {
 #delete_form {
   margin-left: 85px;
 }
+
 .smoll_required{
   font-size: 3px;
   color: red;
@@ -361,4 +345,47 @@ a.btn.btn-success.btn-lg {
 #search-btn {
   margin-left: 160px;
   padding-bottom: 10px;
+}
+
+.reserch_btn{
+  position: fixed;
+  float: right;
+  right: 50px;
+  bottom: 100px;
+}
+
+.reserch_btn_btn{
+  width: 120px;
+  padding: 0 0 20px 40px;
+}
+
+.box25{
+  position: relative;
+  background: #fff0cd;
+  box-shadow: 0px 0px 0px 5px #fff0cd;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+}
+
+.box25:after{
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #ffdb88 #fff #ffdb88;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box25 p {
+  margin: 0;
+  padding: 0;
+}
+
+.reserch_p{
+  padding-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }

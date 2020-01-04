@@ -104,9 +104,11 @@
 </header>
 <% if logged_in? && current_user.admin? %>
   <div class="reserch_btn">
-    <p class="reserch_p">⬇商品登録ページへ️️️</p>
     <%= link_to product_registration_path(current_user), target: "_blank" do %>
-      <img src= "https://i1.wp.com/sozaikoujou.com/wordpress/wp-content/uploads/2016/06/th_app_button_plus.jpg?w=600&ssl=1"  border="0", class="reserch_btn_btn" />
+      <img src= "https://i2.wp.com/sozaikoujou.com/wordpress/wp-content/uploads/2015/12/th_business_icone_simple_home.png?w=600&ssl=1"  border="0", class="reserch_btn_btn" />
     <% end %>
+    <div class="box25">
+      <p class="reserch_p">商品登録ページへ️️️</p>
+    </div>
   </div>
 <% end %>
