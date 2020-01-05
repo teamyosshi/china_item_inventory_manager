@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td width=50></td>
-    <td width=630>
+    <td style="padding: 30px 0 30px 670px" width=630>
       <div style="display:inline-flex">
         <button class="btn-square-so-pop"  style="height:35px; width:130px;"  disabled>現在の想定レート</button>
         <input type="text" name="名前" readonly value=<%=chanarate(1.5) %> style="width:70px; text-align: center;"></input>
@@ -17,15 +17,15 @@
       <table table border="1" id="table_detail">
         <thead>
         <tr class="tr-back2" style="height:20px;">
-          <td width="30" align="center" >商品画像</td>
+          <td align="center">商品画像</td>
           <td align="center" width="120">商品タイトル(日本)</td>
-          <td align="center" width="100">リサーチ額</td>
+          <td align="center">リサーチ額</td>
           <td width="50" align="center">仕入画像</td>
           <td align="center" width="120">中国商品タイトル</td>
           <td align="center" width="40">URL</td>
           <td align="center" width="80">中国元原価</td>
           <td align="center" width="100">備考</td>
-          <td align="center" width="40"></td>
+          <td width="5%"></td>
         </tr>
         </thead>
     </div>
@@ -33,29 +33,29 @@
     <% @buyitems.each do |buyitem| %>
       <% k=i%2 %>
       <tr class="tr-back<%= k %>" style="height:100px;">
-        <td align="center" style="margin: 2px; padding-top:7px;">
+        <td align="center" style="margin: 2px; padding:2px; width: 10%;">
           <% if buyitem.japan_image_url.present? %>
-            <%= image_tag buyitem.japan_image_url, :size =>'160x120' %>
+            <%= image_tag buyitem.japan_image_url, :size =>'90x90' %>
           <% end %></td>
-        <td style="vertical-align:top; padding-top:7px;"><%= buyitem.japan_title %></td>
-        <td align="right"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
-        <td align="center" style="margin: 2px; padding-top:7px;">
+        <td style="vertical-align:top; padding-top:7px; width: 30%;"><%= buyitem.japan_title %></td>
+        <td align="right" style="width: 7%; text-align: center"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
+        <td align="center" style="margin: 2px; padding-top:7px; width: 10%;">
           <% if buyitem.china_image_url.present? %>
-            <%= image_tag buyitem.china_image_url, :size =>'160x120' %>
+            <%= image_tag buyitem.china_image_url, :size =>'90x90' %>
           <% end %>
         </td>
-        <td style="vertical-align:top; padding-top:7px;"><%=buyitem.china_title %></td>
-        <td align="center">
+        <td style="vertical-align:top; padding: 8px; width: 25%;"><%=buyitem.china_title %></td>
+        <td align="center" style="width: 5%;">
           <% if buyitem.china_url.present? %>
-            <%= link_to image_tag('home.jpg'), buyitem.china_url, target: :_blank , :size =>'8×4' %>
+            <%= link_to image_tag('home.jpg'), buyitem.china_url, target: :_blank %>
           <% end %>
         </td>
-        <td align="right"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')  if buyitem.china_price.present?%></td>
-        <td style="vertical-align:top; padding-top:7px;"><%=buyitem.japan_description %></td>
+        <td align="right" style="width:7%; text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')  if buyitem.china_price.present?%></td>
+        <td style="vertical-align:top; padding-top:7px; width: 10%"><%=buyitem.japan_description %></td>
         <!--modal -->
-        <td style="padding-top:7px;">
-          <a class="js-modal-open btn-square-so-pop orange" href="" data-target=con<%=buyitem.id %>>　備考更新　</a><br><br>
-          <%= button_to "削除", buyitem_delete_path, { method: :delete, class: "btn-square-so-pop red",params: {id: buyitem.id}, data: { confirm: '本当に削除しますか？' }} %>
+        <td>
+          <a class="js-modal-open btn-square-so-pop-buy orange" href="" data-target=con<%=buyitem.id %>>　備考更新　</a><br><br>
+          <%= button_to "削除", buyitem_delete_path, { method: :delete, class: "btn-square-so-pop-buy red",params: {id: buyitem.id}, data: { confirm: '本当に削除しますか？' }} %>
         </td>
         <div id=con<%= buyitem.id %> class="modal js-modal">
           <div class="modal__bg js-modal-close"></div>
