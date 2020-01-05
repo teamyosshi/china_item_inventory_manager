@@ -96,10 +96,10 @@
             <thead>
             <tr class="success">
               <th width="10"></th>
-              <th width="35">商品画像</th>
-              <th width="40">商品タイトル<br>（日本）</th>
-              <th width="35">リサーチURL</th>
-              <th width="30">リサーチ額</th>
+              <th width="35" style="text-align: center">商品画像</th>
+              <th width="40" style="text-align: center">商品タイトル<br>（日本）</th>
+              <th width="20" style="text-align: center">リサーチURL</th>
+              <th width="30" style="text-align: center">リサーチ額</th>
             </tr>
             </thead>
             <!--NOにindexを付ける準備-->
@@ -109,11 +109,11 @@
                 <% if research.japan_title.presence %>
                   <tbody>
                   <tr class="table-row">
-                    <th height="170"><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
+                    <th height="170" style="text-align: center"><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
                       <%= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
                     </th>
                     <td>
-                      <img src="<%=(research.japan_image_url) if research.japan_image_url.present? %>"width="100px"height="100px">
+                      <img src="<%=(research.japan_image_url) if research.japan_image_url.present? %>"width="110px"height="110px">
                     </td>
                     <td class="title-height">
                       <%= research.japan_title %>
@@ -136,11 +136,11 @@
           <table class="table table-bordered table-striped table-design">
             <thead>
             <tr class="success">
-              <th width="40"></th>
-              <th width="90">商品画像</br>(仕入先)</th>
-              <th width="100">商品タイトル<br>（英語）</th>
-              <th class="url" width="100">仕入URL</th>
-              <th width="60">リサーチ額(usd)</th>
+              <th width="40" style="text-align: center"></th>
+              <th width="90" style="text-align: center">商品画像<br>(仕入先)</th>
+              <th width="100" style="text-align: center">商品タイトル<br>（英語）</th>
+              <th class="url" width=45" style="text-align: center">仕入URL</th>
+              <th width="60" style="text-align: center">リサーチ額(usd)</th>
             </tr>
             </thead>
             <% @researches.each do |research| %>
@@ -148,9 +148,9 @@
                 <% if research.china_title.presence %>
                   <tbody>
                   <tr class="table-row">
-                    <th height="170"><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
+                    <th height="170" style="text-align: center"><!--input type="checkbox" name="chn_reseach_check" class="chinaresearch" value= 1 --><%= rf.check_box :chn_reseach_check, class: "chinaresearch" %></th>
                     <td>
-                      <img src="<%= research.china_image_url if research.china_image_url.present? %>" width="100px">
+                      <img src="<%= research.china_image_url if research.china_image_url.present? %>" width="110px" height=110px">
                     </td>
                     <th class="img-url2"><%= research.china_title if research.china_title.present? %></th>
                     <td class="url-over" width="50">
@@ -165,7 +165,9 @@
             <% end %>
           </table>
         </div>
-        <%= f.submit '商品登録', class: "btn btn-primary btn-block"%>
+        <div class="col-md-8 col-md-offset-2">
+          <%= f.submit '商品登録', class: "btn btn-primary btn-block" %>
+        </div>
       <% end %>
       <%= will_paginate %>
     </div>
