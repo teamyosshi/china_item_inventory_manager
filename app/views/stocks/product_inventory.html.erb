@@ -1,48 +1,58 @@
 <div class="inventory_table">
-  <table class="table table-bordered table-condensed s-tbl">
-    <tr>
-      <td>仕入れ日</td>
-      <td>タイトル</td>
-      <td>JANコード</td>
-      <td>業者名</td>
-      <td>金額</td>
-      <td>購入数</td>
-    </tr>
-  <% @item_stocks.each do |item_stock| %>
-    <tr>
-      <td><%= item_stock.inventory_arrival_date %></td>
-      <td><%= item_stock.item.item_title %></td>
-      <td><%= item_stock.item.jan_code %></td>
-      <td><%= item_stock.trader_name %></td>
-      <td><%= item_stock.purchase_price %></td>
-      <td><%= item_stock.stock %></td>
-    </tr>
-  <% end %>
-  </table>
+  <div class="kousin2" style="margin-top: 30px">
+    <table border="1">
+      <tr class="tr-back2" style="height: 30px">
+        <th class="product_th" width="10%">仕入れ日</th>
+        <th class="product_th" width="40%">タイトル</th>
+        <th class="product_th" width="10%">JANコード</th>
+        <th class="product_th" width="20%">業者名</th>
+        <th class="product_th" width="10%">金額</th>
+        <th class="product_th" width="10%">購入数</th>
+      </tr>
+    <% i=1 %>
+    <% @item_stocks.each do |item_stock| %>
+      <% k=i%2 %>
+      <tr class="tr-back<%= k %>" style="height:40px;">
+        <td style="text-align: center"><%= item_stock.inventory_arrival_date %></td>
+        <td style="text-align: left"><%= item_stock.item.item_title %></td>
+        <td style="text-align: center"><%= item_stock.item.jan_code %></td>
+        <td style="text-align: center"><%= item_stock.trader_name %></td>
+        <td style="text-align: center"><%= item_stock.purchase_price %></td>
+        <td style="text-align: center"><%= item_stock.stock %></td>
+      </tr>
+      <% i=i.to_i+1 %>
+    <% end %>
+    </table>
+  </div>
 </div>
 <div>
-  <table class="table table-bordered table-condensed s-tbl sale_table">
-    <tr>
-      <td>前年度期末<br>
-          商品棚卸高</td>
-      <td>今年度仕入<br>
+  <table border="1" style="border-collapse: collapse; border-color: black" class="sale_table">
+    <tr class="tr-back2" style="height: 30px">
+      <td class="product_th2" width=40%">前年度期末 商品棚卸高</td>
+      <td class="product_th2" width="20%">今年度仕入<br>
           原価合計額</td>
-      <td>今年度期末<br>
+      <td class="product_th2" width="20%">今年度期末<br>
           商品棚卸高</td>
-      <td>売上原価</td>
+      <td class="product_th2" width="20%">売上原価</td>
     </tr>
-    <tr>
-      <td><% if @this_year_beginning_product_inventory.beginning_product_inventory.nil? %>
-            <%= form_with(url: takeinventory_update_path,local: true) do |ti| %>
-              <%= ti.number_field :beginning_product_inventory %>
-              <%= ti.submit "更新", class:"btn btn-primary"%>
-            <% end %>
-            <% else %>
-            <%= @this_year_beginning_product_inventory.beginning_product_inventory %>
-          <% end %></td>
-      <td><%= @total_purchase_cost_this_year %></td>
-      <td><%= @this_year_beginning_product_inventory.period_end_product_inventory if @this_year_beginning_product_inventory.period_end_product_inventory.present? %></td>
-      <td><%= @this_year_beginning_product_inventory.cost_of_sales if @this_year_beginning_product_inventory.cost_of_sales.present? %></td>
+    <tr class="tr-back0">
+      <td style="text-align: center; padding: 15px">
+        <% if @this_year_beginning_product_inventory.beginning_product_inventory.nil? %>
+          <%= form_with(url: takeinventory_update_path,local: true) do |ti| %>
+            <div id="num-input">
+              <%= ti.number_field :beginning_product_inventory, {class: "form-control"} %>
+            </div>
+            <div id="update-btn">
+              <%= ti.submit "更新", class:"btn btn-primary" %>
+            </div>
+          <% end %>
+          <% else %>
+          <%= @this_year_beginning_product_inventory.beginning_product_inventory %>
+        <% end %>
+      </td>
+      <td style="text-align: center"><%= @total_purchase_cost_this_year %></td>
+      <td style="text-align: center"><%= @this_year_beginning_product_inventory.period_end_product_inventory if @this_year_beginning_product_inventory.period_end_product_inventory.present? %></td>
+      <td style="text-align: center"><%= @this_year_beginning_product_inventory.cost_of_sales if @this_year_beginning_product_inventory.cost_of_sales.present? %></td>
     </tr>
   </table>
 </div>
