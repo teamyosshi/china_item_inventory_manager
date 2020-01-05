@@ -19,12 +19,12 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= gravatar_for user %></td>
-          <td><%= link_to user.name, user %></td>
+          <td class="link"><%= link_to user.name, user %></td>
           <td><%= user.employee_number %></td>
           <td><%= user.line_id %></td>
           <td><%= user.phone_number %></td>
-          <td><%= link_to '編集', edit_user_path(user) %></td>
-          <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' } %></td>
+          <td class="link"><%= link_to '編集', edit_user_path(user) %></td>
+          <td class="link"><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' } %></td>
         </tr>
       <% end %>
     </tbody>

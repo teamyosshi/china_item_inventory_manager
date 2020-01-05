@@ -262,7 +262,7 @@
               <td><%= stocklist.trader_name %></td>
               <td align="right"><%= stocklist.stock %></td>
               <td align="right"><%= stocklist.purchase_price.to_s(:delimited, delimiter: ',') if stocklist.purchase_price.present? %></td>
-              <td align="center"><%= buy.text_field:japan_description %></td>
+              <td align="center"><%= buy.text_field :japan_description %></td>
               <td align="center"><%= buy.check_box :check %></td>
               <%= buy.hidden_field :item_id %>
             </tr>
