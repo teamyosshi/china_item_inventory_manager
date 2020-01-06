@@ -16,7 +16,7 @@
     <div class="kousin2">
       <table table border="1" id="table_detail">
         <thead>
-        <tr class="tr-back2" style="height:20px;">
+        <tr class="tr-back2" style="height:40px;">
           <td align="center">商品画像</td>
           <td align="center" width="120">商品タイトル(日本)</td>
           <td align="center">リサーチ額</td>
@@ -38,7 +38,7 @@
             <%= image_tag buyitem.japan_image_url, :size =>'90x90' %>
           <% end %></td>
         <td style="vertical-align:top; padding-top:7px; width: 30%;"><%= buyitem.japan_title %></td>
-        <td align="right" style="width: 7%; text-align: center"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
+        <td align="right" style="width: 8%; text-align: center"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
         <td align="center" style="margin: 2px; padding-top:7px; width: 10%;">
           <% if buyitem.china_image_url.present? %>
             <%= image_tag buyitem.china_image_url, :size =>'90x90' %>
@@ -50,7 +50,7 @@
             <%= link_to image_tag('home.jpg'), buyitem.china_url, target: :_blank %>
           <% end %>
         </td>
-        <td align="right" style="width:7%; text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')  if buyitem.china_price.present?%></td>
+        <td align="right" style="width:9%; text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')  if buyitem.china_price.present?%></td>
         <td style="vertical-align:top; padding-top:7px; width: 10%"><%=buyitem.japan_description %></td>
         <!--modal -->
         <td>
