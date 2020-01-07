@@ -233,7 +233,7 @@ p {
   margin: 0 10px;
 }
 
-//商品僅少ページ用
+//商品僅少ページ、売切れ用
 .btn-square-so-pop-scarce {
   position: relative;
   display: inline-block;
@@ -397,7 +397,7 @@ a.btn.btn-success.btn-lg {
 }
 
 .link a:visited {
-  color: gray;
+  color: #777777;
 }
 
 #search-input {
