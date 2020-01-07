@@ -65,10 +65,11 @@
                 <%= f.hidden_field :id,value:buyitem.id %>
                 <%= f.label :"備考" %>
                 <%= f.text_area :japan_description,value:buyitem.japan_description,cols:60,rows:5 %><br>
-                <%= f.submit "実行", class: "btn btn-primary",style:"width:100px;height:50px" %>
+                <div id="go-btn">
+                  <%= f.submit "実行", class: "btn btn-primary",　style: "width:100px; height:30px;" %>
+                </div>
               </div>
             <% end %>
-            <a class="js-modal-close" href="">閉じる</a>
           </div>
         </div>
         <!--modal__inner-->

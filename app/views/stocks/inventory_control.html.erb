@@ -234,14 +234,14 @@
       <div class="modal-body">
         <table table border="1" id="table_detail" class="table-back22">
           <thead>
-          <tr class="tr-sub-back1">
+          <tr class="modal-th">
             <td width="50" align="center">画像</td>
-            <td width="4S0" align="center">製品コード</td>
-            <td width="400" align="center">商品タイトル</td>
+            <td width="40" align="center">製品コード</td>
+            <td width="250" align="center">商品タイトル</td>
             <td width="100" align="center">購入業者</td>
-            <td width="50" align="center">在庫数</td>
-            <td width="100" align="center">仕入原価</td>
-            <td width="50" align="center">在庫備考</td>
+            <td width="70" align="center">在庫数</td>
+            <td width="80" align="center">仕入原価</td>
+            <td width="70" align="center">在庫備考</td>
             <td width="40" align="center">対象</td>
           </tr>
           </thead>
@@ -252,17 +252,17 @@
           <%= fields_for "stocktobuyitems[]",stocklist do |buy| %>
             <% k=i%2 %>
             <tr class="tr-sub-back<%= k %>">
-              <td>
+              <td style="padding: 4px;">
                 <% if stocklist.item.item_picture.present? %>
-                  <%= image_tag stocklist.item.item_picture, :size =>'60x45' %>
+                  <%= image_tag stocklist.item.item_picture, :size =>'50x50' %>
                 <% end %>
               </td>
-              <td><%= stocklist.item.part_number %></td>
+              <td style="text-align: center"><%= stocklist.item.part_number %></td>
               <td><%= stocklist.item.item_title %></td>
-              <td><%= stocklist.trader_name %></td>
-              <td align="right"><%= stocklist.stock %></td>
-              <td align="right"><%= stocklist.purchase_price.to_s(:delimited, delimiter: ',') if stocklist.purchase_price.present? %></td>
-              <td align="center"><%= buy.text_field :japan_description %></td>
+              <td style="text-align: center"><%= stocklist.trader_name %></td>
+              <td style="text-align: center"><%= stocklist.stock %></td>
+              <td style="text-align: center"><%= stocklist.purchase_price.to_s(:delimited, delimiter: ',') if stocklist.purchase_price.present? %></td>
+              <td><%= buy.text_field :japan_description, class: "form-control input-sm" %></td>
               <td align="center"><%= buy.check_box :check %></td>
               <%= buy.hidden_field :item_id %>
             </tr>
@@ -270,9 +270,10 @@
           <% end %>
         <% end %>
         </table>
-        <tr>
-          <td style="border:hidden;" align="right"><br><%= submit_tag value="仕入一括登録", :class => "btn btn-primary btn-lm" %></td>
-        </tr><br>
+        <div id="modal-btn">
+          <%= submit_tag value="仕入一括登録", :class => "btn btn-primary btn-lm" %>
+        </div>
+        <br>
       <% end %>
     </div>
   </div>

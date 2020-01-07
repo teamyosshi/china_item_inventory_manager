@@ -22,38 +22,40 @@
 <div class="col-sm-4 col-md-3">
   <div class="field">
     <%= form.label :仕入日 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.date_select :inventory_arrival_date %>
+    <%= form.date_select :inventory_arrival_date, {}, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
     <%= form.label :仕入原価 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :purchase_price,id:"jsNum" %>
+    <%= form.number_field :purchase_price, id:"jsNum", class: "form-control input-sm" %>
   </div>
   <div class="field">
     <%= form.label :仲介業者 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.text_field :trader_name %>
+    <%= form.text_field :trader_name, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
     <%= form.label :在庫数 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :stock %>
+    <%= form.number_field :stock, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
     <%= form.label :最低在庫数 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :alert_border_line %>
+    <%= form.number_field :alert_border_line, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
     <%= form.label :購入原価（円） %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :buy_item_to_jpy %>
+    <%= form.number_field :buy_item_to_jpy, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
     <%= form.label :購入原価（中国元） %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :buy_item_to_cny %>
+    <%= form.number_field :buy_item_to_cny, { class: "form-control input-sm" } %>
   </div>
 </div>
 <div class="col-sm-4 col-md-3">
   <div class="field">
     <p><b>仕入商品名</b></p>
     <%if @item.buy_item_title.present?%>
-      <%= @item.buy_item_title %>
+      <div class="control">
+        <%= @item.buy_item_title %>
+      </div>
     <% else %>
       <p>まだ設定されていません<p>
     <% end %>
@@ -61,7 +63,11 @@
   <div class="field">
     <p><b>仕入商品URL</b></p>
     <%if @item.buy_item_url.present?%>
-      <%= @item.buy_item_url %>
+      <div class="control">
+        <div class="link">
+          <%= text_url_to_link(h(@item.buy_item_url)).html_safe %>
+        </div>
+      </div>
     <% else %>
       <p>まだ設定されていません<p>
     <% end %>
@@ -78,13 +84,11 @@
     <%= form.hidden_field :item_id,value:@item.id %>
   </div>
 </div>
-<div class="col-sm-2 col-md-3"></div>
-
 <div class="center">
-  <div class="col-sm-12 col-md-12">
+  <div class="col-sm-12 col-md-offset-2">
     <br>
-    <%= form.submit "登録する", :class=> 'btn btn-primary', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
-    <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
+    <%= form.submit "登録する", :class=> 'btn btn-success', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
+    <A HREF="javascript:history.back()" class='btn btn-danger'>キャンセル</A>
     <% end %>
   </div>
 </div>
