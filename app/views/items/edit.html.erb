@@ -15,15 +15,15 @@
 <%= form_with(model: @item, local: true) do |form| %>
 <div class="field">
   <%= form.label :part_number,"製品番号" %>
-  <%= form.text_field :part_number %>
+  <%= form.text_field :part_number, { class: "form-control input-sm" } %>
 </div>
 <div class="field">
   <%= form.label :item_title,"商品名" %>
-  <%= form.text_field :item_title, :size=>"50" %>
+  <%= form.text_field :item_title, class: "form-control input-sm" ,:size=>"50" %>
   </div>
 <div class="field">
   <%= form.label :simulate_price,"想定価格" %>
-  <%= form.number_field :simulate_price %>
+  <%= form.number_field :simulate_price, { class: "form-control input-sm" } %>
 </div>
 <b>出品サイト</b>
 <table>
@@ -56,23 +56,23 @@
 </table>
   <div class="field">
     <%= form.label :"仕入商品名(業者側商品名)"%>
-    <%= form.text_field :buy_item_title, :size=>"100" %>
+    <%= form.text_field :buy_item_title, class: "form-control input-sm", :size=>"100" %>
   </div>
   <div class="field">
     <%= form.label :日本側の商品URL %>
-    <%= form.text_field :buy_item_url, :size=>"100" %>
+    <%= form.text_field :buy_item_url, class: "form-control input-sm", :size=>"100" %>
   </div>
   <div class="field">
     <%= form.label :中国側商品画像url %>
-    <%= form.text_field :china_item_picture, :size=>"100" %>
+    <%= form.text_field :china_item_picture, class: "form-control input-sm", :size=>"100" %>
   </div>
 
 </div>
 <div class="col-sm-3 col-md-3"></div>
 <div class="col-sm-12 col-md-12 center">
   <p><br>
-    <%= form.submit "更新する", :class=> 'btn btn-primary', :size=>'10px' %>
-    <A HREF="javascript:history.back()" class='btn btn-primary'>キャンセル</A>
+    <%= form.submit "更新する", :class=> 'btn btn-success', :size=>'10px' %>
+    <A HREF="javascript:history.back()" class='btn btn-danger'>キャンセル</A>
   </p>
   <% end %>
 </div>

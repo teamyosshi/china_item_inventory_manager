@@ -19,12 +19,12 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= gravatar_for user %></td>
-          <td class="link" style="font-size: 18px;"><%= link_to user.name, user %></td>
-          <td style="font-size: 18px;"><%= user.employee_number %></td>
-          <td style="font-size: 18px;"><%= user.line_id %></td>
-          <td style="font-size: 18px;"><%= user.phone_number %></td>
-          <td><%= link_to '編集', edit_user_path(user), class: "btn btn-success" %></td>
-          <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' }, class: "btn btn-danger" %></td>
+          <td class="link" style="font-size: 18px; text-align: center"><%= link_to user.name, user %></td>
+          <td style="font-size: 18px; text-align: center;"><%= user.employee_number %></td>
+          <td style="font-size: 18px; text-align: center;"><%= user.line_id %></td>
+          <td style="font-size: 18px; text-align: center;"><%= user.phone_number %></td>
+          <td style="text-align: center;"><%= link_to '編集', edit_user_path(user), class: "btn btn-success" %></td>
+          <td style="text-align: center;"><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>
