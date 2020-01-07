@@ -19,7 +19,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= gravatar_for user %></td>
-          <td class="link" style="font-size: 18px; text-align: center"><%= link_to user.name, user %></td>
+          <td class="link" style="font-size: 18px;"><%= link_to user.name, user %></td>
           <td style="font-size: 18px; text-align: center;"><%= user.employee_number %></td>
           <td style="font-size: 18px; text-align: center;"><%= user.line_id %></td>
           <td style="font-size: 18px; text-align: center;"><%= user.phone_number %></td>
