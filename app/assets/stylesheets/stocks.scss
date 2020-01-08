@@ -5,15 +5,17 @@
 .inventory_table {
   overflow-y: scroll;
   height: 400px;
+  padding-bottom: 480px;
 }
 
 .sale_table {
   float: right;
   width: 70%;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .inventory_csv_output_btn {
   float: left;
   width: 25%;
-  margin-top: 100px;
+  margin-top:52px;
+  font-weight: bold;
 }

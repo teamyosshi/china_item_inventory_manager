@@ -17,7 +17,7 @@
         <li>
           <% if activeheadertext(url,"inventory_control") %>
             <div class="header-text">
-            <%= link_to "在庫管理", inventory_control_path(current_user) %>
+              <%= link_to "在庫管理", inventory_control_path(current_user) %>
             </div>
           <% else %>
             <%= link_to "在庫管理", inventory_control_path(current_user) %>

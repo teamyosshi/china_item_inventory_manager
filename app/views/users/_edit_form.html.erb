@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-6 col-md-offset-1">
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, class:"form-control"%>
@@ -73,7 +73,7 @@
   <div class="actions" id="action">
   <%= form.submit yield(:button_text), class:"btn btn-primary btn-block btn-#{yield(:class_text)}"%>
   </div>
-  <p>✳︎アカウント作成後は、プロフィール編集でプロフィール画像を設定してください</p>
+  <p style="font-size: 14px;"><img src="https://zet-art.net/wp-content/uploads/2019/03/caution-01.png" alt="注意" width="40" height="40" border="0" />︎アカウント作成後はプロフィール編集でプロフィール画像を設定して下さい。</p>
 </div>
 
 <% end %>

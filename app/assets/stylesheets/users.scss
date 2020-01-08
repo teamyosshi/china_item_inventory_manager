@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .table_haed_color {
-  background-color: #66CC33 !important;
+  background-color: #dff0d8 !important;
 }
 .s-tbl tr:nth-child(even) {
-	background-color: #FFFFCC;
+	background-color: #F7F7F7;
 }
 .s-tbl tr:nth-child(odd) {
-	background: #99CC99;
+	background: #FFF;
 }
 ul.show_deta{
 	margin-left: 500px;
@@ -23,4 +23,9 @@ ul {
 }
 .show_left_gravatar{
 	margin-left: 200px
+}
+
+.user-font {
+  text-align: center;
+  font-weight: bold;
 }

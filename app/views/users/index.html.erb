@@ -5,8 +5,8 @@
   <%= will_paginate %>
   <table class="table table-bordered table-condensed user-table s-tbl">
     <thead>
-      <tr>
-        <td class="table_haed_color">写真</td>
+      <tr class="user-font">
+        <td style="font-size: 14px; padding: 10px;" class="table_haed_color">写真</td>
         <td class="table_haed_color">名前</td>
         <td class="table_haed_color">社員番号</td>
         <td class="table_haed_color">LINE_ID</td>
@@ -19,12 +19,12 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= gravatar_for user %></td>
-          <td><%= link_to user.name, user %></td>
-          <td><%= user.employee_number %></td>
-          <td><%= user.line_id %></td>
-          <td><%= user.phone_number %></td>
-          <td><%= link_to '編集', edit_user_path(user) %></td>
-          <td><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' } %></td>
+          <td class="link" style="font-size: 18px;"><%= link_to user.name, user %></td>
+          <td style="font-size: 18px; text-align: center;"><%= user.employee_number %></td>
+          <td style="font-size: 18px; text-align: center;"><%= user.line_id %></td>
+          <td style="font-size: 18px; text-align: center;"><%= user.phone_number %></td>
+          <td style="text-align: center;"><%= link_to '編集', edit_user_path(user), class: "btn btn-success" %></td>
+          <td style="text-align: center;"><%= link_to '削除', user, method: :delete, data: { confirm: '本当に削除してもいいでしょうか？' }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>
