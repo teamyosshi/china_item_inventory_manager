@@ -109,11 +109,11 @@
                 <% if research.japan_title.presence %>
                   <tbody>
                   <tr class="table-row">
-                    <th height="170" style="text-align: center"><!--input type="checkbox" name="jpn_reseach_check" class="japanresearch" value= 1 -->
+                    <th height="170" style="text-align: center">
                       <%= rf.check_box :jpn_reseach_check, class: "japanresearch" %>
                     </th>
                     <td>
-
+                      <img src="<%=(research&.japan_image_url) if research.japan_image_url.present? %>" width="110px" height="110px">
                     </td>
                     <td class="title-height">
                       <%= research.japan_title %>
