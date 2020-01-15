@@ -25,7 +25,7 @@
     <%= form.date_select :inventory_arrival_date, {}, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
-    <%= form.label :仕入原価 %><p class="smoll_required inline_form">*必須</p>
+    <%= form.label :仕入原価（通関料込みの金額、関税除く） %><p class="smoll_required inline_form">*必須</p>
     <%= form.number_field :purchase_price, id:"jsNum", class: "form-control input-sm" %>
   </div>
   <div class="field">
@@ -84,8 +84,8 @@
     <%= form.hidden_field :item_id,value:@item.id %>
   </div>
 </div>
-<div class="center">
-  <div class="col-sm-12 col-md-offset-2">
+<div class="center col-sm-12 col-md-offset-0">
+  <div>
     <br>
     <%= form.submit "登録する", :class=> 'btn btn-success', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
     <A HREF="javascript:history.back()" class='btn btn-danger'>キャンセル</A>

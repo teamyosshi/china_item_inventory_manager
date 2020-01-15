@@ -59,15 +59,7 @@ function show_hide_row(row) {
           <%= image_tag item.item_picture, :size =>'80x80' %>
         <% end %>
       </td>
-    <td align="center" style="padding: 2px;">
-      <%= form_with(url: items_item_number_path, method: :post, local: true) do |form| %>
-        <div id="text-long">
-          <%= form.text_field :part_number, class: "form-control input-sm", value: item.part_number %>
-        </div>
-        <%= form.hidden_field :id, value: item.id %>
-        <%= form.submit '変更', class:"btn btn-primary btn-xs side_btn" %>
-      <% end %>
-    </td>
+    <td align="center" style="padding: 2px;"><%= item.part_number %></td>
     <td><%= item.item_title%></td>
     <td align="right">
       <%= item.stocks.sum(:stock)  %></td>
