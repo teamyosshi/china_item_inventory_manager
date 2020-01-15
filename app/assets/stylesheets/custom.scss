@@ -410,11 +410,12 @@ a.btn.btn-success.btn-lg {
 }
 
 .reserch_btn{
-  //position: fixed; 画像右下に常時表示・・・PC環境によって誤作動
+  position: fixed;
   float: right;
   margin-top: 60px;
   right: 50px;
   bottom: 100px;
+  z-index: 3;
 }
 
 .reserch_btn_btn{
