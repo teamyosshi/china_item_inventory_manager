@@ -89,9 +89,10 @@
                 <%= link_to "ログアウト", logout_path, method: :delete %>
               </li>
             </ul>
-          </li><% gravatar_id = Digest::MD5::hexdigest(current_user.email.downcase) %>
+          </li>
+          <% gravatar_id = Digest::MD5::hexdigest(current_user.email.downcase) %>
             <%= link_to edit_path(current_user), target: "_blank" do %>
-              <img src= "https://secure.gravatar.com/avatar/#{gravatar_id}"  border="0", class="header_gravatar" />
+              <img src= "https://secure.gravatar.com/avatar/<%=gravatar_id%>"  border="0", class="header_gravatar" />
               <% end %>
           </li>
         <% else %>

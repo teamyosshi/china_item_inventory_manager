@@ -86,10 +86,10 @@
 </div>
 <div class="col-sm-2 col-md-3"></div>
 
-<div class="center">
-  <div class="col-sm-12 col-md-offset-2">
+<div class="center col-sm-12 col-md-offset-0">
+  <div>
     <br>
-    <%= form.submit "登録する", :class=> 'btn btn-success', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
+    <%= form.submit "登録する", :class=> 'btn btn-primary btn-success', :size=>'10px', data: { confirm: '本当に登録しますか？' } %>
     <A HREF="javascript:history.back()" class='btn btn-danger'>キャンセル</A>
     <% end %>
   </div>

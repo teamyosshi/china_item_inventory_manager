@@ -66,7 +66,14 @@
     <%= form.label :中国側商品画像url %>
     <%= form.text_field :china_item_picture, class: "form-control input-sm", :size=>"100" %>
   </div>
-
+  <div class="center">
+    <p><b>仕入商品画像</b></p>
+    <%if @item.buy_item_url.present?%>
+      <img src="<%= @item.china_item_picture %>">
+    <% else %>
+      <p>まだ設定されていません<p>
+    <% end %>
+  </div>
 </div>
 <div class="col-sm-3 col-md-3"></div>
 <div class="col-sm-12 col-md-12 center">
