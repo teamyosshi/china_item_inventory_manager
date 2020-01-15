@@ -18,13 +18,13 @@
         <thead>
         <tr class="tr-back2" style="height:40px;">
           <td align="center">商品画像</td>
-          <td align="center" width="120">商品タイトル(日本)</td>
+          <td align="center" width="60">商品タイトル(日本)</td>
           <td align="center">リサーチ額</td>
           <td width="50" align="center">仕入画像</td>
           <td align="center" width="120">中国商品タイトル</td>
           <td align="center" width="40">URL</td>
           <td align="center" width="80">中国元原価</td>
-          <td align="center" width="100">備考</td>
+          <td align="center" width="180">備考</td>
           <td width="5%"></td>
         </tr>
         </thead>
@@ -33,32 +33,32 @@
     <% @buyitems.each do |buyitem| %>
       <% k=i%2 %>
       <tr class="tr-back<%= k %>" style="height:100px;">
-        <td align="center" style="margin: 2px; padding:2px; width: 10%;">
+        <td align="center" style="margin: 2px; padding:2px;">
           <% if buyitem.japan_image_url.present? %>
             <%= image_tag buyitem.japan_image_url, :size =>'90x90' %>
           <% end %></td>
-        <td align="center" style="vertical-align:center; padding-top:7px; width: 30%;"><%= buyitem.japan_title %></td>
-        <td align="right" style="width: 8%; text-align: center"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
-        <td align="center" style="margin: 2px; padding-top:7px; width: 10%;">
+        <td align="center" style="vertical-align:center; padding-top:7px;"><%= buyitem.japan_title %></td>
+        <td align="right" style="text-align: center"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
+        <td align="center" style="margin: 2px; padding-top:7px;">
           <% if buyitem.china_image_url.present? %>
             <%= image_tag buyitem.china_image_url, :size =>'90x90' %>
           <% end %>
         </td>
-        <td align="center" style="vertical-align:center; padding: 8px; width: 25%;"><%=buyitem.china_title %></td>
-        <td align="center" style="width: 5%;">
+        <td align="center" style="vertical-align:center; padding: 8px;"><%=buyitem.china_title %></td>
+        <td align="center">
           <% if buyitem.china_url.present? %>
-            <%= link_to buyitem.china_url, target: :_blank %>
+            <%= link_to "#{buyitem.china_url}","#{buyitem.china_url}", target: :_blank %>
           <% end %>
         </td>
         <% if buyitem.china_price.present? %>
-          <td align="right" style="width:9%; text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')%></td>
+          <td align="right" style="text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')%></td>
         <% else %>
           <%= form_with(model:@buyitem ,url: buyitems_price_update_path(buyitem.id), method: :patch, local: true) do |fp| %>
             <td class="side_by_side"><%= fp.number_field :china_price, class:"form-control input-sm"%><%= fp.submit "更新", class:"btn btn-primary btn-xs side_btn"%></td>
           <% end %>
         <% end %>
 
-        <td style="vertical-align:center; padding-top:7px; width: 10%"><%=buyitem.japan_description %></td>
+        <td style="vertical-align:center; padding-top:7px;"><%=buyitem.japan_description %></td>
         <!--modal -->
         <td>
           <a class="js-modal-open btn-square-so-pop-buy orange" href="" data-target=con<%=buyitem.id %>>　備考更新　</a><br><br>
