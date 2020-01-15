@@ -17,22 +17,8 @@
             <%= f.text_field :china_title, placeholder: "英語キーワード入力　例：watch", class:"form-control" %>
             <div class="money-label">
               <label for="number" class="control-label col-md-3">金額</label>
-              <select name="num">
-                <option value="下限なし">下限なし</option>
-                <option value="10">10</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
-                <option value="1000">1000</option>
-              </select>
-              <select name="num">
-                <option value="上限なし">上限なし</option>
-                <option value="10">10</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="150">150</option>
-                <option value="1000">1000</option>
-              </select>
+              <%= f.select :china_min_price, [['下限なし', 0], ['10', 10], ['50', 50], ['100', 100], ['500', 500], ['1,000', 1000], ['5,000', 5000], ['10,000', 10000]] %>
+              <%= f.select :china_max_price, [['上限なし', 10000], ['10', 10], ['50', 50], ['100', 100], ['500', 500], ['1,000', 1000], ['5,000', 5000], ['10,000', 10000]] %>
             </div>
           </div>
         </div>

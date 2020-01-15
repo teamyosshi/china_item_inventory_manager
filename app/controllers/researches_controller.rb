@@ -74,7 +74,7 @@ def item_research_scrape
    @user = User.find(params[:id])
    Research.delete_all
    agent = Mechanize.new
-   page = agent.get("https://auctions.yahoo.co.jp/search/search?p=#{params[:search]}")
+   page = agent.get("https://auctions.yahoo.co.jp/search/search?min=#{params[:japan_min_price]}&max=#{params[:japan_max_price]}&p=#{params[:search]}&price_type=currentprice")
    # 配列を作る準備/未定義時0代入
    @research_no ||= 0
    # リサーチナンバーの配列を作る準備
@@ -111,13 +111,10 @@ def item_research_scrape
          japan_price: hash[research_number][:japan_price],
          user_id: 1)
    end
-   japan_min_price = params[:japan_min_price]
-   japan_max_price = params[:japan_max_price]
-  # redirect_to item_research_url(japan_min_price: japan_min_price, japan_max_price: japan_max_price)
 
   puts "中国商品・・・・・・・・・・・・・・・・・・・・・"
   agent = Mechanize.new
-  page = agent.get("https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText=#{params[:china_title]}")
+  page = agent.get("https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText=#{params[:china_title]}&pricef=#{params[:china_min_price]}&pricet=#{params[:china_max_price]}")
   doc = page.search('//script')
 
   puts "画像URLをリサーチします・・・・・・・・・・・・・・・・・・・・・"
