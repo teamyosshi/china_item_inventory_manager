@@ -17,15 +17,18 @@
       <table table border="1" id="table_detail">
         <thead>
         <tr class="tr-back2" style="height:40px;">
-          <td align="center">商品画像</td>
-          <td align="center" width="60">商品タイトル(日本)</td>
-          <td align="center">リサーチ額</td>
-          <td width="50" align="center">仕入画像</td>
+          <td align="center" width="40">商品画像</td>
+          <td align="center" width="40">商品タイトル(日本)</td>
+          <td align="center" width="50">リサーチ額</td>
           <td align="center" width="120">中国商品タイトル</td>
-          <td align="center" width="40">URL</td>
-          <td align="center" width="80">中国元原価</td>
-          <td align="center" width="180">備考</td>
-          <td width="5%"></td>
+          <td align="center" width="40"></td>
+          <td align="center" width="50">URL</td>
+          <td align="center" width="50">仕入画像</td>
+          <td align="center" width="50">サイズ</td>
+          <td align="center" width="50">カラー</td>
+          <td align="center" width="50">注文数</td>
+          <td align="center" width="50">中国元原価</td>
+          <td align="center" width="100">備考</td>
         </tr>
         </thead>
     </div>
@@ -39,17 +42,24 @@
           <% end %></td>
         <td align="center" style="vertical-align:center; padding-top:7px;"><%= buyitem.japan_title %></td>
         <td align="right" style="text-align: center"><%= buyitem.japan_price.to_s(:delimited, delimiter: ',')  if buyitem.japan_price.present? %></td>
-        <td align="center" style="margin: 2px; padding-top:7px;">
-          <% if buyitem.china_image_url.present? %>
-            <%= image_tag buyitem.china_image_url, :size =>'90x90' %>
-          <% end %>
-        </td>
         <td align="center" style="vertical-align:center; padding: 8px;"><%=buyitem.china_title %></td>
+        <td>
+          <a class="js-modal-open btn-square-so-pop-buy orange center" href="" data-target=con<%=buyitem.id %>>備考更新</a>
+          <%= button_to "削除", buyitem_delete_path, { method: :delete, class: "btn-square-so-pop-buy red",params: {id: buyitem.id}, data: { confirm: '本当に削除しますか？' }} %>
+        </td>
         <td align="center">
           <% if buyitem.china_url.present? %>
             <%= link_to "#{buyitem.china_url}","#{buyitem.china_url}", target: :_blank %>
           <% end %>
         </td>
+        <td align="center" style="margin: 2px; padding-top:7px;">
+          <% if buyitem.china_image_url.present? %>
+            <%= image_tag buyitem.china_image_url, :size =>'90x90' %>
+          <% end %>
+        </td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
         <% if buyitem.china_price.present? %>
           <td align="right" style="text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')%></td>
         <% else %>
@@ -60,10 +70,6 @@
 
         <td style="vertical-align:center; padding-top:7px;"><%=buyitem.japan_description %></td>
         <!--modal -->
-        <td>
-          <a class="js-modal-open btn-square-so-pop-buy orange" href="" data-target=con<%=buyitem.id %>>　備考更新　</a><br><br>
-          <%= button_to "削除", buyitem_delete_path, { method: :delete, class: "btn-square-so-pop-buy red",params: {id: buyitem.id}, data: { confirm: '本当に削除しますか？' }} %>
-        </td>
         <div id=con<%= buyitem.id %> class="modal js-modal">
           <div class="modal__bg js-modal-close"></div>
           <div class="modal__content">

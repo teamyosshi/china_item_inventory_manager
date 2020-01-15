@@ -34,6 +34,7 @@ module ApplicationHelper
     end
   end
   def activeheadertext(url,action)
+
     textcount=action.length
     thisaction=url[0-textcount,textcount]
     if thisaction==action
