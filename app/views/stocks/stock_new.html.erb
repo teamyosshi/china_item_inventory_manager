@@ -25,6 +25,10 @@
     <%= form.date_select :inventory_arrival_date, {}, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
+    <%= form.label :今回何個仕入れたか %><p class="smoll_required inline_form">*必須</p>
+    <%= form.number_field :original_stock, { class: "form-control input-sm" } %>
+  </div>
+  <div class="field">
     <%= form.label :仕入原価 %><p class="smoll_required inline_form">*必須</p>
     <%= form.number_field :purchase_price,id:"jsNum", class: "form-control input-sm" %>
   </div>
@@ -72,6 +76,12 @@
       <p>まだ設定されていません<p>
     <% end %>
   </div>
+
+  <div class="field">
+    <%= form.label :前年からの引継ぎ在庫数 %></p>
+    <%= @item.stocks.where.not(inventory_arrival_date: Time.zone.today.beginning_of_year..Time.zone.today.end_of_year).sum(:stock)  %>
+  </div>
+
   <div class="field">
     <p><b>仕入商品画像</b></p>
     <%if @item.buy_item_url.present?%>

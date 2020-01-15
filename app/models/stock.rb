@@ -1,12 +1,13 @@
 class Stock < ApplicationRecord
   belongs_to :item ,optional: true
-  validates :inventory_arrival_date, presence: true, on: [:stock_new,:product_registration]
-  validates :purchase_price, presence: true, on: [:stock_new,:product_registration]
-  validates :trader_name, presence: true, on: [:stock_new,:product_registration]
-  validates :stock, presence: true, on: [:stock_new ,:product_registration]
-  validates :alert_border_line, presence: true, on: [:stock_new,:product_registration]
-  validates :buy_item_to_jpy, presence: true, on: [:stock_new,:product_registration]
-  validates :buy_item_to_cny, presence: true, on: [:stock_new,:product_registration]
+  validates :inventory_arrival_date, presence: true, on: [:create, :update, :product_registration]
+  validates :purchase_price, presence: true, on: [:create, :update, :product_registration]
+  validates :trader_name, presence: true, on: [:create, :update, :product_registration]
+  validates :original_stock, presence: true, on: [:create, :update, :product_registration]
+  validates :stock, presence: true, on: [:create, :update, :product_registration]
+  validates :alert_border_line, presence: true, on: [:create, :update, :product_registration]
+  validates :buy_item_to_jpy, presence: true, on: [:create, :update, :product_registration]
+  validates :buy_item_to_cny, presence: true, on: [:create, :update, :product_registration]
 
   def self.takeinventory_find
     @this_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @this_year)

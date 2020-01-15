@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .inventory_table {
+  margin-left: 100px;
   overflow-y: scroll;
   height: 400px;
   padding-bottom: 480px;
@@ -10,12 +11,14 @@
 
 .sale_table {
   float: right;
-  width: 70%;
+  width: 50%;
   margin-top: 50px;
+  margin-right: 100px;
 }
 .inventory_csv_output_btn {
   float: left;
   width: 25%;
   margin-top:52px;
+  margin-left:50px;
   font-weight: bold;
 }

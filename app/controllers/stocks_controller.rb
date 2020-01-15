@@ -144,7 +144,7 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:inventory_arrival_date,:purchase_price,:trader_name,:stock,:alert_border_line,:item_id,:buy_item_to_jpy,:buy_item_to_cny,:buy_item_image_url)
+      params.require(:stock).permit(:inventory_arrival_date,:purchase_price,:trader_name,:original_stock,:stock,:alert_border_line,:item_id,:buy_item_to_jpy,:buy_item_to_cny,:buy_item_image_url)
     end
     
     def stocktobuyitems_params

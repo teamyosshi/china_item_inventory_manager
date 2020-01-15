@@ -7,7 +7,7 @@
         <th class="product_th" width="10%">JANコード</th>
         <th class="product_th" width="20%">業者名</th>
         <th class="product_th" width="10%">金額</th>
-        <th class="product_th" width="10%">購入数</th>
+        <th class="product_th" width="10%">現在庫数</th>
       </tr>
     <% i=1 %>
     <% @item_stocks.each do |item_stock| %>
@@ -28,12 +28,12 @@
 <div>
   <table border="1" style="border-collapse: collapse; border-color: black" class="sale_table">
     <tr class="tr-back2" style="height: 30px">
-      <td class="product_th2" width=40%">前年度期末 商品棚卸高</td>
-      <td class="product_th2" width="20%">今年度仕入<br>
+      <td class="product_th2" width="10%">前年度期末 商品棚卸高</td>
+      <td class="product_th2" width="10%">今年度仕入<br>
           原価合計額</td>
-      <td class="product_th2" width="20%">今年度期末<br>
+      <td class="product_th2" width="10%">今年度期末<br>
           商品棚卸高</td>
-      <td class="product_th2" width="20%">売上原価</td>
+      <td class="product_th2" width="10%">売上原価</td>
     </tr>
     <tr class="tr-back0">
       <td style="text-align: center; padding: 15px">
@@ -55,5 +55,5 @@
       <td style="text-align: center"><%= @this_year_beginning_product_inventory.cost_of_sales if @this_year_beginning_product_inventory.cost_of_sales.present? %></td>
     </tr>
   </table>
+    <%= link_to "CSVエクスポート", stock_path(format: :csv), class: "btn btn-warning inventory_csv_output_btn" %>
 </div>
-<%= link_to "CSVエクスポート", stock_path(format: :csv), class: "btn btn-warning inventory_csv_output_btn" %>

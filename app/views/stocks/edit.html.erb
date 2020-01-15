@@ -25,6 +25,10 @@
     <%= form.date_select :inventory_arrival_date, {}, { class: "form-control input-sm" } %>
   </div>
   <div class="field">
+    <%= form.label :今回何個仕入れたか %><p class="smoll_required inline_form">*必須</p>
+    <%= form.number_field :original_stock, { class: "form-control input-sm" } %>
+  </div>
+  <div class="field">
     <%= form.label :仕入原価（通関料込みの金額、関税除く） %><p class="smoll_required inline_form">*必須</p>
     <%= form.number_field :purchase_price, id:"jsNum", class: "form-control input-sm" %>
   </div>

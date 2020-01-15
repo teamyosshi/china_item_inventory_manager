@@ -6,7 +6,7 @@ module StocksHelper
       cost_of_salse = item_stock.purchase_price.to_i * item_stock.original_stock.to_i
       @total_purchase_cost_this_year = @total_purchase_cost_this_year.to_i + cost_of_salse
       #今年度期末商品棚卸高の計算
-      cost_salse = item_stock.purchase_price * item_stock.stock
+      cost_salse = item_stock&.purchase_price * item_stock&.stock
       @period_end_product_inventory = @period_end_product_inventory.to_i + cost_salse
     end
   end
