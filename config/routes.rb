@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get "/items/product_registration", to: 'items#product_registration', as: :product_registration
   patch "/researches/:id/update", to: "researches#update_resarch", as: :research_update
   patch "/items/:id/price_update", to: "items#price_update", as: :price_update
+  patch "/items/:id/buyitems_price_update", to: "items#buyitems_price_update", as: :buyitems_price_update
     resources :researches
   resources :stocks
   resources :items

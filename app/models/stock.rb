@@ -8,8 +8,6 @@ class Stock < ApplicationRecord
   validates :buy_item_to_jpy, presence: true, on: [:stock_new,:product_registration]
   validates :buy_item_to_cny, presence: true, on: [:stock_new,:product_registration]
 
-  attr_accessor :check
-  attr_accessor:japan_description
   def self.takeinventory_find
     @this_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @this_year)
     @prev_year_beginning_product_inventory = TakeInventory.find_by(fiscal_year: @prev_year)

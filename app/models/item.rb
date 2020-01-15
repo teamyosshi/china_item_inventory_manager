@@ -8,6 +8,9 @@ class Item < ApplicationRecord
   validates :buy_item_url, presence: true, on: :create
   validates :item_japan_url, presence: true, on: :create
 
+  attr_accessor :japan_description
+  attr_accessor :check
+
   def self.search(search) #self.でクラスメソッドとしている
     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
       Item.where('item_title LIKE ? OR part_number LIKE ?', "%#{search}%", "%#{search}%")

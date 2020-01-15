@@ -113,6 +113,16 @@ class ItemsController < ApplicationController
     redirect_to request.referer
   end
 
+  def buyitems_price_update
+    buyitem = Buyitem.find(params[:id])
+    if buyitem.update_attributes(buyitem_price_update_params)
+        flash[:success] = "仕入額額の設定をしました。"
+    else
+      flash[:danger] =  "仕入額の設定に失敗しました。再度やり直してください。"
+    end
+    redirect_to request.referer
+  end
+
   def destroy
   end
 
@@ -133,5 +143,9 @@ class ItemsController < ApplicationController
 
     def item_price_update_params
       params.permit(:simulate_price)
+    end
+
+    def buyitem_price_update_params
+      params.permit(:china_price)
     end
 end

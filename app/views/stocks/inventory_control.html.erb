@@ -247,24 +247,24 @@
           </thead>
       </div>
       <% i=1 %>
-      <%= form_tag '/stocks/manynewbuyitem', method: :put do %>
-        <% @stockslist.each do |stocklist| %>
-          <%= fields_for "stocktobuyitems[]",stocklist do |buy| %>
+      <%= form_with url: '/stocks/manynewbuyitem', local: true, method: :put do |form| %>
+        <% @items_find.each do |item| %>
+          <%= form.fields_for "stocktobuyitems[]",item do |buy| %>
             <% k=i%2 %>
             <tr class="tr-sub-back<%= k %>">
               <td style="padding: 4px;">
-                <% if stocklist.item.item_picture.present? %>
-                  <%= image_tag stocklist.item.item_picture, :size =>'50x50' %>
+                <% if item.item_picture.present? %>
+                  <%= image_tag item.item_picture, :size =>'50x50' %>
                 <% end %>
               </td>
-              <td style="text-align: center"><%= stocklist.item.part_number %></td>
-              <td><%= stocklist.item.item_title %></td>
-              <td style="text-align: center"><%= stocklist.trader_name %></td>
-              <td style="text-align: center"><%= stocklist.stock %></td>
-              <td style="text-align: center"><%= stocklist.purchase_price.to_s(:delimited, delimiter: ',') if stocklist.purchase_price.present? %></td>
+              <td style="text-align: center"><%= item.part_number %></td>
+              <td><%= item.item_title %></td>
+              <td style="text-align: center"><%= item.stocks.last&.trader_name if item.stocks.last&.trader_name.present? %></td>
+              <td style="text-align: center"><%= item.stocks.last&.stock if item.stocks.last&.stock.present? %></td>
+              <td style="text-align: center"><%= item.stocks.last&.purchase_price.to_s(:delimited, delimiter: ',') if item.stocks.last&.purchase_price.present? %></td>
               <td><%= buy.text_field :japan_description, class: "form-control input-sm" %></td>
               <td align="center"><%= buy.check_box :check %></td>
-              <%= buy.hidden_field :item_id %>
+              <%= buy.hidden_field :id %>
             </tr>
             <%i=i+1 %>
           <% end %>

@@ -10,7 +10,6 @@ class StocksController < ApplicationController
     @stocks = Stock.all
       @items=Item.includes(:stocks).all
     @items_find=Item.all
-    @stockslist=Stock.includes(:item).all
     @search=params[:search]
     if params[:kubun]=="1"
       @items_find=Item.includes(:stocks).search(params[:search])
@@ -111,10 +110,9 @@ class StocksController < ApplicationController
   end
   def manynewbuyitem
     count=NUM
-    stocktobuyitems_params.each{|id, val|item_id,check,japan_description = val.values_at("item_id","check","japan_description")
+    stocktobuyitems_params.each{|id, val|item_id,check,japan_description = val.values_at(params["stocktobuyitems"][:id],"check","japan_description")
     if check=="1"
-      item = Item.find(item_id)
-      stock=Stock.find(id)
+      item = Item.find(id)
       @buyitem = Buyitem.new(
         japan_image_url:item.item_picture,
         japan_title:item.item_title,
@@ -124,7 +122,7 @@ class StocksController < ApplicationController
         china_image_url:item.china_item_picture,
         china_title:item.buy_item_title,
         china_url:item.buy_item_url,
-        china_price:stock.purchase_price,
+        # china_price:stock.purchase_price,
         user_id:current_user.id)
       if @buyitem.save
         count=count+1
@@ -150,8 +148,9 @@ class StocksController < ApplicationController
     end
     
     def stocktobuyitems_params
-      params.permit(stocktobuyitems: [:item_id,:check,:japan_description])[:stocktobuyitems]
+      params.permit(stocktobuyitems: [:check,:japan_description])[:stocktobuyitems]
     end
+
     def unlesslogin
       if current_user.nil?
         redirect_to "/"

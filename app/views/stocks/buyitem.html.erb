@@ -50,7 +50,14 @@
             <%= link_to image_tag('home.jpg'), buyitem.china_url, target: :_blank %>
           <% end %>
         </td>
-        <td align="right" style="width:9%; text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')  if buyitem.china_price.present?%></td>
+        <% if buyitem.china_price.present? %>
+          <td align="right" style="width:9%; text-align: center;"><%=buyitem.china_price.to_s(:delimited, delimiter: ',')%></td>
+        <% else %>
+          <%= form_with(model:@buyitem ,url: buyitems_price_update_path(buyitem.id), method: :patch, local: true) do |fp| %>
+            <td class="side_by_side"><%= fp.number_field :china_price, class:"form-control input-sm"%><%= fp.submit "更新", class:"btn btn-primary btn-xs side_btn"%></td>
+          <% end %>
+        <% end %>
+
         <td style="vertical-align:top; padding-top:7px; width: 10%"><%=buyitem.japan_description %></td>
         <!--modal -->
         <td>
