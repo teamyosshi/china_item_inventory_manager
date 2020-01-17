@@ -163,7 +163,7 @@
               <% end %>
               <%= item.stocks.sum(:stock)  %></td>
             <td>
-              <% if item.simulate_price.presence %>
+              <% if item.simulate_price.present? %>
                 <%= item.simulate_price.to_s(:delimited, delimiter: ',') %>
               <% else %>
                 <%= form_with(model:@item ,url: price_update_path(item.id), method: :patch, local: true) do |fp| %>
