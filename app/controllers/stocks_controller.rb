@@ -134,7 +134,12 @@ class StocksController < ApplicationController
     else
       flash[:danger] = "商品は追加されませんでした"
     end
+
+    if current_user.admin?
     redirect_to "/users/#{current_user.id}/buyitem"
+    else
+    redirect_to "/users/#{current_user.id}/inventory_control"
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

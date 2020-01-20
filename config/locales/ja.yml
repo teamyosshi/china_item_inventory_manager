@@ -16,7 +16,7 @@ ja:
         stock: 在庫
         alert_border_line: 最低在庫数
         buy_item_to_jpy: 購入原価（円）
-        buy_item_to_cny: 購入原価（中国元）
+        buy_item_to_cny: 購入原価（usd）
         original_stock: 今回何個仕入れたか
       item:
         simulate_price: 想定金額
