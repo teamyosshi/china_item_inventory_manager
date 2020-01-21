@@ -68,7 +68,7 @@
           <% end %>
         <% end %>
 
-        <td style="vertical-align:center; padding-top:7px;"><%=buyitem.japan_description %></td>
+        <td style="vertical-align:center; padding-top:7px;"><%=simple_format(buyitem.japan_description)%></td>
         <!--modal -->
         <div id=con<%= buyitem.id %> class="modal js-modal">
           <div class="modal__bg js-modal-close"></div>
@@ -76,8 +76,8 @@
             <%= form_with(url: buyitem_edit_url, method: :post, local: true) do |f| %>
               <div class="field">
                 <%= f.hidden_field :id,value:buyitem.id %>
-                <%= f.label :"備考" %>
-                <%= f.text_area :japan_description,value:buyitem.japan_description,cols:60,rows:5 %><br>
+                <%= f.label :"備考更新" %>
+                <%= f.text_area :japan_description,value:buyitem.japan_description,cols:25,rows:3 %><br>
                 <div id="go-btn">
                   <%= f.submit "実行", class: "btn btn-primary",　style: "width:100px; height:30px;" %>
                 </div>

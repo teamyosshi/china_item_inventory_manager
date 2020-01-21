@@ -26,31 +26,31 @@
   </div>
   <div class="field">
     <%= form.label :今回何個仕入れたか %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :original_stock, { class: "form-control input-sm" } %>
+    <%= form.number_field :original_stock, { class: "form-control input-sm",required:true } %>
   </div>
   <div class="field">
     <%= form.label :仕入原価 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :purchase_price,id:"jsNum", class: "form-control input-sm" %>
+    <%= form.number_field :purchase_price,id:"jsNum", class: "form-control input-sm",required:true %>
   </div>
   <div class="field">
     <%= form.label :仲介業者 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.text_field :trader_name, { class: "form-control input-sm" } %>
+    <%= form.text_field :trader_name, { class: "form-control input-sm",required:true } %>
   </div>
   <div class="field">
     <%= form.label :在庫数 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :stock, { class: "form-control input-sm" } %>
+    <%= form.number_field :stock, { class: "form-control input-sm",required:true } %>
   </div>
   <div class="field">
     <%= form.label :最低在庫数 %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :alert_border_line, { class: "form-control input-sm" } %>
+    <%= form.number_field :alert_border_line, { class: "form-control input-sm",required:true } %>
   </div>
   <div class="field">
     <%= form.label :購入原価（円） %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :buy_item_to_jpy, { class: "form-control input-sm" } %>
+    <%= form.number_field :buy_item_to_jpy, { class: "form-control input-sm",required:true } %>
   </div>
   <div class="field">
     <%= form.label :購入原価（中国元） %><p class="smoll_required inline_form">*必須</p>
-    <%= form.number_field :buy_item_to_cny, { class: "form-control input-sm" } %>
+    <%= form.number_field :buy_item_to_cny, { class: "form-control input-sm",required:true } %>
   </div>
 </div>
 <div class="col-sm-4 col-md-3">

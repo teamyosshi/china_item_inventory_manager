@@ -14,12 +14,12 @@
 <div class="col-sm-6 col-md-6">
 <%= form_with(model: @item, local: true) do |form| %>
 <div class="field">
-  <%= form.label :part_number,"製品番号" %>
-  <%= form.text_field :part_number, { class: "form-control input-sm" } %>
+  <b>製品番号</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+  <%= form.text_field :part_number, { class: "form-control input-sm",required:true } %>
 </div>
 <div class="field">
-  <%= form.label :item_title,"商品名" %>
-  <%= form.text_field :item_title, class: "form-control input-sm" ,:size=>"50" %>
+  <b>商品名</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+  <%= form.text_field :item_title, class: "form-control input-sm" ,:size=>"50" ,required:true%>
   </div>
 <div class="field">
   <%= form.label :simulate_price,"想定価格" %>
@@ -59,12 +59,12 @@
     <%= form.text_field :buy_item_title, class: "form-control input-sm", :size=>"100" %>
   </div>
   <div class="field">
-    <%= form.label :日本側の商品URL %>
-    <%= form.text_field :buy_item_url, class: "form-control input-sm", :size=>"100" %>
+    <b>日本側の商品URL</b>
+    <%= form.url_field :buy_item_url, class: "form-control input-sm", :size=>"100" %>
   </div>
   <div class="field">
     <%= form.label :中国側商品画像url %>
-    <%= form.text_field :china_item_picture, class: "form-control input-sm", :size=>"100" %>
+    <%= form.url_field :china_item_picture, class: "form-control input-sm", :size=>"100" %>
   </div>
   <div class="center">
     <p><b>仕入商品画像</b></p>

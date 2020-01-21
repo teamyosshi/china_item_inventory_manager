@@ -12,23 +12,23 @@
   <% end %>
   <%= form_with(model: item, url: items_path, method: :post, local: true) do |form| %>
     <div class="field">
-      <%= form.label :商品の画像リンク（日本側） %>
-      <%= form.text_field :item_japan_url, class:"form-control" %>
+      <b>商品の画像リンク（日本側)</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.url_field :item_japan_url, class:"form-control",required:true %>
     </div>
 
     <div class="field">
-      <%= form.label :商品タイトル %>
-      <%= form.text_field :item_title, class:"form-control" %>
+      <b>商品タイトル</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.text_field :item_title, class:"form-control",required:true %>
     </div>
 
     <div class="field">
-      <%= form.label :製品コード%>
-      <%= form.text_field :part_number, class:"form-control" %>
+      <b>製品コード</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.text_field :part_number, class:"form-control",required:true %>
     </div>
 
     <div class="field">
-      <%= form.label :想定金額 %>
-      <%= form.text_field :simulate_price, class:"form-control" %>
+      <b>想定金額</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.text_field :simulate_price, class:"form-control",required:true %>
     </div>
 
     <b>出品サイト</b>
@@ -62,18 +62,18 @@
     </table>
 
     <div class="field">
-      <%= form.label :仕入タイトル（中国側） %>
-      <%= form.text_field :buy_item_title, class:"form-control" %>
+      <b>仕入タイトル（中国側）</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.text_field :buy_item_title, class:"form-control",required:true %>
     </div>
 
     <div class="field">
-      <%= form.label :仕入リンク（中国側） %>
-      <%= form.text_field :buy_item_url, class:"form-control" %>
+      <b>仕入リンク（中国側）</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.url_field :buy_item_url, class:"form-control",required:true %>
     </div>
 
     <div class="field">
-      <%= form.label :商品の画像リンク（中国側） %>
-      <%= form.text_field :china_item_picture, class:"form-control" %>
+      <b>商品の画像リンク（中国側）</b>&nbsp;<div class="smoll_required inline_form">*必須</div>
+      <%= form.url_field :china_item_picture, class:"form-control",required:true %>
     </div>
 
     <div class="actions">
