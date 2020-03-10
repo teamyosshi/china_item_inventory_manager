@@ -12,7 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list \
   && apt-key update \
   && apt-get update -qq \
-  && apt-get install --no-install-recommends -y build-essential postgresql-client nodejs yarn google-chrome-stable less yarn vim fonts-noto-cjk libreoffice graphviz \
+  && apt-get install --no-install-recommends -y build-essential postgresql-client nodejs yarn google-chrome-stable less yarn vim fonts-noto-cjk \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
