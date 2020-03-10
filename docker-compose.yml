@@ -1,0 +1,52 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: sh launch.sh
+    volumes:
+      - .:/myapp
+      - public_volume:/myapp/public
+      - tmp_volume:/myapp/tmp
+      - log_volume:/myapp/log
+      - ./vendor/bundle:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./docker/postgresql/
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+  nginx:
+    build:
+      context: ./docker/nginx/
+    command: /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+    volumes:
+      - public_volume:/myapp/public
+      - tmp_volume:/myapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+  minio:
+    image: minio/minio:latest
+    ports:
+      - 9000:9000
+    volumes:
+      - minio:/data
+    command: server /data
+    environment:
+      MINIO_ACCESS_KEY: minio_access_key
+      MINIO_SECRET_KEY: minio_secret_key
+volumes:
+  public_volume:
+  tmp_volume:
+  log_volume:
+  pg_data:
+  minio:
+    driver: local
